@@ -1,0 +1,4 @@
+- [x] Remove Garamond font from app/layout.js
+- [x] Add Montserrat font to app/layout.js
+- [x] Update app/globals.css for Montserrat
+- [x] Update app/page.js to use Montserrat and make nav bold
