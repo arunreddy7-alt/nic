@@ -1,4 +1,5 @@
-- [x] Remove Garamond font from app/layout.js
-- [x] Add Montserrat font to app/layout.js
-- [x] Update app/globals.css for Montserrat
-- [x] Update app/page.js to use Montserrat and make nav bold
+# Task: Add navbar to contact page
+
+## Steps:
+- [x] Add navbar to app/contact/page.js with bg-[#845547] and text-[#fffbea] for visibility, absolute positioned at top, similar to home and about pages.
+- [ ] Verify the changes by running the development server and checking the contact page.
