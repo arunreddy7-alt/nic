@@ -1,5 +1,4 @@
-# Task: Add navbar to contact page
-
-## Steps:
-- [x] Add navbar to app/contact/page.js with bg-[#845547] and text-[#fffbea] for visibility, absolute positioned at top, similar to home and about pages.
-- [ ] Verify the changes by running the development server and checking the contact page.
+- [ ] Fix unescaped apostrophe in app/page.js (line 120: "clients'")
+- [ ] Fix unescaped apostrophe in app/about/page.js (line 61: "It’s")
+- [ ] Fix unescaped apostrophe in app/contact/page.js (line 163: "AD's")
+- [ ] Run ESLint to verify fixes

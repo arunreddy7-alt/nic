@@ -1,11 +1,12 @@
 import React from "react";
+import Link from 'next/link';
 
 export default function ContactSection() {
   return (
     <div className="relative min-h-screen bg-[#845547]">
       <nav className="absolute top-0 left-0 right-0 bg-[#845547] flex gap-5 items-center flex-col sm:flex-row w-full justify-center py-4 z-10">
         <a href="#" className="text-sm hover:underline mr-280 text-[#fffbea]">Projects</a>
-        <a href="/" className="text-lg text-[#fffbea] font-bold transform -translate-x-135" style={{ fontFamily: 'Didot, serif' }}>NICARA</a>
+        <Link href="/"><a className="text-lg text-[#fffbea] font-bold transform -translate-x-135" style={{ fontFamily: 'Didot, serif' }}>NICARA</a></Link>
         <a href="/about" className="text-sm hover:underline text-[#fffbea]">About</a>
         <a href="/contact" className="text-sm hover:underline text-[#fffbea]">Contact</a>
       </nav>
@@ -94,7 +95,7 @@ export default function ContactSection() {
         {/* Right Column - Contact Info */}
         <div className="space-y-6 text-sm transform translate-x-19">
           <p>
-            <span className="font-">Avery Cox Design</span> is now offering
+            <span className="font-">NICARA</span> is now offering
             1-on-1<br/> consultations via <em>the expert</em>.
           </p>
           <a
@@ -136,8 +137,8 @@ export default function ContactSection() {
             </p>
 
             <p>
-              Visitation is by appointment only—<br/>send us an email to set up a
-              meeting.
+            Visitation is by appointment only&mdash;<br/>send us an email to set up a
+            meeting.
             </p>
           </div>
         </div>
@@ -159,7 +160,7 @@ export default function ContactSection() {
           <div className="text-sm ml-26 md:ml-52">
             <div>IG: <a href="#" className="underline hover:no-underline">@averycoxdesign</a></div>
             <div><a href="#" className="underline hover:no-underline">AC.D on The Expert</a> and</div>
-            <div><a href="#" className="underline hover:no-underline">AD's Pro Directory</a></div>
+              <div><a href="#" className="underline hover:no-underline">AD&apos;s Pro Directory</a></div>
           </div>
         </div>
         <div className="flex flex-col md:flex-row justify-between items-center gap-18">
