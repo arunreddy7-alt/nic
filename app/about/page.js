@@ -6,7 +6,7 @@ export default function About() {
     <div className="font-sans relative min-h-screen bg-white">
       <nav className="absolute top-0 left-0 right-0 bg-white flex gap-5 items-center flex-col sm:flex-row w-full justify-center py-4 z-10">
         <Link href="/"><a className="text-sm hover:underline mr-280 text-black">Projects</a></Link>
-        <Link href="/"><a className="text-lg text-black font-bold transform -translate-x-135 " style={{ fontFamily: 'Didot, serif' }}>NICARA</a></Link>
+        <Link href="/" className="text-lg text-black font-bold transform -translate-x-135" style={{ fontFamily: 'Didot, serif' }}>NICARA</Link>
         <a href="/about" className="text-sm hover:underline text-black">About</a>
         <a href="/contact" className="text-sm hover:underline text-black">Contact</a>
       </nav>

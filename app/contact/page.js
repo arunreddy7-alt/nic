@@ -6,7 +6,7 @@ export default function ContactSection() {
     <div className="relative min-h-screen bg-[#845547]">
       <nav className="absolute top-0 left-0 right-0 bg-[#845547] flex gap-5 items-center flex-col sm:flex-row w-full justify-center py-4 z-10">
         <a href="#" className="text-sm hover:underline mr-280 text-[#fffbea]">Projects</a>
-        <Link href="/"><a className="text-lg text-[#fffbea] font-bold transform -translate-x-135" style={{ fontFamily: 'Didot, serif' }}>NICARA</a></Link>
+        <Link href="/" className="text-lg text-black font-bold transform -translate-x-135" style={{ fontFamily: 'Didot, serif' }}>NICARA</Link>
         <a href="/about" className="text-sm hover:underline text-[#fffbea]">About</a>
         <a href="/contact" className="text-sm hover:underline text-[#fffbea]">Contact</a>
       </nav>
