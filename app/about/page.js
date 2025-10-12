@@ -8,7 +8,7 @@ export default function About() {
         <Link href="/"><a className="text-sm hover:underline mr-280 text-black">Projects</a></Link>
         <Link href="/"><a className="text-lg text-black font-bold transform -translate-x-135 " style={{ fontFamily: 'Didot, serif' }}>NICARA</a></Link>
         <a href="/about" className="text-sm hover:underline text-black">About</a>
-        <a href="#" className="text-sm hover:underline text-black">Contact</a>
+        <a href="/contact" className="text-sm hover:underline text-black">Contact</a>
       </nav>
       <section className="min-h-screen bg-white pt-24 px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32">
         <div className="mx-auto w-full max-w-[2200px] grid grid-cols-1 md:grid-cols-[1.5fr_1fr] gap-10 h-[160vh]">
@@ -48,7 +48,7 @@ export default function About() {
             <div className="flex flex-wrap gap-12 -ml-25">
               <a href="#" className="text-sm hover:underline">Projects</a>
               <a href="/about" className="text-sm hover:underline">About</a>
-              <a href="#" className="text-sm hover:underline">Contact</a>
+              <a href="/contact" className="text-sm hover:underline">Contact</a>
               <a href="#" className="text-sm hover:underline">Press</a>
               <a href="#" className="text-sm hover:underline">Work for AC. D</a>
             </div>

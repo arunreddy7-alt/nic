@@ -27,7 +27,7 @@ export default function Home() {
     <div className="font-sans relative min-h-screen p-8 pb-28 gap-16 sm:p-0">
       <nav className={`absolute top-0 left-0 right-0 bg-white flex gap-5 items-center flex-col sm:flex-row w-full justify-center py-4 z-10 transition-transform duration-3000 ${showNav ? 'translate-y-0' : '-translate-y-full'}`}>
         <a href="#" className="text-sm hover:underline mr-280 text-black">Projects</a>
-        <Link href="/"><a className="text-lg text-black font-bold transform -translate-x-135" style={{ fontFamily: 'Didot, serif' }}>NICARA</a></Link>
+        <Link href="/" className="text-lg text-black font-bold transform -translate-x-135" style={{ fontFamily: 'Didot, serif' }}>NICARA</Link>
         <a href="/about" className="text-sm hover:underline text-black">About</a>
         <a href="/contact" className="text-sm hover:underline text-black">Contact</a>
       </nav>
