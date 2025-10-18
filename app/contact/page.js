@@ -7,6 +7,15 @@ import { Menu, X } from 'lucide-react';
 export default function ContactSection() {
   const [showNav, setShowNav] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    contact: '',
+    altContact: '',
+    email: '',
+    date: '',
+    message: ''
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,17 +29,38 @@ export default function ContactSection() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Booking form submitted:', formData);
+    // Here you can add logic to send the data to a server
+    setIsModalOpen(false);
+    setFormData({
+      name: '',
+      contact: '',
+      altContact: '',
+      email: '',
+      date: '',
+      message: ''
+    });
+  };
+
   return (
     <div className="relative h-screen bg-[#845547] overflow-x-hidden">
-      {/* ✅ NAVBAR */}
-      <nav
+      <div className={isModalOpen ? 'blur-sm pointer-events-none' : ''}>
+        {/* ✅ NAVBAR */}
+        <nav
         className={`fixed top-0 left-0 right-0 bg-[#845547] flex justify-between items-center w-full px-6 py-4 z-20 transition-transform duration-700 sm:grid sm:grid-cols-3 sm:items-center ${
           showNav ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
         {/* Projects (Desktop Left) */}
         <div className="hidden sm:flex sm:justify-start">
-          <a href="#" className="text-sm hover:underline text-[#fffbea]">Projects</a>
+          <a href="/project" className="text-sm hover:underline text-[#fffbea]">Projects</a>
         </div>
 
         {/* NICARA (Centered on Desktop, Left on Mobile) */}
@@ -174,12 +204,12 @@ export default function ContactSection() {
             <span className="font-">NICARA</span> is now offering
             1-on-1<br/> consultations via <em>the expert</em>.
           </p>
-          <a
-            href="#"
-            className="underline font- hover:text-[#f5e6c4]"
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="underline font- hover:text-[#f5e6c4] bg-transparent border-none cursor-pointer"
           >
             Book Now
-          </a>
+          </button>
 
           <hr className="border-[#fffbea]/30 my-4" />
 
@@ -227,18 +257,18 @@ export default function ContactSection() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
         {/* Links section */}
         <div className="flex gap-2 sm:gap-4 justify-center md:justify-start text-center md:text-left">
-          <a href="#" className="text-sm hover:underline">Projects</a>
+          <a href="/project" className="text-sm hover:underline">Projects</a>
           <a href="/about" className="text-sm hover:underline">About</a>
           <a href="#" className="text-sm hover:underline">Contact</a>
           <a href="#" className="text-sm hover:underline">Press</a>
           <a href="#" className="text-sm hover:underline">Work for AC.D</a>
         </div>
-  
+
         {/* Description section */}
         <div className="text-sm text-center md:text-left md:-mr-39 md:ml-80 px-4 md:px-0">
           Established in 2020, Nicara Design is a full-service design firm based in Hyderabad, India.
         </div>
-  
+
         {/* Social section */}
         <div className="text-sm text-center md:text-left md:-mr-19 md:ml-52 space-y-1 px-4 md:px-0">
           <div>
@@ -252,7 +282,7 @@ export default function ContactSection() {
           </div>
         </div>
       </div>
-  
+
       {/* Bottom section */}
       <div className="flex flex-col md:flex-row justify-between items-center text-sm gap-4 text-center md:text-left">
         <div>
@@ -265,6 +295,98 @@ export default function ContactSection() {
       </div>
     </div>
   </footer>
+      </div>
+      {/* Modal for Booking Form */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-opacity-10 backdrop-blur-sm flex items-center justify-center z-50 pointer-events-auto">
+          <div className="bg-white p-6 rounded-lg max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <h2 className="text-xl font-bold mb-4 text-black">Book Now</h2>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-1 focus:ring-[#845547] text-black"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Contact Number</label>
+                <input
+                  type="tel"
+                  name="contact"
+                  value={formData.contact}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-1 focus:ring-[#845547] text-black"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Alternate Number</label>
+                <input
+                  type="tel"
+                  name="altContact"
+                  value={formData.altContact}
+                  onChange={handleInputChange}
+                  className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-1 focus:ring-[#845547] text-black"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Email ID</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-1 focus:ring-[#845547] text-black"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Booking Date</label>
+                <input
+                  type="date"
+                  name="date"
+                  value={formData.date}
+                  onChange={handleInputChange}
+                  required
+                  min={new Date().toISOString().split('T')[0]}
+                  className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-1 focus:ring-[#845547] text-black"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Message</label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  rows="4"
+                  className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-1 focus:ring-[#845547] text-black"
+                ></textarea>
+              </div>
+              <div className="flex gap-4">
+                <button
+                  type="submit"
+                  className="flex-1 bg-[#845547] text-white py-2 rounded hover:bg-[#6a3f3a] transition"
+                >
+                  Submit
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsModalOpen(false)}
+                  className="flex-1 bg-gray-300 text-black py-2 rounded hover:bg-gray-400 transition"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

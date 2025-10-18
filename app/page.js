@@ -32,7 +32,7 @@ export default function Home() {
       >
         {/* Projects (Desktop Left) */}
         <div className="hidden sm:flex sm:justify-start">
-          <a href="#" className="text-sm hover:underline text-black">Projects</a>
+          <a href="/project" className="text-sm hover:underline text-black">Projects</a>
         </div>
 
         {/* NICARA (Centered on Desktop, Left on Mobile) */}
@@ -65,7 +65,7 @@ export default function Home() {
         {menuOpen && (
           <div className="absolute top-full left-0 w-full bg-white flex flex-col items-center py-4 border-t border-gray-200 sm:hidden animate-slide-down">
             <a
-              href="#"
+              href="/project"
               className="py-2 text-sm text-black hover:underline"
               onClick={() => setMenuOpen(false)}
             >
@@ -118,7 +118,7 @@ export default function Home() {
       </p>
 
       <a
-        href="#projects"
+        href="/project"
         className="inline-block mt-8 sm:mt-10 md:mt-21 text-sm sm:text-base underline underline-offset-4 hover:opacity-70 ml-2 md:-ml-1"
       >
         View Projects
@@ -197,9 +197,9 @@ export default function Home() {
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
       {/* Links section */}
       <div className="flex flex-wrap gap-3 sm:gap-6 justify-center md:justify-start text-center md:text-left">
-        <a href="#" className="text-sm hover:underline">Projects</a>
+        <a href="/project" className="text-sm hover:underline">Projects</a>
         <a href="/about" className="text-sm hover:underline">About</a>
-        <a href="#" className="text-sm hover:underline">Contact</a>
+        <a href="/contact" className="text-sm hover:underline">Contact</a>
         <a href="#" className="text-sm hover:underline">Press</a>
         <a href="#" className="text-sm hover:underline">Work for AC. D</a>
       </div>

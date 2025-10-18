@@ -32,7 +32,7 @@ export default function About() {
       >
         {/* Projects (Desktop Left) */}
         <div className="hidden sm:flex sm:justify-start">
-          <a href="#" className="text-sm hover:underline text-black">Projects</a>
+          <a href="/project" className="text-sm hover:underline text-black">Projects</a>
         </div>
 
         {/* NICARA (Centered on Desktop, Left on Mobile) */}
@@ -131,7 +131,7 @@ export default function About() {
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
       {/* Links section */}
       <div className="flex flex-wrap gap-3 sm:gap-6 justify-center md:justify-start text-center md:text-left">
-        <a href="#" className="text-sm hover:underline">Projects</a>
+        <a href="/project" className="text-sm hover:underline">Projects</a>
         <a href="/about" className="text-sm hover:underline">About</a>
         <a href="#" className="text-sm hover:underline">Contact</a>
         <a href="#" className="text-sm hover:underline">Press</a>
