@@ -96,7 +96,7 @@ export default function EventsExperiences() {
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/100 to-transparent"></div>
         {/* Centered text */}
-        <div className="absolute inset-0 flex items-start sm:items-center justify-center z-10 pt-20 sm:pt-0">
+        <div className="absolute inset-0 flex items-end sm:items-center justify-center z-10">
           <h1 className="text-4xl lg:text-6xl font-bold text-white font-poppins opacity-60 text-center">Something exciting coming up, Stay Tuned!</h1>
         </div>
       </div>
