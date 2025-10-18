@@ -87,7 +87,7 @@ export default function EventsExperiences() {
         )}
       </nav>
 
-      <div className="min-h-screen relative">
+      <div className="h-screen relative">
         <img
           src="/event.jpg"
           alt="Hero Image"
