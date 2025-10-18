@@ -49,7 +49,7 @@ export default function EventsExperiences() {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle Menu"
           >
-            {menuOpen ? <X className="w-6 h-6 text-black" /> : <Menu className="w-6 h-6 text-black" />}
+            {menuOpen ? <X className="w-6 h-6 text-white" /> : <Menu className="w-6 h-6 text-white" />}
           </button>
         </div>
 
@@ -61,24 +61,24 @@ export default function EventsExperiences() {
 
         {/* Mobile Dropdown Menu */}
         {menuOpen && (
-          <div className="absolute top-full left-0 w-full bg-white flex flex-col items-center py-4 border-t border-gray-200 sm:hidden animate-slide-down" style={{ background: 'linear-gradient(to right, white, black)' }}>
+          <div className="absolute top-full left-0 w-full bg-grey flex flex-col items-center py-4 border-t border-gray-1000 sm:hidden animate-slide-down">
             <a
               href="#"
-              className="py-2 text-sm text-black hover:underline"
+              className="py-2 text-sm text-white hover:underline"
               onClick={() => setMenuOpen(false)}
             >
               Projects
             </a>
             <a
               href="/about"
-              className="py-2 text-sm text-black hover:underline"
+              className="py-2 text-sm text-white hover:underline"
               onClick={() => setMenuOpen(false)}
             >
               About
             </a>
             <a
               href="/contact"
-              className="py-2 text-sm text-black hover:underline"
+              className="py-2 text-sm text-white hover:underline"
               onClick={() => setMenuOpen(false)}
             >
               Contact
@@ -97,7 +97,7 @@ export default function EventsExperiences() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/100 to-transparent"></div>
         {/* Centered text */}
         <div className="absolute inset-0 flex items-center justify-center z-10">
-          <h1 className="text-6xl font-bold text-white font-poppins opacity-60">Something exciting coming up, Stay Tuned!</h1>
+          <h1 className="text-4xl lg:text-6xl font-bold text-white font-poppins opacity-60 text-center">Something exciting coming up, Stay Tuned!</h1>
         </div>
       </div>
     </div>

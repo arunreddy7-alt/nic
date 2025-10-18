@@ -89,28 +89,90 @@ export default function Interiors() {
         )}
       </nav>
 
-      <div className="pt-24 min-h-screen flex flex-col items-center justify-center">
-        <div className="flex space-x-4 mb-10">
+      <div className="pt-24 min-h-screen flex flex-col items-center justify-center px-4">
+        <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mb-1">
           <div className="flex flex-col items-center">
-            <Image src="/int1.png" alt="Image 1" width={700} height={400} />
-            <p className="mt-4 text-black -ml-135" style={{ fontFamily: 'Marist' }}>Stunning Home Interiors</p>
+            <Image src="/int1.png" alt="Image 1" width={700} height={400} className="w-full h-auto" />
+            <p className="mt-4 text-black text-center sm:-ml-135" style={{ fontFamily: 'Marist' }}>Stunning Home Interiors</p>
           </div>
           <div className="flex flex-col items-center">
-            <Image src="/int2.png" alt="Image 2" width={700} height={400} />
-            <p className="mt-4 text-black -ml-135" style={{ fontFamily: 'Marist' }}>Elegant Living Spaces</p>
+            <Image src="/int2.png" alt="Image 2" width={700} height={400} className="w-full h-auto" />
+            <p className="mt-4 text-black text-center sm:-ml-135" style={{ fontFamily: 'Marist' }}>Elegant Living Spaces</p>
           </div>
         </div>
-        <div className="flex space-x-4 ">
+        <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mt-10">
           <div className="flex flex-col items-center">
-            <Image src="/int1.png" alt="Image 1" width={700} height={400} />
-            <p className="mt-4 text-black -ml-135" style={{ fontFamily: 'Marist' }}>Stunning Home Interiors</p>
+            <Image src="/int1.png" alt="Image 1" width={700} height={400} className="w-full h-auto" />
+            <p className="mt-4 text-black text-center sm:-ml-135" style={{ fontFamily: 'Marist' }}>Stunning Home Interiors</p>
           </div>
           <div className="flex flex-col items-center">
-            <Image src="/int2.png" alt="Image 2" width={700} height={400} />
-            <p className="mt-4 text-black -ml-135" style={{ fontFamily: 'Marist' }}>Elegant Living Spaces</p>
+            <Image src="/int2.png" alt="Image 2" width={700} height={400} className="w-full h-auto" />
+            <p className="mt-4 text-black text-center sm:-ml-135" style={{ fontFamily: 'Marist' }}>Elegant Living Spaces</p>
+          </div>
+        </div>
+        <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mt-10">
+          <div className="flex flex-col items-center">
+            <Image src="/int1.png" alt="Image 1" width={700} height={400} className="w-full h-auto" />
+            <p className="mt-4 text-black text-center sm:-ml-135" style={{ fontFamily: 'Marist' }}>Stunning Home Interiors</p>
+          </div>
+          <div className="flex flex-col items-center">
+            <Image src="/int2.png" alt="Image 2" width={700} height={400} className="w-full h-auto" />
+            <p className="mt-4 text-black text-center sm:-ml-135" style={{ fontFamily: 'Marist' }}>Elegant Living Spaces</p>
+          </div>
+        </div>
+        <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mt-10">
+          <div className="flex flex-col items-center sm:-ml-177">
+            <Image src="/int1.png" alt="Image 1" width={700} height={400}  />
+            <p className="mt-4 text-black text-center sm:-ml-135" style={{ fontFamily: 'Marist' }}>Stunning Home Interiors</p>
           </div>
         </div>
       </div>
+      <footer
+  className="mt-15 md:mt-30 text-amber-50 py-16 sm:py-24 px-4 sm:px-10 md:px-16 lg:px-24 xl:px-32"
+  style={{ backgroundColor: '#755306' }}
+>
+  <div className="mx-auto w-full max-w-[2200px] space-y-10">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      {/* Links section */}
+      <div className="flex flex-wrap gap-3 sm:gap-6 justify-center md:justify-start text-center md:text-left">
+        <a href="/project" className="text-sm hover:underline">Projects</a>
+        <a href="/about" className="text-sm hover:underline">About</a>
+        <a href="#" className="text-sm hover:underline">Contact</a>
+        <a href="#" className="text-sm hover:underline">Press</a>
+        <a href="#" className="text-sm hover:underline">Work for AC. D</a>
+      </div>
+
+      {/* Description section */}
+      <div className="text-sm text-center md:text-left md:-mr-39 md:ml-80 px-4 md:px-0">
+        Established in 2020, Nicara Design is a full-service design firm based in Hyderabad, India.
+      </div>
+
+      {/* Social section */}
+      <div className="text-sm text-center md:text-left md:-mr-19 md:ml-52 space-y-1 px-4 md:px-0">
+        <div>
+          IG: <a href="https://www.instagram.com/nicaradesign?igsh=MTRyZHkzeDNtMGRoeg==" className="underline hover:no-underline">@nicaradesign</a>
+        </div>
+        <div>
+          <a href="#" className="underline hover:no-underline">AC.D on The Expert</a> and
+        </div>
+        <div>
+          <a href="#" className="underline hover:no-underline">AD&apos;s Pro Directory</a>
+        </div>
+      </div>
+    </div>
+
+    {/* Bottom section */}
+    <div className="flex flex-col md:flex-row justify-between items-center text-sm gap-4 text-center md:text-left">
+      <div>
+        Questions? Reach out:<br />
+        <a href="mailto:hello@dwelltales.com" className="underline hover:no-underline">
+        hello@dwelltales.com
+        </a>
+      </div>
+      <div>Nicara Design © 2025</div>
+    </div>
+  </div>
+</footer>
     </div>
   );
 }
