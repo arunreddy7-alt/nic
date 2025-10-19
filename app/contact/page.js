@@ -2,18 +2,22 @@
 
 import React, { useState, useEffect } from "react";
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
 export default function ContactSection() {
   const [showNav, setShowNav] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
+  const [footerDropdownOpen, setFooterDropdownOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     contact: '',
     altContact: '',
     email: '',
     date: '',
+    time: '',
     message: ''
   });
 
@@ -45,6 +49,7 @@ export default function ContactSection() {
       altContact: '',
       email: '',
       date: '',
+      time: '',
       message: ''
     });
   };
@@ -59,8 +64,31 @@ export default function ContactSection() {
         }`}
       >
         {/* Projects (Desktop Left) */}
-        <div className="hidden sm:flex sm:justify-start">
-          <a href="/project" className="text-sm hover:underline text-[#fffbea]">Projects</a>
+        <div className="hidden sm:flex sm:justify-start relative">
+          <div
+            className="text-sm hover:underline text-[#fffbea] cursor-pointer flex items-center justify-between w-full"
+            onMouseEnter={() => setDropdownOpen(true)}
+            onMouseLeave={() => setDropdownOpen(false)}
+          >
+            Projects
+          </div>
+          {dropdownOpen && (
+            <div
+              className="absolute top-full left-0 bg-[#845547] shadow-lg py-2 w-48 z-30"
+              onMouseEnter={() => setDropdownOpen(true)}
+              onMouseLeave={() => setDropdownOpen(false)}
+            >
+              <Link href="/project/interiors" className="block px-4 py-2 text-sm text-[#fffbea] hover:bg-[#fffbea] hover:text-[#845547]">
+                Interiors
+              </Link>
+              <Link href="/project/buy-stay" className="block px-4 py-2 text-sm text-[#fffbea] hover:bg-[#fffbea] hover:text-[#845547]">
+                Buy & Stay
+              </Link>
+              <Link href="/project/events-experiences" className="block px-4 py-2 text-sm text-[#fffbea] hover:bg-[#fffbea] hover:text-[#845547]">
+                Events & Experiences
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* NICARA (Centered on Desktop, Left on Mobile) */}
@@ -92,13 +120,38 @@ export default function ContactSection() {
         {/* Mobile Dropdown Menu */}
         {menuOpen && (
           <div className="absolute top-full left-0 w-full bg-[#845547] flex flex-col items-center py-4 border-t border-gray-200 sm:hidden animate-slide-down">
-            <a
-              href="#"
-              className="py-2 text-sm text-[#fffbea] hover:underline"
-              onClick={() => setMenuOpen(false)}
+            <div
+              className="py-2 text-sm text-[#fffbea] hover:underline cursor-pointer flex items-center justify-center w-full"
+              onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
             >
               Projects
-            </a>
+              <ChevronDown className={`w-4 h-5 ml-2 transition-transform ${mobileDropdownOpen ? 'rotate-180' : ''}`} />
+            </div>
+            {mobileDropdownOpen && (
+              <div className="flex flex-col items-center w-full">
+                <a
+                  href="/project/interiors"
+                  className="py-2 text-sm text-[#fffbea] hover:underline pl-4"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Interiors
+                </a>
+                <a
+                  href="/project/buy-stay"
+                  className="py-2 text-sm text-[#fffbea] hover:underline pl-4"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Buy & Stay
+                </a>
+                <a
+                  href="/project/events-experiences"
+                  className="py-2 text-sm text-[#fffbea] hover:underline pl-4"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Events & Experiences
+                </a>
+              </div>
+            )}
             <a
               href="/about"
               className="py-2 text-sm text-[#fffbea] hover:underline"
@@ -117,7 +170,7 @@ export default function ContactSection() {
         )}
       </nav>
       <section className="min-h-screen bg-[#845547] text-[#fffbea] flex items-center justify-center py-34 px-6">
-        <div className="max-w-6xl w-full grid md:grid-cols-2 gap-16 md:translate-x-19 md:translate-y-27">
+        <div className="max-w-6xl w-full grid md:grid-cols-2 gap-16 md:translate-x-19 md:translate-y-11">
         {/* Left Column - Form */}
         <div>
           <h2 className="text-lg font-semibold mb-4">Contact Us</h2>
@@ -250,56 +303,96 @@ export default function ContactSection() {
       </div>
     </section>
     <footer
-    className="text-amber-50 py-16 sm:py-24 px-4 sm:px-10 md:px-16 lg:px-24 xl:px-32"
-    style={{ backgroundColor: '#755306' }}
-  >
-    <div className="mx-auto w-full max-w-[2200px] space-y-10">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-        {/* Links section */}
-        <div className="flex gap-2 sm:gap-4 justify-center md:justify-start text-center md:text-left">
-          <a href="/project" className="text-sm hover:underline">Projects</a>
-          <a href="/about" className="text-sm hover:underline">About</a>
-          <a href="#" className="text-sm hover:underline">Contact</a>
-          <a href="#" className="text-sm hover:underline">Press</a>
-          <a href="#" className="text-sm hover:underline">Work for AC.D</a>
+  className="text-amber-50 py-16 sm:py-24 px-4 sm:px-10 md:px-16 lg:px-24 xl:px-32"
+  style={{ backgroundColor: '#755306' }}
+>
+  <div className="mx-auto w-full max-w-[2200px] space-y-10">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      {/* Links section */}
+      <div className="flex flex-wrap gap-3 sm:gap-6 justify-center md:justify-start text-center md:text-left relative md:-ml-4">
+        <div className="relative">
+          <button
+            className="md:hidden text-sm hover:underline flex items-center"
+            onClick={() => setFooterDropdownOpen(!footerDropdownOpen)}
+          >
+            Projects
+            <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${footerDropdownOpen ? 'rotate-180' : ''}`} />
+          </button>
+          <a
+            href="#"
+            className="hidden md:block text-sm hover:underline"
+            onMouseEnter={() => setFooterDropdownOpen(true)}
+            onMouseLeave={() => setFooterDropdownOpen(false)}
+          >
+            Projects
+          </a>
+          {footerDropdownOpen && (
+            <div
+              className="absolute bottom-full left-0 bg-[#755306] shadow-lg py-2 w-48 z-30"
+              onMouseEnter={() => setFooterDropdownOpen(true)}
+              onMouseLeave={() => setFooterDropdownOpen(false)}
+            >
+              <a href="/project/interiors" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306]">
+                Interiors
+              </a>
+              <a href="/project/buy-stay" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306]">
+                Buy & Stay
+              </a>
+              <a href="/project/events-experiences" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306]">
+                Events & Experiences
+              </a>
+            </div>
+          )}
         </div>
-
-        {/* Description section */}
-        <div className="text-sm text-center md:text-left md:-mr-39 md:ml-80 px-4 md:px-0">
-          Established in 2020, Nicara Design is a full-service design firm based in Hyderabad, India.
-        </div>
-
-        {/* Social section */}
-        <div className="text-sm text-center md:text-left md:-mr-19 md:ml-52 space-y-1 px-4 md:px-0">
-          <div>
-            IG: <a href="https://www.instagram.com/nicaradesign?igsh=MTRyZHkzeDNtMGRoeg==" className="underline hover:no-underline">@nicaradesign</a>
-          </div>
-          <div>
-            <a href="#" className="underline hover:no-underline">AC.D on The Expert</a> and
-          </div>
-          <div>
-            <a href="#" className="underline hover:no-underline">AD&apos;s Pro Directory</a>
-          </div>
-        </div>
+        <a href="/about" className="text-sm hover:underline">About</a>
+        <a href="/contact" className="text-sm hover:underline">Contact</a>
+        <a href="#" className="text-sm hover:underline">Press</a>
+        <a href="#" className="text-sm hover:underline whitespace-nowrap">Work for AC. D</a>
       </div>
 
-      {/* Bottom section */}
-      <div className="flex flex-col md:flex-row justify-between items-center text-sm gap-4 text-center md:text-left">
+      {/* Description section */}
+      <div className="text-sm text-center md:text-left md:-mr-39 md:ml-80 px-4 md:px-0">
+        Established in 2020, Nicara Design is a full-service design firm based in Hyderabad, India.
+      </div>
+
+      {/* Social section */}
+      <div className="text-sm text-center md:text-left md:-mr-19 md:ml-52 space-y-1 px-4 md:px-0">
         <div>
-          Questions? Reach out:<br />
-          <a href="mailto:hello@dwelltales.com" className="underline hover:no-underline">
-          hello@dwelltales.com
-          </a>
+          IG: <a href="https://www.instagram.com/nicaradesign?igsh=MTRyZHkzeDNtMGRoeg==" className="underline hover:no-underline">@nicaradesign</a>
         </div>
-        <div>Nicara Design © 2025</div>
+        <div>
+          <a href="#" className="underline hover:no-underline">AC.D on The Expert</a> and
+        </div>
+        <div>
+          <a href="#" className="underline hover:no-underline">AD&apos;s Pro Directory</a>
+        </div>
       </div>
     </div>
-  </footer>
+
+    {/* Bottom section */}
+    <div className="flex flex-col md:flex-row justify-between items-center text-sm gap-4 text-center md:text-left">
+      <div>
+        Questions? Reach out:<br />
+        <a href="mailto:hello@dwelltales.com" className="underline hover:no-underline">
+        hello@dwelltales.com
+        </a>
+      </div>
+      <div>Nicara Design © 2025</div>
+    </div>
+  </div>
+</footer>
       </div>
       {/* Modal for Booking Form */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-opacity-10 backdrop-blur-sm flex items-center justify-center z-50 pointer-events-auto">
-          <div className="bg-white p-6 rounded-lg max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-opacity-0 backdrop-blur-sm flex items-center justify-center z-50 pointer-events-auto">
+          <div className="bg-white p-6 rounded-lg max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto relative">
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-6 right-5 text-gray-500 hover:text-gray-700"
+              aria-label="Close modal"
+            >
+              <X size={24} />
+            </button>
             <h2 className="text-xl font-bold mb-4 text-black">Book Now</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
@@ -356,6 +449,28 @@ export default function ContactSection() {
                   min={new Date().toISOString().split('T')[0]}
                   className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-1 focus:ring-[#845547] text-black"
                 />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Preferred Time</label>
+                <select
+                  name="time"
+                  value={formData.time}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-1 focus:ring-[#845547] text-black"
+                >
+                  <option value="">Select a time</option>
+                  <option value="10:00 AM">10:00 AM</option>
+                  <option value="11:00 AM">11:00 AM</option>
+                  <option value="12:00 PM">12:00 PM</option>
+                  <option value="1:00 PM">1:00 PM</option>
+                  <option value="2:00 PM">2:00 PM</option>
+                  <option value="3:00 PM">3:00 PM</option>
+                  <option value="4:00 PM">4:00 PM</option>
+                  <option value="5:00 PM">5:00 PM</option>
+                  <option value="6:00 PM">6:00 PM</option>
+                  <option value="7:00 PM">7:00 PM</option>
+                </select>
               </div>
 
               <div>

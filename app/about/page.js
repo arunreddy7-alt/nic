@@ -3,11 +3,14 @@
 import { useState, useEffect } from 'react';
 import Image from "next/image";
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
 export default function About() {
   const [showNav, setShowNav] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
+  const [footerDropdownOpen, setFooterDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,8 +34,31 @@ export default function About() {
         }`} 
       >
         {/* Projects (Desktop Left) */}
-        <div className="hidden sm:flex sm:justify-start">
-          <a href="/project" className="text-sm hover:underline text-black">Projects</a>
+        <div className="hidden sm:flex sm:justify-start relative">
+          <div
+            className="text-sm hover:underline text-black cursor-pointer flex items-center justify-between w-full"
+            onMouseEnter={() => setDropdownOpen(true)}
+            onMouseLeave={() => setDropdownOpen(false)}
+          >
+            Projects
+          </div>
+          {dropdownOpen && (
+            <div
+              className="absolute top-full left-0 bg-white shadow-lg py-2 w-48 z-30"
+              onMouseEnter={() => setDropdownOpen(true)}
+              onMouseLeave={() => setDropdownOpen(false)}
+            >
+              <Link href="/project/interiors" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">
+                Interiors
+              </Link>
+              <Link href="/project/buy-stay" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">
+                Buy & Stay
+              </Link>
+              <Link href="/project/events-experiences" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">
+                Events & Experiences
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* NICARA (Centered on Desktop, Left on Mobile) */}
@@ -64,13 +90,38 @@ export default function About() {
         {/* Mobile Dropdown Menu */}
         {menuOpen && (
           <div className="absolute top-full left-0 w-full bg-white flex flex-col items-center py-4 border-t border-gray-200 sm:hidden animate-slide-down">
-            <a
-              href="#"
-              className="py-2 text-sm text-black hover:underline"
-              onClick={() => setMenuOpen(false)}
+            <div
+              className="py-2 text-sm text-black hover:underline cursor-pointer flex items-center justify-center w-full"
+              onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
             >
               Projects
-            </a>
+              <ChevronDown className={`w-4 h-5 ml-2 transition-transform ${mobileDropdownOpen ? 'rotate-180' : ''}`} />
+            </div>
+            {mobileDropdownOpen && (
+              <div className="flex flex-col items-center w-full">
+                <a
+                  href="/project/interiors"
+                  className="py-2 text-sm text-black hover:underline pl-4"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Interiors
+                </a>
+                <a
+                  href="/project/buy-stay"
+                  className="py-2 text-sm text-black hover:underline pl-4"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Buy & Stay
+                </a>
+                <a
+                  href="/project/events-experiences"
+                  className="py-2 text-sm text-black hover:underline pl-4"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Events & Experiences
+                </a>
+              </div>
+            )}
             <a
               href="/about"
               className="py-2 text-sm text-black hover:underline"
@@ -101,7 +152,7 @@ export default function About() {
             <p className="text-xs md:text-sm mb-4">
             Our team believes that design is more than aesthetics. It&apos;s about creating warmth, joy, and theatrical moments in everyday life. Each project is approached as a bespoke journey, where interiors, curated furniture, styling, and immersive events come together to reflect the unique personality and aspirations of our clients.            </p>
             <p className="text-xs md:text-sm">
-            As NICARA grew, we expanded into handpicked properties for purchase and stay, helping clients discover spaces &mdash; from residences to holiday homes &mdash; that resonate with their lifestyle and taste. Today, NICARA is a celebration of living elegantly, effortlessly, and intentionally, turning spaces into stories, moments into memories, and dreams in            </p>
+            As NICARA grew, we expanded into handpicked properties for purchase and stay, helping clients discover spaces &mdash; from residences to holiday homes &mdash; that resonate with their lifestyle and taste. Today, NICARA is a celebration of living elegantly, effortlessly, and intentionally, turning spaces into stories, moments into memories, and dreams into reality.       </p>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-[60%_40%] gap-10">
@@ -109,7 +160,7 @@ export default function About() {
             <Image src="/about2.png" alt="Additional about image" fill className="object-cover" />
           </div>
           <div className="text-black leading-7 mt-10 md:mt-0 md:translate-y-67 md:-translate-x-13">
-            <h2 className="text-sm md:text-xl font mb-4">To reality</h2>
+            <h2 className="text-sm md:text-xl font mb-4">Founders</h2>
             <p className="text-xs md:text-sm mb-4">
             Nishanth is the co-founder of NICARA, holding a Master&rsquo;s in Design from London and an MBA from Bangalore. He is inspired by the idea of turning spaces into experiences, creating interiors that are luxurious, warm, playful, and deeply personal.</p>
              <p className="text-xs md:text-sm mb-4">
@@ -130,12 +181,45 @@ export default function About() {
   <div className="mx-auto w-full max-w-[2200px] space-y-10">
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
       {/* Links section */}
-      <div className="flex flex-wrap gap-3 sm:gap-6 justify-center md:justify-start text-center md:text-left">
-        <a href="/project" className="text-sm hover:underline">Projects</a>
+      <div className="flex flex-wrap gap-3 sm:gap-6 justify-center md:justify-start text-center md:text-left relative">
+        <div className="relative">
+          <button
+            className="md:hidden text-sm hover:underline flex items-center"
+            onClick={() => setFooterDropdownOpen(!footerDropdownOpen)}
+          >
+            Projects
+            <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${footerDropdownOpen ? 'rotate-180' : ''}`} />
+          </button>
+          <a
+            href="#"
+            className="hidden md:block text-sm hover:underline"
+            onMouseEnter={() => setFooterDropdownOpen(true)}
+            onMouseLeave={() => setFooterDropdownOpen(false)}
+          >
+            Projects
+          </a>
+          {footerDropdownOpen && (
+            <div
+              className="absolute bottom-full left-0 bg-[#755306] shadow-lg py-2 w-48 z-30"
+              onMouseEnter={() => setFooterDropdownOpen(true)}
+              onMouseLeave={() => setFooterDropdownOpen(false)}
+            >
+              <a href="/project/interiors" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306]">
+                Interiors
+              </a>
+              <a href="/project/buy-stay" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306]">
+                Buy & Stay
+              </a>
+              <a href="/project/events-experiences" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306]">
+                Events & Experiences
+              </a>
+            </div>
+          )}
+        </div>
         <a href="/about" className="text-sm hover:underline">About</a>
-        <a href="#" className="text-sm hover:underline">Contact</a>
+        <a href="/contact" className="text-sm hover:underline">Contact</a>
         <a href="#" className="text-sm hover:underline">Press</a>
-        <a href="#" className="text-sm hover:underline">Work for AC. D</a>
+        <a href="#" className="text-sm hover:underline whitespace-nowrap">Work for AC. D</a>
       </div>
 
       {/* Description section */}
