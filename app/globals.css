@@ -58,3 +58,17 @@ body {
 .zoom-pulse {
   animation: zoomPulse 2s ease-in-out infinite;
 }
+
+.hero-bg {
+  background-image: url(/hero.png);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .hero-bg {
+    background-attachment: scroll;
+  }
+}

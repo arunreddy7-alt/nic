@@ -239,7 +239,7 @@ export default function Home() {
       <main
         className="flex flex-col items-center sm:items-start w-full"
         style={{
-          backgroundImage: 'url(/hero.png)',
+          backgroundImage: 'url(/int6.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
