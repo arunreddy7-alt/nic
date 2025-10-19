@@ -350,7 +350,7 @@ export default function Home() {
 
       {/* ✅ FULL IMAGE */}
       <section className="bg-white">
-        <div className="relative w-full h-[60vh] sm:h-[100vh]">
+        <div className="relative w-full h-[100vh]">
           <Image src="/hero6.png" alt="Full page showcase" fill priority className="object-cover" />
         </div>
       </section>
@@ -393,84 +393,84 @@ export default function Home() {
 
       {/* ✅ FOOTER */}
       <footer
-  className="text-amber-50 py-16 sm:py-24 px-4 sm:px-10 md:px-16 lg:px-24 xl:px-32"
-  style={{ backgroundColor: '#755306' }}
->
-  <div className="mx-auto w-full max-w-[2200px] space-y-10">
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-      {/* Links section */}
-      <div className="flex flex-wrap gap-3 sm:gap-6 justify-center md:justify-start text-center md:text-left relative">
-        <div className="relative">
-          <button
-            className="md:hidden text-sm hover:underline flex items-center"
-            onClick={() => setFooterDropdownOpen(!footerDropdownOpen)}
-          >
-            Projects
-            <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${footerDropdownOpen ? 'rotate-180' : ''}`} />
-          </button>
-          <div
-            className="hidden md:flex text-sm hover:underline cursor-pointer flex items-center"
-            onMouseEnter={() => setFooterDropdownOpen(true)}
-            onMouseLeave={() => setFooterDropdownOpen(false)}
-          >
-            Projects
-            <ChevronDown className="w-4 h-4 ml-1" />
+        className="text-amber-50 py-16 sm:py-24 px-4 sm:px-10 md:px-16 lg:px-24 xl:px-32"
+        style={{ backgroundColor: '#755306' }}
+      >
+        <div className="mx-auto w-full max-w-[2200px] space-y-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {/* Links section */}
+            <div className="flex flex-wrap gap-3 sm:gap-6 justify-center md:justify-start text-center md:text-left relative md:-ml-4">
+              <div className="relative">
+                <button
+                  className="md:hidden text-sm hover:underline flex items-center"
+                  onClick={() => setFooterDropdownOpen(!footerDropdownOpen)}
+                >
+                  Projects
+                  <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${footerDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+                <a
+                  href="#"
+                  className="hidden md:block text-sm hover:underline"
+                  onMouseEnter={() => setFooterDropdownOpen(true)}
+                  onMouseLeave={() => setFooterDropdownOpen(false)}
+                >
+                  Projects
+                </a>
+                {footerDropdownOpen && (
+                  <div
+                    className="absolute bottom-full left-0 bg-[#755306] shadow-lg py-2 w-48 z-30"
+                    onMouseEnter={() => setFooterDropdownOpen(true)}
+                    onMouseLeave={() => setFooterDropdownOpen(false)}
+                  >
+                    <a href="/project/interiors" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306]">
+                      Interiors
+                    </a>
+                    <a href="/project/buy-stay" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306]">
+                      Buy & Stay
+                    </a>
+                    <a href="/project/events-experiences" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306]">
+                      Events & Experiences
+                    </a>
+                  </div>
+                )}
+              </div>
+              <a href="/about" className="text-sm hover:underline">About</a>
+              <a href="/contact" className="text-sm hover:underline">Contact</a>
+              <a href="#" className="text-sm hover:underline">Press</a>
+              <a href="#" className="text-sm hover:underline whitespace-nowrap">Work for AC. D</a>
+            </div>
+      
+            {/* Description section */}
+            <div className="text-sm text-center md:text-left md:-mr-39 md:ml-80 px-4 md:px-0">
+              Established in 2020, Nicara Design is a full-service design firm based in Hyderabad, India.
+            </div>
+      
+            {/* Social section */}
+            <div className="text-sm text-center md:text-left md:-mr-19 md:ml-52 space-y-1 px-4 md:px-0">
+              <div>
+                IG: <a href="https://www.instagram.com/nicaradesign?igsh=MTRyZHkzeDNtMGRoeg==" className="underline hover:no-underline">@nicaradesign</a>
+              </div>
+              <div>
+                <a href="#" className="underline hover:no-underline">AC.D on The Expert</a> and
+              </div>
+              <div>
+                <a href="#" className="underline hover:no-underline">AD&apos;s Pro Directory</a>
+              </div>
+            </div>
           </div>
-          {footerDropdownOpen && (
-            <div
-              className="absolute top-full left-0 bg-[#755306] shadow-lg py-2 w-48 z-30"
-              onMouseEnter={() => setFooterDropdownOpen(true)}
-              onMouseLeave={() => setFooterDropdownOpen(false)}
-            >
-              <a href="/project/interiors" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306]">
-                Interiors
-              </a>
-              <a href="/project/buy-stay" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306]">
-                Buy & Stay
-              </a>
-              <a href="/project/events-experiences" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306]">
-                Events & Experiences
+      
+          {/* Bottom section */}
+          <div className="flex flex-col md:flex-row justify-between items-center text-sm gap-4 text-center md:text-left">
+            <div>
+              Questions? Reach out:<br />
+              <a href="mailto:hello@dwelltales.com" className="underline hover:no-underline">
+              hello@dwelltales.com
               </a>
             </div>
-          )}
+            <div>Nicara Design © 2025</div>
+          </div>
         </div>
-        <a href="/about" className="text-sm hover:underline">About</a>
-        <a href="/contact" className="text-sm hover:underline">Contact</a>
-        <a href="#" className="text-sm hover:underline">Press</a>
-        <a href="#" className="text-sm hover:underline whitespace-nowrap">Work for AC. D</a>
-      </div>
-
-      {/* Description section */}
-      <div className="text-sm text-center md:text-left md:-mr-39 md:ml-80 px-4 md:px-0">
-        Established in 2020, Nicara Design is a full-service design firm based in Hyderabad, India.
-      </div>
-
-      {/* Social section */}
-      <div className="text-sm text-center md:text-left md:-mr-19 md:ml-52 space-y-1 px-4 md:px-0">
-        <div>
-          IG: <a href="https://www.instagram.com/nicaradesign?igsh=MTRyZHkzeDNtMGRoeg==" className="underline hover:no-underline">@nicaradesign</a>
-        </div>
-        <div>
-          <a href="#" className="underline hover:no-underline">AC.D on The Expert</a> and
-        </div>
-        <div>
-          <a href="#" className="underline hover:no-underline">AD&apos;s Pro Directory</a>
-        </div>
-      </div>
-    </div>
-
-    {/* Bottom section */}
-    <div className="flex flex-col md:flex-row justify-between items-center text-sm gap-4 text-center md:text-left">
-      <div>
-        Questions? Reach out:<br />
-        <a href="mailto:hello@dwelltales.com" className="underline hover:no-underline">
-        hello@dwelltales.com
-        </a>
-      </div>
-      <div>Nicara Design © 2025</div>
-    </div>
-  </div>
-</footer>
+      </footer>
 
     </div>
   );
