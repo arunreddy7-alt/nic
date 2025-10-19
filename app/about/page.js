@@ -231,7 +231,7 @@ export default function About() {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-[60%_40%] gap-10">
-          <div className="relative h-[80vh] md:h-[140vh] overflow-visible md:overflow-hidden transform md:-translate-x-38 md:translate-y-50 -mt-110 md:mt-8">
+          <div className="relative h-[80vh] md:h-[140vh] overflow-visible md:overflow-hidden transform md:-translate-x-38 md:translate-y-50 -mt-80 md:mt-8">
             <Image src="/about2.png" alt="Additional about image" fill className="object-cover" />
           </div>
           <div className="text-black leading-7 mt-10 md:mt-0 md:translate-y-67 md:-translate-x-13">
