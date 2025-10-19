@@ -11,6 +11,7 @@ export default function Home() {
   const [footerDropdownOpen, setFooterDropdownOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
+  const [viewProjectsDropdownOpen, setViewProjectsDropdownOpen] = useState(false);
   const [contactBarOpen, setContactBarOpen] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [showPopupForm, setShowPopupForm] = useState(false);
@@ -239,7 +240,7 @@ export default function Home() {
       <main
         className="flex flex-col items-center sm:items-start w-full"
         style={{
-          backgroundImage: 'url(/int6.png)',
+          backgroundImage: 'url(/hero.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
@@ -263,12 +264,32 @@ export default function Home() {
         homes, offering clients&apos; a seamless path to refined, effortless living.
       </p>
 
-      <a
-        href="/project"
-        className="inline-block mt-8 sm:mt-10 md:mt-8 text-sm sm:text-base underline underline-offset-4 hover:opacity-70 ml-2 md:ml-0"
-      >
-        View Projects
-      </a>
+      <div className="relative inline-block">
+        <div
+          className="inline-block mt-8 sm:mt-10 md:mt-8 text-sm sm:text-base underline underline-offset-4 hover:opacity-70 ml-2 md:ml-0 cursor-pointer"
+          onMouseEnter={() => setViewProjectsDropdownOpen(true)}
+          onMouseLeave={() => setViewProjectsDropdownOpen(false)}
+        >
+          View Projects
+        </div>
+        {viewProjectsDropdownOpen && (
+          <div
+            className="absolute top-full left-0 bg-white shadow-lg py-2 w-48 z-30"
+            onMouseEnter={() => setViewProjectsDropdownOpen(true)}
+            onMouseLeave={() => setViewProjectsDropdownOpen(false)}
+          >
+            <Link href="/project/interiors" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">
+              Interiors
+            </Link>
+            <Link href="/project/buy-stay" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">
+              Buy & Stay
+            </Link>
+            <Link href="/project/events-experiences" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">
+              Events & Experiences
+            </Link>
+          </div>
+        )}
+      </div>
     </div>
 
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:translate-x-25">
@@ -387,17 +408,17 @@ export default function Home() {
             Projects
             <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${footerDropdownOpen ? 'rotate-180' : ''}`} />
           </button>
-          <a
-            href="#"
-            className="hidden md:block text-sm hover:underline"
+          <div
+            className="hidden md:flex text-sm hover:underline cursor-pointer flex items-center"
             onMouseEnter={() => setFooterDropdownOpen(true)}
             onMouseLeave={() => setFooterDropdownOpen(false)}
           >
             Projects
-          </a>
+            <ChevronDown className="w-4 h-4 ml-1" />
+          </div>
           {footerDropdownOpen && (
             <div
-              className="absolute bottom-full left-0 bg-[#755306] shadow-lg py-2 w-48 z-30"
+              className="absolute top-full left-0 bg-[#755306] shadow-lg py-2 w-48 z-30"
               onMouseEnter={() => setFooterDropdownOpen(true)}
               onMouseLeave={() => setFooterDropdownOpen(false)}
             >
