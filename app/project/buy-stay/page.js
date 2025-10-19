@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from 'next/link';
-import { Menu, X, ChevronDown, Mail, Phone, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Menu, X, ChevronDown, Mail, Phone, ChevronRight, ChevronLeft, MapPin, Building, Home } from 'lucide-react';
 
 export default function BuyStay() {
   const [showNav, setShowNav] = useState(true);
@@ -29,14 +29,14 @@ export default function BuyStay() {
     <div className="font-sans relative min-h-screen bg-[#845547] overflow-x-hidden">
       {/* ✅ NAVBAR */}
       <nav
-        className={`fixed top-0 left-0 right-0 bg-[#845547] flex justify-between items-center w-full px-6 py-4 z-20 transition-transform duration-700 sm:grid sm:grid-cols-3 sm:items-center ${
+        className={`fixed top-0 left-0 right-0 bg-white flex justify-between items-center w-full px-6 py-4 z-20 transition-transform duration-700 sm:grid sm:grid-cols-3 sm:items-center ${
           showNav ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
         {/* Projects (Desktop Left) */}
         <div className="hidden sm:flex sm:justify-start relative">
           <div
-            className="text-sm hover:underline text-[#fffbea] cursor-pointer flex items-center justify-between w-full"
+            className="text-sm hover:underline text-black cursor-pointer flex items-center justify-between w-full"
             onMouseEnter={() => setDropdownOpen(true)}
             onMouseLeave={() => setDropdownOpen(false)}
           >
@@ -44,17 +44,17 @@ export default function BuyStay() {
           </div>
           {dropdownOpen && (
             <div
-              className="absolute top-full left-0 bg-[#845547] shadow-lg py-2 w-48 z-30"
+              className="absolute top-full left-0 bg-white shadow-lg py-2 w-48 z-30"
               onMouseEnter={() => setDropdownOpen(true)}
               onMouseLeave={() => setDropdownOpen(false)}
             >
-              <Link href="/project/interiors" className="block px-4 py-2 text-sm text-[#fffbea] hover:bg-[#fffbea] hover:text-[#845547]">
+              <Link href="/project/interiors" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">
                 Interiors
               </Link>
-              <Link href="/project/buy-stay" className="block px-4 py-2 text-sm text-[#fffbea] hover:bg-[#fffbea] hover:text-[#845547]">
+              <Link href="/project/buy-stay" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">
                 Buy & Stay
               </Link>
-              <Link href="/project/events-experiences" className="block px-4 py-2 text-sm text-[#fffbea] hover:bg-[#fffbea] hover:text-[#845547]">
+              <Link href="/project/events-experiences" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">
                 Events & Experiences
               </Link>
             </div>
@@ -77,21 +77,21 @@ export default function BuyStay() {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle Menu"
           >
-            {menuOpen ? <X className="w-6 h-6 text-[#fffbea]" /> : <Menu className="w-6 h-6 text-[#fffbea]" />}
+            {menuOpen ? <X className="w-6 h-6 text-black" /> : <Menu className="w-6 h-6 text-black" />}
           </button>
         </div>
 
         {/* About and Contact (Desktop Right) */}
         <div className="hidden sm:flex sm:justify-end gap-5">
-          <a href="/about" className="text-sm hover:underline text-[#fffbea]">About</a>
-          <a href="/contact" className="text-sm hover:underline text-[#fffbea]">Contact</a>
+          <a href="/about" className="text-sm hover:underline text-black">About</a>
+          <a href="/contact" className="text-sm hover:underline text-black">Contact</a>
         </div>
 
         {/* Mobile Dropdown Menu */}
         {menuOpen && (
-          <div className="absolute top-full left-0 w-full bg-[#845547] flex flex-col items-center py-4 border-t border-gray-200 sm:hidden animate-slide-down">
+          <div className="absolute top-full left-0 w-full bg-white flex flex-col items-center py-4 border-t border-gray-200 sm:hidden animate-slide-down">
             <div
-              className="py-2 text-sm text-[#fffbea] hover:underline cursor-pointer flex items-center justify-center w-full"
+              className="py-2 text-sm text-black hover:underline cursor-pointer flex items-center justify-center w-full"
               onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
             >
               Projects
@@ -101,21 +101,21 @@ export default function BuyStay() {
               <div className="flex flex-col items-center w-full">
                 <a
                   href="/project/interiors"
-                  className="py-2 text-sm text-[#fffbea] hover:underline pl-4"
+                  className="py-2 text-sm text-black hover:underline pl-4"
                   onClick={() => setMenuOpen(false)}
                 >
                   Interiors
                 </a>
                 <a
                   href="/project/buy-stay"
-                  className="py-2 text-sm text-[#fffbea] hover:underline pl-4"
+                  className="py-2 text-sm text-black hover:underline pl-4"
                   onClick={() => setMenuOpen(false)}
                 >
                   Buy & Stay
                 </a>
                 <a
                   href="/project/events-experiences"
-                  className="py-2 text-sm text-[#fffbea] hover:underline pl-4"
+                  className="py-2 text-sm text-black hover:underline pl-4"
                   onClick={() => setMenuOpen(false)}
                 >
                   Events & Experiences
@@ -124,14 +124,14 @@ export default function BuyStay() {
             )}
             <a
               href="/about"
-              className="py-2 text-sm text-[#fffbea] hover:underline"
+              className="py-2 text-sm text-black hover:underline"
               onClick={() => setMenuOpen(false)}
             >
               About
             </a>
             <a
               href="/contact"
-              className="py-2 text-sm text-[#fffbea] hover:underline"
+              className="py-2 text-sm text-black hover:underline"
               onClick={() => setMenuOpen(false)}
             >
               Contact
@@ -213,29 +213,79 @@ export default function BuyStay() {
           </div>
         )}
 
-      <div className="relative min-h-screen bg-[#845547] text-white flex flex-col items-center justify-center px-6 pt-20">
-        <h1 className="text-4xl font-bold mb-8" style={{ fontFamily: 'Didot, serif' }}>Buy & Stay</h1>
-        <p className="text-lg text-center max-w-2xl mb-8">
-          Discover buy & stay options that combine comfort, style, and lasting value.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
-          {/* Placeholder for buy & stay projects */}
-          <div className="bg-[#fffbea] text-black p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-bold mb-2">Property 1</h3>
-            <p className="text-sm">Description of buy & stay property 1.</p>
-          </div>
-          <div className="bg-[#fffbea] text-black p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-bold mb-2">Property 2</h3>
-            <p className="text-sm">Description of buy & stay property 2.</p>
-          </div>
-          <div className="bg-[#fffbea] text-black p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-bold mb-2">Property 3</h3>
-            <p className="text-sm">Description of buy & stay property 3.</p>
-          </div>
+      <div className="relative min-h-screen bg-white text-black flex flex-col items-center px-6 pt-35 pb-16">
+        {/* Section Heading */}
+        <div className="text-center mb-12">
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 tracking-wide" style={{ fontFamily: 'Didot, serif' }}>Featured Properties</h1>
+          <p className="text-lg text-gray-600">Discover premium apartments and villas in prime locations.</p>
         </div>
-        <Link href="/project" className="mt-8 text-white underline hover:no-underline">
-          Back to Projects
-        </Link>
+
+        {/* Property Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full">
+          {/* Property Card 1 */}
+          <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+            <img
+              src="/int3.png"
+              alt="Luxury Apartment in Hyderabad"
+              className="w-full h-64 object-cover rounded-t-lg"
+            />
+            <div className="p-5">
+              <h3 className="text-xl font-bold mb-3 text-gray-800">Luxury Apartment in Hyderabad</h3>
+
+              <div className="space-y-2 mb-4">
+                <div className="flex items-center text-sm text-gray-600">
+                  <MapPin className="w-4 h-4 mr-2 text-purple-600" />
+                  <span>Hyderabad, Telangana</span>
+                </div>
+                <div className="flex items-center text-sm text-gray-600">
+                  <Building className="w-4 h-4 mr-2 text-purple-600" />
+                  <span>3 BHK Apartment</span>
+                </div>
+              </div>
+
+              <hr className="border-gray-200 mb-4" />
+
+              <div className="flex justify-center items-center">
+                <button className="bg-[#755306] text-white px-6 py-2 rounded hover:bg-[#5a3d24] transition-colors text-lg font-semibold">
+                  Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Property Card 2 */}
+          <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+            <img
+              src="/int4.png"
+              alt="Modern Villa in Bangalore"
+              className="w-full h-64 object-cover rounded-t-lg"
+            />
+            <div className="p-5">
+              <h3 className="text-xl font-bold mb-3 text-gray-800">Modern Villa in Bangalore</h3>
+
+              <div className="space-y-2 mb-4">
+                <div className="flex items-center text-sm text-gray-600">
+                  <MapPin className="w-4 h-4 mr-2 text-purple-600" />
+                  <span>Bangalore, Karnataka</span>
+                </div>
+                <div className="flex items-center text-sm text-gray-600">
+                  <Home className="w-4 h-4 mr-2 text-purple-600" />
+                  <span>4 BHK Villa</span>
+                </div>
+              </div>
+
+              <hr className="border-gray-200 mb-4" />
+
+              <div className="flex justify-center items-center">
+                <button className="bg-[#755306] text-white px-6 py-2 rounded hover:bg-[#5a3d24] transition-colors text-lg font-semibold">
+                  Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
       </div>
       <footer
   className="text-amber-50 py-16 sm:py-24 px-4 sm:px-10 md:px-16 lg:px-24 xl:px-32"
