@@ -349,7 +349,7 @@ export default function Home() {
       </section>
 
       {/* ✅ FULL IMAGE */}
-      <section className="bg-white">
+      <section className="bg-white min-h-screen">
         <div className="relative w-full h-[100vh]">
           <Image src="/hero6.png" alt="Full page showcase" fill priority className="object-cover" />
         </div>
