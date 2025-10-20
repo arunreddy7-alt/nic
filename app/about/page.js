@@ -311,7 +311,7 @@ export default function About() {
             <p className="text-xs md:text-sm mb-4 font-avenir-next-lt-pro-light font-medium">
             Nishanth is the co-founder of NICARA, holding a Master&rsquo;s in Design from London and an MBA from Bangalore. He is inspired by the idea of turning spaces into experiences, creating interiors that are luxurious, warm, playful, and deeply personal.</p>
              <p className="text-xs md:text-sm mb-4 font-avenir-next-lt-pro-light font-medium">
-             A traveler with a love for beautiful homes, boutique stays, and curated experiences, Nishanth finds inspiration in every journey and every unique space he encounters. With a background in real estate and lifestyle consulting, he combines design, property insight, and<br/> refined living to craft projects that are thoughtful, elegant, and<br/> effortlessly luxurious.</p>
+             A traveler with a love for beautiful homes, boutique stays, and curated experiences, Nishanth finds inspiration in every journey and every unique space he encounters. With a background in real estate and lifestyle consulting, he combines design, property insight, and<br/> refined living to craft projects that are thoughtful, elegant, and effortlessly luxurious.</p>
             <p className="text-xs md:text-sm mb-4 font-avenir-next-lt-pro-light font-medium">
             Sriniketh is the co-founder of NICARA, with a background in Structural Engineering from BITS Pilani. He started his professional journey with a Corporator, building a foundation in operations, systems, and on-ground project execution.</p>
             <p className="text-xs md:text-sm mb-4 font-avenir-next-lt-pro-light font-medium">
