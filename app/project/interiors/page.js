@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from "next/image";
 import Link from 'next/link';
 import { Menu, X, ChevronDown, Mail, Phone, ChevronRight, ChevronLeft } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 export default function Interiors() {
 
@@ -15,8 +16,48 @@ export default function Interiors() {
   const [isContactHovered, setIsContactHovered] = useState(false);
   const [isFormHovered, setIsFormHovered] = useState(false);
   const [mobileFormOpen, setMobileFormOpen] = useState(false);
+  const [contactFormData, setContactFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    message: ''
+  });
 
+  const handleContactInputChange = (e) => {
+    const { name, value } = e.target;
+    setContactFormData(prev => ({ ...prev, [name]: value }));
+  };
 
+  const handleContactSubmit = (e) => {
+    e.preventDefault();
+    console.log('Contact form submitted:', contactFormData);
+
+    // Send email using EmailJS (same as main contact form)
+    emailjs.send(
+      'service_b769gdc',
+      'template_0hzoxjk',
+      {
+        from_name: contactFormData.name,
+        from_email: contactFormData.email,
+        phone: contactFormData.phone,
+        hear_about_us: 'Interiors Page Floating Contact Form',
+        message: contactFormData.message,
+      },
+      'VFpd616Sj6d9RlzWA'
+    ).then((result) => {
+      console.log('Interiors page floating contact email sent successfully:', result.text);
+      alert('Message sent successfully!');
+      setContactFormData({
+        name: '',
+        phone: '',
+        email: '',
+        message: ''
+      });
+    }, (error) => {
+      console.error('Error sending interiors page floating contact email:', error.text);
+      alert('Error sending message. Please try again.');
+    });
+  };
 
   return (
     <div className="font-sans relative min-h-screen bg-white overflow-x-hidden">
@@ -196,22 +237,50 @@ export default function Interiors() {
               <X className="w-6 h-6" />
             </button>
             <h3 className="text-lg font-bold mb-4 text-black">Contact Form</h3>
-            <form>
+            <form onSubmit={handleContactSubmit}>
               <div className="mb-4 text-black">
                 <label className="block text-sm font-medium mb-2 text-black">Name</label>
-                <input type="text" className="w-full p-2 border border-black rounded-4xl" />
+                <input
+                  type="text"
+                  name="name"
+                  value={contactFormData.name}
+                  onChange={handleContactInputChange}
+                  required
+                  className="w-full p-2 border border-black rounded-4xl"
+                />
               </div>
               <div className="mb-4 text-black">
                 <label className="block text-sm font-medium mb-2 text-black">Phone</label>
-                <input type="tel" className="w-full p-2 border border-black rounded-4xl" />
+                <input
+                  type="tel"
+                  name="phone"
+                  value={contactFormData.phone}
+                  onChange={handleContactInputChange}
+                  required
+                  className="w-full p-2 border border-black rounded-4xl"
+                />
               </div>
               <div className="mb-4 text-black">
                 <label className="block text-sm font-medium mb-2 text-black">Email</label>
-                <input type="email" className="w-full p-2 border border-black rounded-4xl" />
+                <input
+                  type="email"
+                  name="email"
+                  value={contactFormData.email}
+                  onChange={handleContactInputChange}
+                  required
+                  className="w-full p-2 border border-black rounded-4xl"
+                />
               </div>
               <div className="mb-4 text-black">
                 <label className="block text-sm font-medium mb-2 text-black">Message</label>
-                <textarea className="w-full p-2 border border-black rounded-2xl" rows="2"></textarea>
+                <textarea
+                  name="message"
+                  value={contactFormData.message}
+                  onChange={handleContactInputChange}
+                  required
+                  className="w-full p-2 border border-black rounded-2xl"
+                  rows="2"
+                ></textarea>
               </div>
               <button type="submit" className="bg-[#7E6BF2] text-white px-4 py-2 rounded-4xl hover:bg-[#6a5acd] w-full">Submit</button>
             </form>

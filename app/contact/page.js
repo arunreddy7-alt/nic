@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import Link from 'next/link';
 import { Menu, X, ChevronDown, Mail, Phone, ChevronRight, ChevronLeft } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+
 
 export default function ContactSection() {
 
@@ -24,18 +26,170 @@ export default function ContactSection() {
     time: '',
     message: ''
   });
+  const [bookings, setBookings] = useState([]);
+  const [availableTimes, setAvailableTimes] = useState([
+    '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM'
+  ]);
+  const [mainContactFormData, setMainContactFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    hearAboutUs: '',
+    message: ''
+  });
+
+  const [contactFormData, setContactFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    message: ''
+  });
 
 
+
+  useEffect(() => {
+    // Load bookings from JSON file
+    const loadBookings = async () => {
+      try {
+        const response = await fetch('/bookings.json');
+        const data = await response.json();
+        setBookings(data);
+      } catch (error) {
+        console.error('Error loading bookings:', error);
+      }
+    };
+    loadBookings();
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleContactInputChange = (e) => {
+    const { name, value } = e.target;
+    setContactFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleContactSubmit = (e) => {
+    e.preventDefault();
+    console.log('Contact form submitted:', contactFormData);
+
+    // Send email using EmailJS (same as main contact form)
+    emailjs.send(
+      'service_b769gdc',
+      'template_0hzoxjk',
+      {
+        from_name: contactFormData.name,
+        from_email: contactFormData.email,
+        phone: contactFormData.phone,
+        hear_about_us: 'Floating Contact Form',
+        message: contactFormData.message,
+      },
+      'VFpd616Sj6d9RlzWA'
+    ).then((result) => {
+      console.log('Floating contact email sent successfully:', result.text);
+      alert('Message sent successfully!');
+      setContactFormData({
+        name: '',
+        phone: '',
+        email: '',
+        message: ''
+      });
+    }, (error) => {
+      console.error('Error sending floating contact email:', error.text);
+      alert('Error sending message. Please try again.');
+    });
+  };
+
+  const handleMainContactInputChange = (e) => {
+    const { name, value } = e.target;
+    setMainContactFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleMainContactSubmit = (e) => {
+    e.preventDefault();
+    console.log('Main contact form submitted:', mainContactFormData);
+
+    // Send email using EmailJS
+    emailjs.send(
+      'service_b769gdc',
+      'template_0hzoxjk',
+      {
+        from_name: mainContactFormData.firstName + ' ' + mainContactFormData.lastName,
+        from_email: mainContactFormData.email,
+        hear_about_us: mainContactFormData.hearAboutUs,
+        message: mainContactFormData.message,
+      },
+      'VFpd616Sj6d9RlzWA'
+    ).then((result) => {
+      console.log('Main contact email sent successfully:', result.text);
+      alert('Message sent successfully!');
+      setMainContactFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        hearAboutUs: '',
+        message: ''
+      });
+    }, (error) => {
+      console.error('Error sending main contact email:', error.text);
+      alert('Error sending message. Please try again.');
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Booking form submitted:', formData);
-    // Here you can add logic to send the data to a server
+
+    // Check if the selected date and time is already booked
+    const isBooked = bookings.some(booking => booking.date === formData.date && booking.time === formData.time);
+    if (isBooked) {
+      alert('This date and time is already booked. Please select another slot.');
+      return;
+    }
+
+    // Add new booking
+    const newBooking = { ...formData };
+    const updatedBookings = [...bookings, newBooking];
+
+    // Save to JSON file (in a real app, this would be done on the server)
+    try {
+      await fetch('/api/saveBooking', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newBooking),
+      });
+      setBookings(updatedBookings);
+
+    // Send email using EmailJS
+    emailjs.send(
+      'service_dnpy3z5',
+      'template_2fe0lt9',
+      {
+        from_name: newBooking.name,
+        from_email: newBooking.email,
+        contact: newBooking.contact,
+        alt_contact: newBooking.altContact,
+        date: newBooking.date,
+        time: newBooking.time,
+        message: newBooking.message,
+      },
+      'VFpd616Sj6d9RlzWA'
+    ).then((result) => {
+        console.log('Booking email sent successfully:', result.text);
+      }, (error) => {
+        console.error('Error sending booking email:', error.text);
+      });
+
+      alert('Booking submitted successfully!');
+    } catch (error) {
+      console.error('Error saving booking:', error);
+      alert('Error saving booking. Please try again.');
+    }
+
     setIsModalOpen(false);
     setFormData({
       name: '',
@@ -226,22 +380,50 @@ export default function ContactSection() {
               <X className="w-6 h-6" />
             </button>
             <h3 className="text-lg font-bold mb-4 text-black">Contact Form</h3>
-            <form>
+            <form onSubmit={handleContactSubmit}>
               <div className="mb-4 text-black">
                 <label className="block text-sm font-medium mb-2 text-black">Name</label>
-                <input type="text" className="w-full p-2 border border-black rounded-4xl" />
+                <input
+                  type="text"
+                  name="name"
+                  value={contactFormData.name}
+                  onChange={handleContactInputChange}
+                  required
+                  className="w-full p-2 border border-black rounded-4xl"
+                />
               </div>
               <div className="mb-4 text-black">
                 <label className="block text-sm font-medium mb-2 text-black">Phone</label>
-                <input type="tel" className="w-full p-2 border border-black rounded-4xl" />
+                <input
+                  type="tel"
+                  name="phone"
+                  value={contactFormData.phone}
+                  onChange={handleContactInputChange}
+                  required
+                  className="w-full p-2 border border-black rounded-4xl"
+                />
               </div>
               <div className="mb-4 text-black">
                 <label className="block text-sm font-medium mb-2 text-black">Email</label>
-                <input type="email" className="w-full p-2 border border-black rounded-4xl" />
+                <input
+                  type="email"
+                  name="email"
+                  value={contactFormData.email}
+                  onChange={handleContactInputChange}
+                  required
+                  className="w-full p-2 border border-black rounded-4xl"
+                />
               </div>
               <div className="mb-4 text-black">
                 <label className="block text-sm font-medium mb-2 text-black">Message</label>
-                <textarea className="w-full p-2 border border-black rounded-2xl" rows="2"></textarea>
+                <textarea
+                  name="message"
+                  value={contactFormData.message}
+                  onChange={handleContactInputChange}
+                  required
+                  className="w-full p-2 border border-black rounded-2xl"
+                  rows="2"
+                ></textarea>
               </div>
               <button type="submit" className="bg-[#7E6BF2] text-white px-4 py-2 rounded-4xl hover:bg-[#6a5acd] w-full">Submit</button>
             </form>
@@ -257,7 +439,7 @@ export default function ContactSection() {
             Questions or ready to get started? Fill out the form below and we’ll get back to you soon.
           </p>
 
-          <form className="space-y-6">
+          <form onSubmit={handleMainContactSubmit} className="space-y-6">
             {/* Name Fields */}
             <div>
               <label className="block text-xs font- mb-1">
@@ -268,6 +450,9 @@ export default function ContactSection() {
                   <label className="text-xs opacity-">First Name</label>
                   <input
                     type="text"
+                    name="firstName"
+                    value={mainContactFormData.firstName}
+                    onChange={handleMainContactInputChange}
                     required
                     className="w-full border border-[#fffbea]/30 bg-white p-2 mt-1  focus:outline-none focus:ring-1 focus:ring-[#fffbea] text-black"
                   />
@@ -276,6 +461,9 @@ export default function ContactSection() {
                   <label className="text-xs opacity-">Last Name</label>
                   <input
                     type="text"
+                    name="lastName"
+                    value={mainContactFormData.lastName}
+                    onChange={handleMainContactInputChange}
                     required
                     className="w-full border border-[#fffbea]/30 bg-white p-2 mt-1  focus:outline-none focus:ring-1 focus:ring-[#fffbea] text-black"
                   />
@@ -290,6 +478,9 @@ export default function ContactSection() {
               </label>
               <input
                 type="email"
+                name="email"
+                value={mainContactFormData.email}
+                onChange={handleMainContactInputChange}
                 required
                 className="w-full border border-[#fffbea]/30 bg-white p-2  focus:outline-none focus:ring-1 focus:ring-[#fffbea] text-black"
               />
@@ -303,6 +494,9 @@ export default function ContactSection() {
               </label>
               <input
                 type="text"
+                name="hearAboutUs"
+                value={mainContactFormData.hearAboutUs}
+                onChange={handleMainContactInputChange}
                 required
                 className="w-full border border-[#fffbea]/30 bg-white p-2  focus:outline-none focus:ring-1 focus:ring-[#fffbea] text-black"
               />
@@ -314,6 +508,9 @@ export default function ContactSection() {
                 Message <span className="text-xs opacity-70">(required)</span>
               </label>
               <textarea
+                name="message"
+                value={mainContactFormData.message}
+                onChange={handleMainContactInputChange}
                 rows="5"
                 required
                 className="w-full border border-[#fffbea]/30 bg-white p-2 focus:outline-none focus:ring-1 focus:ring-[#fffbea] text-black"
@@ -531,16 +728,14 @@ export default function ContactSection() {
                   className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-1 focus:ring-[#845547] text-black"
                 >
                   <option value="">Select a time</option>
-                  <option value="10:00 AM">10:00 AM</option>
-                  <option value="11:00 AM">11:00 AM</option>
-                  <option value="12:00 PM">12:00 PM</option>
-                  <option value="1:00 PM">1:00 PM</option>
-                  <option value="2:00 PM">2:00 PM</option>
-                  <option value="3:00 PM">3:00 PM</option>
-                  <option value="4:00 PM">4:00 PM</option>
-                  <option value="5:00 PM">5:00 PM</option>
-                  <option value="6:00 PM">6:00 PM</option>
-                  <option value="7:00 PM">7:00 PM</option>
+                  {availableTimes.map(time => {
+                    const isBooked = bookings.some(booking => booking.date === formData.date && booking.time === time);
+                    return (
+                      <option key={time} value={time} disabled={isBooked}>
+                        {time} {isBooked ? '(Booked)' : ''}
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
 
