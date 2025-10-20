@@ -85,7 +85,7 @@ export default function Home() {
 
       {/* ✅ NAVBAR */}
       <nav
-        className="fixed top-0 left-0 right-0 bg-white flex justify-between items-center w-full px-6 py-4 z-20 sm:grid sm:grid-cols-3 sm:items-center"
+        className="fixed top-0 left-0 right-0 bg-white flex justify-between items-center w-full px-6 py-4 z-20 sm:grid sm:grid-cols-3 sm:items-center font-medium"
       >
         {/* Projects (Desktop Left) */}
         <div className="hidden sm:flex sm:justify-start relative">
@@ -325,14 +325,14 @@ export default function Home() {
       <section id="about" className="min-h-screen bg-white pt-24 px-4 sm:px-10 md:px-16 lg:px-24 xl:px-32">
         <div className="mx-auto w-full max-w-[2200px] grid grid-cols-1 md:grid-cols-[250px_minmax(0,1fr)] gap-10 items-start">
         <div className="text-black leading-9 md:sticky md:top-28 pl-0 sm:pl-4 md:pl-0 -ml-0 md:-ml-22">
-      <p className="text-sm sm:text-base md:text-sm mb-4 -px-3 -sm:px-6">
+      <p className="text-sm sm:text-base md:text-sm mb-4 -px-3 -sm:px-6 font-avenir-next-lt-pro-light font-medium">
         NICARA Design is a Hyderabad-based interior and lifestyle studio focusing on luxury residential,
         commercial, and hospitality projects across India. We craft thoughtful, bespoke interiors, curate
         signature furniture and décor, provide styling, and design exclusive events and experiences, all infused
         with a spirit of warmth, playfulness, and subtle theatricality.
       </p>
 
-      <p className="text-sm sm:text-base md:text-sm -mb-1 -px-2 -sm:px-6">
+      <p className="text-sm sm:text-base md:text-sm -mb-1 -px-2 -sm:px-6 font-avenir-next-lt-pro-light font-medium">
         We also curate and showcase handpicked properties for purchase and stay, including residences and holiday
         homes, offering clients&apos; a seamless path to refined, effortless living.
       </p>
@@ -340,7 +340,7 @@ export default function Home() {
       <div className="relative inline-block">
         <Link
           href="/project/interiors"
-          className="inline-block mt-8 sm:mt-10 md:mt-8 text-sm sm:text-base underline underline-offset-4 hover:opacity-70 ml-2 md:ml-0"
+          className="inline-block mt-8 sm:mt-10 md:mt-8 text-sm sm:text-base underline underline-offset-4 hover:opacity-70 ml-2 md:ml-0 font-medium"
         >
           View Projects
         </Link>
@@ -374,7 +374,7 @@ export default function Home() {
       </section>
 
       {/* ✅ TESTIMONIALS SECTION */}
-      <section className="bg-white py-12 sm:py-16 px-4 sm:px-10 md:px-16 lg:px-24 xl:px-32">
+      <section className="bg-white py-12 sm:py-16 px-4 sm:px-10 md:px-16 lg:px-24 xl:px-32 ">
         <div className="mx-auto w-full max-w-[2200px]">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -395,8 +395,8 @@ export default function Home() {
               },
             ].map((t, i) => (
               <div key={i} className="text-black">
-                <blockquote className="text-sm md:text-md leading-relaxed mb-4">{t.quote}</blockquote>
-                <cite className="text-sm underline">{t.cite}</cite>
+                <blockquote className="text-sm md:text-md leading-relaxed mb-4 font-avenir-next-lt-pro-light font-medium">{t.quote}</blockquote>
+                <cite className="text-sm underline font-avenir-next-lt-pro-light font-medium">{t.cite}</cite>
               </div>
             ))}
           </div>
@@ -477,16 +477,16 @@ export default function Home() {
             {/* Links section */}
             <div className="flex flex-wrap gap-3 sm:gap-6 justify-center md:justify-start text-center md:text-left relative md:-ml-4">
               <div className="relative ">
-                <button
-                  className="md:hidden text-sm hover:underline flex items-center"
-                  onClick={() => setFooterDropdownOpen(!footerDropdownOpen)}
-                >
-                  Projects
+          <button
+            className="md:hidden text-sm hover:underline flex items-center font-avenir-next-lt-pro-light font-light"
+            onClick={() => setFooterDropdownOpen(!footerDropdownOpen)}
+          >
+            Projects
                   <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${footerDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
                 <a
                   href="#"
-                  className="hidden md:block text-sm hover:underline"
+                  className="hidden md:block text-sm hover:underline font-avenir-next-lt-pro-light font-light"
                   onMouseEnter={() => setFooterDropdownOpen(true)}
                   onMouseLeave={() => setFooterDropdownOpen(false)}
                 >
@@ -498,29 +498,29 @@ export default function Home() {
                     onMouseEnter={() => setFooterDropdownOpen(true)}
                     onMouseLeave={() => setFooterDropdownOpen(false)}
                   >
-                    <a href="/project/interiors" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306]">
+                    <a href="/project/interiors" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306] font-avenir-next-lt-pro-light font-light">
                       Interiors
                     </a>
-                    <a href="/project/buy-stay" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306]">
+                    <a href="/project/buy-stay" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306] font-avenir-next-lt-pro-light font-light">
                       Buy & Stay
                     </a>
-                    <a href="/project/events-experiences" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306]">
+                    <a href="/project/events-experiences" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306] font-avenir-next-lt-pro-light font-light">
                       Events & Experiences
                     </a>
                   </div>
                 )}
               </div>
-              <a href="/about" className="text-sm hover:underline ml-4">About</a>
-              <a href="/contact" className="text-sm hover:underline ml-4">Contact</a>
+              <a href="/about" className="text-sm hover:underline ml-4 font-avenir-next-lt-pro-light font-light">About</a>
+              <a href="/contact" className="text-sm hover:underline ml-4 font-avenir-next-lt-pro-light font-light">Contact</a>
             </div>
       
             {/* Description section */}
-            <div className="text-sm text-center md:text-left md:-mr-39 md:ml-80 px-4 md:px-0">
+            <div className="text-sm text-center md:text-left md:-mr-39 md:ml-80 px-4 md:px-0 font-avenir-next-lt-pro-light font-light">
               Established in 2019, Nicara Design is a full-service design firm based in Hyderabad, India.
             </div>
       
             {/* Social section */}
-            <div className="text-sm text-center md:text-left md:-mr-19 md:ml-52 space-y-1 px-4 md:px-0">
+            <div className="text-sm text-center md:text-left md:-mr-19 md:ml-52 space-y-1 px-4 md:px-0 font-avenir-next-lt-pro-light font-light">
               <div>
                 IG: <a href="https://www.instagram.com/nicaradesign?igsh=MTRyZHkzeDNtMGRoeg==" className="underline hover:no-underline">@nicaradesign</a>
               </div>
@@ -528,7 +528,7 @@ export default function Home() {
           </div>
       
           {/* Bottom section */}
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm gap-4 text-center md:text-left -ml-5">
+          <div className="flex flex-col md:flex-row justify-between items-center text-sm gap-4 text-center md:text-left -ml-5 font-avenir-next-lt-pro-light font-light">
             <div>
               Questions? Reach out:<br />
               <a href="mailto:hello@dwelltales.com" className="underline hover:no-underline">

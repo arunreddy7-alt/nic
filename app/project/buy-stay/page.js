@@ -62,7 +62,7 @@ export default function BuyStay() {
     <div className="font-sans relative min-h-screen bg-[#845547] overflow-x-hidden">
       {/* ✅ NAVBAR */}
       <nav
-        className="fixed top-0 left-0 right-0 bg-white flex justify-between items-center w-full px-6 py-4 z-20 sm:grid sm:grid-cols-3 sm:items-center"
+        className="fixed top-0 left-0 right-0 bg-white flex justify-between items-center w-full px-6 py-4 z-20 sm:grid sm:grid-cols-3 sm:items-center font-medium"
       >
         {/* Projects (Desktop Left) */}
         <div className="hidden sm:flex sm:justify-start relative">

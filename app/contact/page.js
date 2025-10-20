@@ -203,11 +203,11 @@ export default function ContactSection() {
   };
 
   return (
-    <div className="relative h-screen bg-[#845547] overflow-x-hidden">
+    <div className="relative h-screen bg-[#845547] overflow-x-hidden font-avenir-next-lt-pro-light font-medium">
       <div className={isModalOpen ? 'blur-sm pointer-events-none' : ''}>
         {/* ✅ NAVBAR */}
         <nav
-        className="fixed top-0 left-0 right-0 bg-[#845547] flex justify-between items-center w-full px-6 py-4 z-20 sm:grid sm:grid-cols-3 sm:items-center"
+        className="fixed top-0 left-0 right-0 bg-[#845547] flex justify-between items-center w-full px-6 py-4 z-20 sm:grid sm:grid-cols-3 sm:items-center font-medium"
       >
         {/* Projects (Desktop Left) */}
         <div className="hidden sm:flex sm:justify-start relative">
@@ -382,7 +382,7 @@ export default function ContactSection() {
             <h3 className="text-lg font-bold mb-4 text-black">Contact Form</h3>
             <form onSubmit={handleContactSubmit}>
               <div className="mb-4 text-black">
-                <label className="block text-sm font-medium mb-2 text-black">Name</label>
+                <label className="block text-sm font-medium mb-2 text-black ">Name</label>
                 <input
                   type="text"
                   name="name"
@@ -434,8 +434,8 @@ export default function ContactSection() {
         <div className="max-w-6xl w-full grid md:grid-cols-2 gap-16 md:translate-x-19 md:translate-y-11">
         {/* Left Column - Form */}
         <div>
-          <h2 className="text-lg font-semibold mb-4">Contact Us</h2>
-          <p className="mb-8 text-sm leading-relaxed">
+          <h2 className="text-lg font-semibold mb-4" style={{ fontFamily: 'serif' }}>Contact Us</h2>
+          <p className="mb-8 text-sm leading-relaxed font-avenir-next-lt-pro-light font-medium">
             Questions or ready to get started? Fill out the form below and we’ll get back to you soon.
           </p>
 

@@ -62,7 +62,7 @@ export default function EventsExperiences() {
     <div className="font-sans relative min-h-screen overflow-x-hidden">
       {/* ✅ NAVBAR */}
       <nav
-        className="fixed top-0 left-0 right-0 bg-grey flex justify-between items-center w-full px-6 py-4 z-20 sm:grid sm:grid-cols-3 sm:items-center"
+        className="fixed top-0 left-0 right-0 bg-grey flex justify-between items-center w-full px-6 py-4 z-20 sm:grid sm:grid-cols-3 sm:items-center font-medium"
       >
         {/* Projects (Desktop Left) */}
         <div className="hidden sm:flex sm:justify-start relative">
@@ -294,7 +294,7 @@ export default function EventsExperiences() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/100 to-transparent"></div>
         {/* Centered text */}
         <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
-          <h1 className="text-2xl sm:text-4xl lg:text-6xl font-bold text-white font-poppins opacity-60 text-center">Something exciting coming up, Stay Tuned!</h1>
+          <h1 className="text-2xl sm:text-4xl lg:text-6xl font-bold text-white font-poppins opacity-60 text-center font-avenir-next-lt-pro-light font-bold">Something exciting coming up, Stay Tuned!</h1>
         </div>
       </div>
      <footer

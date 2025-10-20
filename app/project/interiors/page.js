@@ -64,12 +64,12 @@ export default function Interiors() {
 
       {/* ✅ NAVBAR */}
       <nav
-        className="fixed top-0 left-0 right-0 bg-white flex justify-between items-center w-full px-6 py-4 z-20 sm:grid sm:grid-cols-3 sm:items-center"
+        className="fixed top-0 left-0 right-0 bg-white flex justify-between items-center w-full px-6 py-4 z-20 sm:grid sm:grid-cols-3 sm:items-center font-medium"
       >
         {/* Projects (Desktop Left) */}
         <div className="hidden sm:flex sm:justify-start relative">
           <div
-            className="text-sm hover:underline text-black cursor-pointer flex items-center justify-between w-full"
+            className="text-sm hover:underline text-black cursor-pointer flex items-center justify-between w-full font-avenir-next-lt-pro-light font-medium"
             onMouseEnter={() => setDropdownOpen(true)}
             onMouseLeave={() => setDropdownOpen(false)}
           >
@@ -81,13 +81,13 @@ export default function Interiors() {
               onMouseEnter={() => setDropdownOpen(true)}
               onMouseLeave={() => setDropdownOpen(false)}
             >
-              <Link href="/project/interiors" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">
+              <Link href="/project/interiors" className="block px-4 py-2 text-sm text-black hover:bg-gray-100 font-avenir-next-lt-pro-light font-medium">
                 Interiors
               </Link>
-              <Link href="/project/buy-stay" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">
+              <Link href="/project/buy-stay" className="block px-4 py-2 text-sm text-black hover:bg-gray-100 font-avenir-next-lt-pro-light font-medium">
                 Buy & Stay
               </Link>
-              <Link href="/project/events-experiences" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">
+              <Link href="/project/events-experiences" className="block px-4 py-2 text-sm text-black hover:bg-gray-100 font-avenir-next-lt-pro-light font-medium">
                 Events & Experiences
               </Link>
             </div>
@@ -116,8 +116,8 @@ export default function Interiors() {
 
         {/* About and Contact (Desktop Right) */}
         <div className="hidden sm:flex sm:justify-end gap-5">
-          <a href="/about" className="text-sm hover:underline text-black">About</a>
-          <a href="/contact" className="text-sm hover:underline text-black">Contact</a>
+          <a href="/about" className="text-sm hover:underline text-black font-avenir-next-lt-pro-light font-medium">About</a>
+          <a href="/contact" className="text-sm hover:underline text-black font-avenir-next-lt-pro-light font-medium">Contact</a>
         </div>
 
         {/* Mobile Dropdown Menu */}
@@ -289,40 +289,40 @@ export default function Interiors() {
 
       <div className="pt-24 min-h-screen flex flex-col items-center justify-center px-4">
         <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mb-1">
-          <div className="flex flex-col items-center">
-            <Image src="/int1.png" alt="Image 1" width={700} height={400} className="w-full h-auto" />
-            <p className="mt-4 text-black text-center sm:-ml-135" style={{ fontFamily: 'Marist' }}>Stunning Home Interiors</p>
-          </div>
-          <div className="flex flex-col items-center">
-            <Image src="/int2.png" alt="Image 2" width={700} height={400} className="w-full h-auto" />
-            <p className="mt-4 text-black text-center sm:-ml-135" style={{ fontFamily: 'Marist' }}>Elegant Living Spaces</p>
-          </div>
+          <Link href="/project/interiors/beverly-drive" className="flex flex-col items-center">
+            <Image src="/int1.png" alt="Image 1" width={700} height={400} className="w-[700px] h-[400px] object-cover" />
+            <p className="mt-4 text-black text-center sm:-ml-120">Beverly Drive - Dallas, Texas</p>
+          </Link>
+          <Link href="/project/interiors/bar-a-ranch" className="flex flex-col items-center">
+            <Image src="/int2.png" alt="Image 2" width={700} height={400} className="w-[700px] h-[400px] object-cover" />
+            <p className="mt-4 text-black text-center sm:-ml-105">A Bar A Ranch, Wyoing - In Process</p>
+          </Link>
         </div>
         <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mt-10">
-          <div className="flex flex-col items-center">
-            <Image src="/int1.png" alt="Image 1" width={700} height={400} className="w-full h-auto" />
-            <p className="mt-4 text-black text-center sm:-ml-135" style={{ fontFamily: 'Marist' }}>Stunning Home Interiors</p>
-          </div>
-          <div className="flex flex-col items-center">
-            <Image src="/int2.png" alt="Image 2" width={700} height={400} className="w-full h-auto" />
-            <p className="mt-4 text-black text-center sm:-ml-135" style={{ fontFamily: 'Marist' }}>Elegant Living Spaces</p>
-          </div>
+          <Link href="/project/interiors/contemporary-cabins" className="flex flex-col items-center">
+            <Image src="/int4-1.png" alt="Image 1" width={700} height={400} className="w-[700px] h-[400px] object-cover" />
+            <p className="mt-4 text-black text-center sm:-ml-85">Contemporary Cabins, Washington - In Process</p>
+          </Link>
+          <Link href="/project/interiors/fairfax-avenue" className="flex flex-col items-center">
+            <Image src="/int4.png" alt="Image 2" width={700} height={400} className="w-[700px] h-[400px] object-cover" />
+            <p className="mt-4 text-black text-center sm:-ml-88">Fairfax Avenue, Highland Park - Coming Soon</p>
+          </Link>
         </div>
         <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mt-10">
-          <div className="flex flex-col items-center">
-            <Image src="/int1.png" alt="Image 1" width={700} height={400} className="w-full h-auto" />
-            <p className="mt-4 text-black text-center sm:-ml-135" style={{ fontFamily: 'Marist' }}>Stunning Home Interiors</p>
-          </div>
-          <div className="flex flex-col items-center">
-            <Image src="/int2.png" alt="Image 2" width={700} height={400} className="w-full h-auto" />
-            <p className="mt-4 text-black text-center sm:-ml-135" style={{ fontFamily: 'Marist' }}>Elegant Living Spaces</p>
-          </div>
+          <Link href="/project/interiors/vermont-modern" className="flex flex-col items-center">
+            <Image src="/int5.png" alt="Image 1" width={700} height={400} className="w-[700px] h-[400px] object-cover" />
+            <p className="mt-4 text-black text-center sm:-ml-103">Vermont Modern - Charlotte, Vermont</p>
+          </Link>
+          <Link href="/project/interiors/family-farmhouse" className="flex flex-col items-center">
+            <Image src="/int6.png" alt="Image 2" width={700} height={400} className="w-[700px] h-[400px] object-cover" />
+            <p className="mt-4 text-black text-center sm:-ml-113">Family Farmhouse - East Texas</p>
+          </Link>
         </div>
         <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mt-10">
-          <div className="flex flex-col items-center sm:-ml-177">
-            <Image src="/int1.png" alt="Image 1" width={700} height={400}  />
-            <p className="mt-4 text-black text-center sm:-ml-135" style={{ fontFamily: 'Marist' }}>Stunning Home Interiors</p>
-          </div>
+          <Link href="/project/interiors/clarksville" className="flex flex-col items-center sm:-ml-177">
+            <Image src="/int7.png" alt="Image 1" width={700} height={400} className="w-[700px] h-[400px] object-cover" />
+            <p className="mt-4 text-black text-center sm:-ml-126">Clarksville - Austin, Texas</p>
+          </Link>
         </div>
       </div>
       <footer
