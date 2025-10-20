@@ -291,37 +291,37 @@ export default function Interiors() {
         <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mb-1">
           <Link href="/project/interiors/beverly-drive" className="flex flex-col items-center">
             <Image src="/int1.png" alt="Image 1" width={700} height={400} className="w-[700px] h-[400px] object-cover" />
-            <p className="mt-4 text-black text-center sm:-ml-120">Beverly Drive - Dallas, Texas</p>
+            <p className="mt-4 text-black text-center sm:-ml-120 font-avenir-next-lt-pro-light font-medium">Beverly Drive - Dallas, Texas</p>
           </Link>
           <Link href="/project/interiors/bar-a-ranch" className="flex flex-col items-center">
             <Image src="/int2.png" alt="Image 2" width={700} height={400} className="w-[700px] h-[400px] object-cover" />
-            <p className="mt-4 text-black text-center sm:-ml-105">A Bar A Ranch, Wyoing - In Process</p>
+            <p className="mt-4 text-black text-center sm:-ml-105 font-avenir-next-lt-pro-light font-medium">A Bar A Ranch, Wyoing - In Process</p>
           </Link>
         </div>
         <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mt-10">
           <Link href="/project/interiors/contemporary-cabins" className="flex flex-col items-center">
             <Image src="/int4-1.png" alt="Image 1" width={700} height={400} className="w-[700px] h-[400px] object-cover" />
-            <p className="mt-4 text-black text-center sm:-ml-85">Contemporary Cabins, Washington - In Process</p>
+            <p className="mt-4 text-black text-center sm:-ml-85 font-avenir-next-lt-pro-light font-medium">Contemporary Cabins, Washington - In Process</p>
           </Link>
           <Link href="/project/interiors/fairfax-avenue" className="flex flex-col items-center">
             <Image src="/int4.png" alt="Image 2" width={700} height={400} className="w-[700px] h-[400px] object-cover" />
-            <p className="mt-4 text-black text-center sm:-ml-88">Fairfax Avenue, Highland Park - Coming Soon</p>
+            <p className="mt-4 text-black text-center sm:-ml-85 font-avenir-next-lt-pro-light font-medium">Fairfax Avenue, Highland Park - Coming Soon</p>
           </Link>
         </div>
         <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mt-10">
           <Link href="/project/interiors/vermont-modern" className="flex flex-col items-center">
             <Image src="/int5.png" alt="Image 1" width={700} height={400} className="w-[700px] h-[400px] object-cover" />
-            <p className="mt-4 text-black text-center sm:-ml-103">Vermont Modern - Charlotte, Vermont</p>
+            <p className="mt-4 text-black text-center sm:-ml-103 font-avenir-next-lt-pro-light font-medium">Vermont Modern - Charlotte, Vermont</p>
           </Link>
           <Link href="/project/interiors/family-farmhouse" className="flex flex-col items-center">
             <Image src="/int6.png" alt="Image 2" width={700} height={400} className="w-[700px] h-[400px] object-cover" />
-            <p className="mt-4 text-black text-center sm:-ml-113">Family Farmhouse - East Texas</p>
+            <p className="mt-4 text-black text-center sm:-ml-113 font-avenir-next-lt-pro-light font-medium">Family Farmhouse - East Texas</p>
           </Link>
         </div>
         <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mt-10">
           <Link href="/project/interiors/clarksville" className="flex flex-col items-center sm:-ml-177">
             <Image src="/int7.png" alt="Image 1" width={700} height={400} className="w-[700px] h-[400px] object-cover" />
-            <p className="mt-4 text-black text-center sm:-ml-126">Clarksville - Austin, Texas</p>
+            <p className="mt-4 text-black text-center sm:-ml-126 font-avenir-next-lt-pro-light font-medium">Clarksville - Austin, Texas</p>
           </Link>
         </div>
       </div>
