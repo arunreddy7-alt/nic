@@ -6,27 +6,18 @@ import Link from 'next/link';
 import { Menu, X, ChevronDown, Mail, Phone, ChevronRight, ChevronLeft } from 'lucide-react';
 
 export default function Home() {
-  const [showNav, setShowNav] = useState(true);
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [footerDropdownOpen, setFooterDropdownOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
-  const [viewProjectsDropdownOpen, setViewProjectsDropdownOpen] = useState(false);
+
   const [contactBarOpen, setContactBarOpen] = useState(true);
-  const [showForm, setShowForm] = useState(false);
+  const [isContactHovered, setIsContactHovered] = useState(false);
+  const [isFormHovered, setIsFormHovered] = useState(false);
+  const [mobileFormOpen, setMobileFormOpen] = useState(false);
   const [showPopupForm, setShowPopupForm] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 1000) {
-        setShowNav(false);
-      } else {
-        setShowNav(true);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -51,9 +42,7 @@ export default function Home() {
 
       {/* ✅ NAVBAR */}
       <nav
-        className={`fixed top-0 left-0 right-0 bg-white flex justify-between items-center w-full px-6 py-4 z-20 transition-transform duration-700 sm:grid sm:grid-cols-3 sm:items-center ${
-          showNav ? 'translate-y-0' : '-translate-y-full'
-        }`}
+        className="fixed top-0 left-0 right-0 bg-white flex justify-between items-center w-full px-6 py-4 z-20 sm:grid sm:grid-cols-3 sm:items-center"
       >
         {/* Projects (Desktop Left) */}
         <div className="hidden sm:flex sm:justify-start relative">
@@ -169,69 +158,82 @@ export default function Home() {
         <button
           onClick={() => setContactBarOpen(!contactBarOpen)}
           className={`bg-black flex items-center justify-center text-white hover:scale-110 hover:shadow-lg transition-all duration-200 ${
-            contactBarOpen ? 'w-[50px] h-[50px] translate-x-0' : 'w-[40px] h-[40px] rounded-full translate-x-1/2'
+            contactBarOpen ? 'w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] translate-x-0' : 'w-[32px] h-[32px] sm:w-[40px] sm:h-[40px] rounded-full translate-x-1/2'
           }`}
         >
-          {contactBarOpen ? <ChevronRight className="w-6 h-6" /> : <ChevronLeft className="w-5 h-5" />}
+          {contactBarOpen ? <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" /> : <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />}
         </button>
         {/* Contact Us Button */}
         <div
-          onMouseEnter={() => setShowForm(true)}
-          onMouseLeave={() => setShowForm(false)}
-          className={`w-[50px] h-[150px] bg-[#7E6BF2] flex flex-col items-center justify-start pt-15 text-white hover:scale-110 hover:shadow-lg transition-all duration-200 ${
+          onMouseEnter={() => setIsContactHovered(true)}
+          onMouseLeave={() => setIsContactHovered(false)}
+          onClick={() => setMobileFormOpen(!mobileFormOpen)}
+          className={`w-[40px] h-[120px] sm:w-[50px] sm:h-[150px] bg-[#7E6BF2] flex flex-col items-center justify-start pt-12 sm:pt-15 text-white hover:scale-110 hover:shadow-lg transition-all duration-200 ${
             contactBarOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
-          <span className="text-sm transform -rotate-90 whitespace-nowrap mb-8">Contact Us</span>
-          <Mail className="w-6 h-6" />
+          <span className="text-xs sm:text-sm transform -rotate-90 whitespace-nowrap mb-6 sm:mb-8">Contact Us</span>
+          <Mail className="w-5 h-5 sm:w-6 sm:h-6" />
         </div>
         {/* WhatsApp Button */}
         <a
           href="https://wa.me/8559901234"
-          className={`w-[50px] h-[50px] bg-[#2C2C2C] flex items-center justify-center text-white hover:scale-110 hover:shadow-lg transition-all duration-200 ${
+          className={`w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] bg-[#2C2C2C] flex items-center justify-center text-white hover:scale-110 hover:shadow-lg transition-all duration-200 ${
             contactBarOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
-          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
           </svg>
         </a>
         {/* Call Button */}
         <a
           href="tel:8559901234"
-          className={`w-[50px] h-[50px] bg-[#25D366] flex items-center justify-center text-white hover:scale-110 hover:shadow-lg transition-all duration-200 ${
+          className={`w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] bg-[#25D366] flex items-center justify-center text-white hover:scale-110 hover:shadow-lg transition-all duration-200 ${
             contactBarOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
-          <Phone className="w-6 h-6" />
+          <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
         </a>
       </div>
 
         {/* Contact Form */}
-        {contactBarOpen && (
+        {contactBarOpen && ((isContactHovered || isFormHovered) || mobileFormOpen) && (
           <div
-            onMouseEnter={() => setShowForm(true)}
-            onMouseLeave={() => setShowForm(false)}
-            className={`fixed right-0 top-1/2 transform -translate-y-1/2 z-20 bg-white shadow-lg p-6 rounded-l-lg w-80 transition-transform duration-300 ${
-              showForm ? 'translate-x-0' : 'translate-x-full'
-            }`}
+            onMouseEnter={() => setIsFormHovered(true)}
+            onMouseLeave={() => setIsFormHovered(false)}
+            className="fixed right-0 top-1/2 transform -translate-y-3/5 sm:-translate-y-2/4 z-20 bg-white shadow-lg p-6 rounded w-80 sm:w-96 mr-12"
             style={{ marginTop: '50px' }}
           >
-            <h3 className="text-lg font-bold mb-4 text-black">Contact Us</h3>
+            <button
+              onClick={() => {
+                setMobileFormOpen(false);
+                setIsFormHovered(false);
+                setIsContactHovered(false);
+              }}
+              className="absolute top-6 right-4 text-gray-500 hover:text-gray-700 sm:hidden"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <h3 className="text-lg font-bold mb-4 text-black">Contact Form</h3>
             <form>
               <div className="mb-4 text-black">
                 <label className="block text-sm font-medium mb-2 text-black">Name</label>
-                <input type="text" className="w-full p-2 border border-black rounded" />
+                <input type="text" className="w-full p-2 border border-black rounded-4xl" />
+              </div>
+              <div className="mb-4 text-black">
+                <label className="block text-sm font-medium mb-2 text-black">Phone</label>
+                <input type="tel" className="w-full p-2 border border-black rounded-4xl" />
               </div>
               <div className="mb-4 text-black">
                 <label className="block text-sm font-medium mb-2 text-black">Email</label>
-                <input type="email" className="w-full p-2 border border-black rounded" />
+                <input type="email" className="w-full p-2 border border-black rounded-4xl" />
               </div>
               <div className="mb-4 text-black">
                 <label className="block text-sm font-medium mb-2 text-black">Message</label>
-                <textarea className="w-full p-2 border border-black rounded" rows="4"></textarea>
+                <textarea className="w-full p-2 border border-black rounded-2xl" rows="2"></textarea>
               </div>
-              <button type="submit" className="bg-[#7E6BF2] text-white px-4 py-2 rounded hover:bg-[#6a5acd]">Send</button>
+              <button type="submit" className="bg-[#7E6BF2] text-white px-4 py-2 rounded-4xl hover:bg-[#6a5acd] w-full">Submit</button>
             </form>
           </div>
         )}
@@ -251,57 +253,39 @@ export default function Home() {
       {/* ✅ ABOUT SECTION */}
       <section id="about" className="min-h-screen bg-white pt-24 px-4 sm:px-10 md:px-16 lg:px-24 xl:px-32">
         <div className="mx-auto w-full max-w-[2200px] grid grid-cols-1 md:grid-cols-[160px_minmax(0,1fr)] gap-10 items-start">
-        <div className="text-black leading-7 md:sticky md:top-28 pl-0 sm:pl-4 md:pl-0 -ml-0 md:-ml-22">
-      <p className="text-sm sm:text-base md:text-sm mb-4 px-2 sm:px-0">
+        <div className="text-black leading-9 md:sticky md:top-28 pl-0 sm:pl-4 md:pl-0 -ml-0 md:-ml-22">
+      <p className="text-sm sm:text-base md:text-sm mb-4 -px-3 -sm:px-6">
         NICARA Design is a Hyderabad-based interior and lifestyle studio focusing on luxury residential,
         commercial, and hospitality projects across India. We craft thoughtful, bespoke interiors, curate
         signature furniture and décor, provide styling, and design exclusive events and experiences, all infused
         with a spirit of warmth, playfulness, and subtle theatricality.
       </p>
 
-      <p className="text-sm sm:text-base md:text-sm px-2 sm:px-0">
+      <p className="text-sm sm:text-base md:text-sm -mb-1 -px-2 -sm:px-6">
         We also curate and showcase handpicked properties for purchase and stay, including residences and holiday
         homes, offering clients&apos; a seamless path to refined, effortless living.
       </p>
 
       <div className="relative inline-block">
-        <div
-          className="inline-block mt-8 sm:mt-10 md:mt-8 text-sm sm:text-base underline underline-offset-4 hover:opacity-70 ml-2 md:ml-0 cursor-pointer"
-          onMouseEnter={() => setViewProjectsDropdownOpen(true)}
-          onMouseLeave={() => setViewProjectsDropdownOpen(false)}
+        <Link
+          href="/project/interiors"
+          className="inline-block mt-8 sm:mt-10 md:mt-8 text-sm sm:text-base underline underline-offset-4 hover:opacity-70 ml-2 md:ml-0"
         >
           View Projects
-        </div>
-        {viewProjectsDropdownOpen && (
-          <div
-            className="absolute top-full left-0 bg-white shadow-lg py-2 w-48 z-30"
-            onMouseEnter={() => setViewProjectsDropdownOpen(true)}
-            onMouseLeave={() => setViewProjectsDropdownOpen(false)}
-          >
-            <Link href="/project/interiors" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">
-              Interiors
-            </Link>
-            <Link href="/project/buy-stay" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">
-              Buy & Stay
-            </Link>
-            <Link href="/project/events-experiences" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">
-              Events & Experiences
-            </Link>
-          </div>
-        )}
+        </Link>
       </div>
     </div>
 
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:translate-x-25">
-            <div className="w-full aspect-[4/5] bg-gray-100 overflow-hidden">
+            <Link href="/project/interiors" className="w-full aspect-[4/5] bg-gray-100 overflow-hidden">
               <Image src="/hero1.png" alt="Project 1" width={1200} height={1500} className="w-full h-full object-cover" />
-            </div>
-            <div className="w-full aspect-[4/5] bg-gray-100 overflow-hidden">
+            </Link>
+            <Link href="/project/interiors" className="w-full aspect-[4/5] bg-gray-100 overflow-hidden">
               <Image src="/hero2.png" alt="Project 2" width={1200} height={1500} className="w-full h-full object-cover" />
-            </div>
-            <div className="w-full aspect-[4/5] bg-gray-100 overflow-hidden">
+            </Link>
+            <Link href="/project/interiors" className="w-full aspect-[4/5] bg-gray-100 overflow-hidden">
               <Image src="/hero3.png" alt="Project 3" width={1200} height={1500} className="w-full h-full object-cover" />
-            </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -362,7 +346,7 @@ export default function Home() {
           onClick={() => setShowPopupForm(false)}
         >
           <div
-            className="bg-white p-6 rounded-lg shadow-lg w-80 relative"
+            className="bg-white p-6  shadow-lg w-96 h-96 relative flex flex-col justify-center"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -371,21 +355,21 @@ export default function Home() {
             >
               <X className="w-6 h-6" />
             </button>
-            <h3 className="text-lg font-bold mb-4 text-black">Contact Us</h3>
-            <form>
+            <h3 className="text-lg font-bold mb-4 text-black text-center font-poppins">Get a Free Design Consultation</h3>
+            <form className="flex flex-col justify-center flex-grow">
               <div className="mb-4">
                 <label className="block text-sm font-medium mb-2 text-black">Name</label>
-                <input type="text" className="w-full p-2 border border-black rounded" />
+                <input type="text" className="w-full p-2 border border-black rounded text-black" />
               </div>
               <div className="mb-4">
                 <label className="block text-sm font-medium mb-2 text-black">Email</label>
-                <input type="email" className="w-full p-2 border border-black rounded" />
+                <input type="email" className="w-full p-2 border border-black rounded text-black" />
               </div>
               <div className="mb-4">
-                <label className="block text-sm font-medium mb-2 text-black">Message</label>
-                <textarea className="w-full p-2 border border-black rounded" rows="4"></textarea>
+                <label className="block text-sm font-medium mb-2 text-black">Phone Number</label>
+                <input type="tel" className="w-full p-2 border border-black rounded text-black" />
               </div>
-              <button type="submit" className="bg-[#7E6BF2] text-white px-4 py-2 rounded hover:bg-[#6a5acd]">Send</button>
+              <button type="submit" className="bg-[#7E6BF2] text-white px-4 py-2 rounded hover:bg-[#6a5acd] self-start w-32">Send</button>
             </form>
           </div>
         </div>
@@ -400,7 +384,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {/* Links section */}
             <div className="flex flex-wrap gap-3 sm:gap-6 justify-center md:justify-start text-center md:text-left relative md:-ml-4">
-              <div className="relative">
+              <div className="relative ">
                 <button
                   className="md:hidden text-sm hover:underline flex items-center"
                   onClick={() => setFooterDropdownOpen(!footerDropdownOpen)}
@@ -434,15 +418,13 @@ export default function Home() {
                   </div>
                 )}
               </div>
-              <a href="/about" className="text-sm hover:underline">About</a>
-              <a href="/contact" className="text-sm hover:underline">Contact</a>
-              <a href="#" className="text-sm hover:underline">Press</a>
-              <a href="#" className="text-sm hover:underline whitespace-nowrap">Work for AC. D</a>
+              <a href="/about" className="text-sm hover:underline ml-4">About</a>
+              <a href="/contact" className="text-sm hover:underline ml-4">Contact</a>
             </div>
       
             {/* Description section */}
             <div className="text-sm text-center md:text-left md:-mr-39 md:ml-80 px-4 md:px-0">
-              Established in 2020, Nicara Design is a full-service design firm based in Hyderabad, India.
+              Established in 2019, Nicara Design is a full-service design firm based in Hyderabad, India.
             </div>
       
             {/* Social section */}
@@ -450,25 +432,19 @@ export default function Home() {
               <div>
                 IG: <a href="https://www.instagram.com/nicaradesign?igsh=MTRyZHkzeDNtMGRoeg==" className="underline hover:no-underline">@nicaradesign</a>
               </div>
-              <div>
-                <a href="#" className="underline hover:no-underline">AC.D on The Expert</a> and
-              </div>
-              <div>
-                <a href="#" className="underline hover:no-underline">AD&apos;s Pro Directory</a>
-              </div>
             </div>
           </div>
       
           {/* Bottom section */}
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm gap-4 text-center md:text-left">
+          <div className="flex flex-col md:flex-row justify-between items-center text-sm gap-4 text-center md:text-left -ml-5">
             <div>
               Questions? Reach out:<br />
               <a href="mailto:hello@dwelltales.com" className="underline hover:no-underline">
               hello@dwelltales.com
               </a>
             </div>
-            <div>Nicara Design © 2025</div>
-          </div>
+            </div>
+            <div className="ml-256 text-sm -mb-12 -mt-18">Nicara Design © 2025</div>
         </div>
       </footer>
 

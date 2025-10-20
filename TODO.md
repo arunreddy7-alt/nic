@@ -1,10 +1,6 @@
-# TODO: Adjust Text Size and Link Position in ABOUT SECTION
-
-## Tasks
-- [ ] Move the "View Projects" link slightly left on desktop (md and up) without changing mobile
-- [ ] Test the changes by running the development server
-
-## Completed
-- [x] Analyze the selected text in app/page.js
-- [x] Identify the classes to modify: change md:text-md to md:text-sm for the paragraphs
-- [x] Change font size of paragraphs in ABOUT SECTION to be smaller on desktop (md and up) while keeping mobile unchanged
+- [x] Update popup form container to square shape (add h-80 for equal width and height)
+- [x] Change form heading to "Get a Free Design Consultation"
+- [x] Update form fields to include Name, Email, and Phone Number (remove Message field)
+- [x] Verify close button (X) is present and functional
+- [x] Make the form bigger to fit all content (increase size from w-80 h-80 to w-96 h-96)
+- [x] Move send button to left and make its width bigger (change self-center to self-start and add w-32)
