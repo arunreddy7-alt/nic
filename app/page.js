@@ -323,7 +323,7 @@ export default function Home() {
 
       {/* ✅ ABOUT SECTION */}
       <section id="about" className="min-h-screen bg-white pt-24 px-4 sm:px-10 md:px-16 lg:px-24 xl:px-32">
-        <div className="mx-auto w-full max-w-[2200px] grid grid-cols-1 md:grid-cols-[160px_minmax(0,1fr)] gap-10 items-start">
+        <div className="mx-auto w-full max-w-[2200px] grid grid-cols-1 md:grid-cols-[250px_minmax(0,1fr)] gap-10 items-start">
         <div className="text-black leading-9 md:sticky md:top-28 pl-0 sm:pl-4 md:pl-0 -ml-0 md:-ml-22">
       <p className="text-sm sm:text-base md:text-sm mb-4 -px-3 -sm:px-6">
         NICARA Design is a Hyderabad-based interior and lifestyle studio focusing on luxury residential,
