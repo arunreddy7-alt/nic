@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, ChevronDown, Mail, Phone, ChevronRight, ChevronLeft } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
@@ -294,10 +295,11 @@ export default function EventsExperiences() {
               )}
 
       <div className="h-screen relative">
-        <img
+        <Image
           src="/event.jpg"
           alt="Hero Image"
-          className="w-full h-full object-cover absolute inset-0"
+          fill
+          className="object-cover"
         />
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/100 to-transparent"></div>

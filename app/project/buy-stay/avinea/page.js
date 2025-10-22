@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import { Menu, X, ChevronDown, Mail, Phone, ChevronRight, ChevronLeft, Train, Building, MapPin } from 'lucide-react';
+import Image from 'next/image';
+import { Menu, X, ChevronDown, Mail, Phone, ChevronRight, ChevronLeft, Train, Building, MapPin, Waves, Home, Dumbbell, Route, Trophy, Baby, Church, Heart, DoorOpen, Music, Sparkles, GraduationCap, ShoppingBag, Trees, Plane, Stethoscope } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 export default function EventsExperiences() {
@@ -21,9 +22,24 @@ export default function EventsExperiences() {
     email: '',
     message: ''
   });
+  const [brochureFormOpen, setBrochureFormOpen] = useState(false);
+  const [brochureFormData, setBrochureFormData] = useState({
+    name: '',
+    phone: '',
+    email: ''
+  });
+  const [costSheetFormOpen, setCostSheetFormOpen] = useState(false);
+  const [costSheetFormData, setCostSheetFormData] = useState({
+    name: '',
+    phone: '',
+    email: ''
+  });
   const [galleryIndex, setGalleryIndex] = useState(0);
   const galleryImages = ['/gallery1.png', '/gallery2.png', '/gallery3.png', '/gallery4.png', '/gallery5.png', '/gallery6.png', '/gallery7.png', '/gallery8.png', '/gallery9.png'];
   const duplicatedImages = [...galleryImages, ...galleryImages, ...galleryImages]; // 27 images for infinite sliding
+  const [navbarBg, setNavbarBg] = useState('bg-grey');
+  const [navbarTextColor, setNavbarTextColor] = useState('text-white');
+  const [dropdownBg, setDropdownBg] = useState('bg-grey');
 
   const nextSlide = useCallback(() => {
     setGalleryIndex((prev) => (prev + 1) % duplicatedImages.length);
@@ -40,6 +56,27 @@ export default function EventsExperiences() {
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, [nextSlide]); // Include nextSlide in dependencies
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const overviewSection = document.getElementById('overview');
+      if (overviewSection) {
+        const rect = overviewSection.getBoundingClientRect();
+        if (rect.top <= 0) {
+          setNavbarBg('bg-white');
+          setNavbarTextColor('text-black');
+          setDropdownBg('bg-white');
+        } else {
+          setNavbarBg('bg-grey');
+          setNavbarTextColor('text-white');
+          setDropdownBg('bg-grey');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleContactInputChange = (e) => {
     const { name, value } = e.target;
@@ -77,16 +114,97 @@ export default function EventsExperiences() {
     });
   };
 
+  const handleBrochureInputChange = (e) => {
+    const { name, value } = e.target;
+    setBrochureFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleBrochureSubmit = (e) => {
+    e.preventDefault();
+    console.log('Brochure form submitted:', brochureFormData);
+
+    // Send email using EmailJS
+    emailjs.send(
+      'service_b769gdc',
+      'template_0hzoxjk',
+      {
+        from_name: brochureFormData.name,
+        from_email: brochureFormData.email,
+        phone: brochureFormData.phone,
+        hear_about_us: 'Avinea Brochure Download',
+        message: 'Request for brochure download',
+      },
+      'VFpd616Sj6d9RlzWA'
+    ).then((result) => {
+      console.log('Brochure request email sent successfully:', result.text);
+      const link = document.createElement('a');
+      link.href = '/AVINEA by Vyom-Sigma.pdf';
+      link.download = 'AVINEA by Vyom-Sigma.pdf';
+      link.click();
+      alert('Brochure downloaded successfully!');
+      setBrochureFormData({
+        name: '',
+        phone: '',
+        email: ''
+      });
+      setBrochureFormOpen(false);
+    }, (error) => {
+      console.error('Error sending brochure request email:', error.text);
+      alert('Error sending request. Please try again.');
+    });
+  };
+
+  const handleCostSheetInputChange = (e) => {
+    const { name, value } = e.target;
+    setCostSheetFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleCostSheetSubmit = (e) => {
+    e.preventDefault();
+    console.log('Cost Sheet form submitted:', costSheetFormData);
+
+    // Send email using EmailJS
+    emailjs.send(
+      'service_b769gdc',
+      'template_0hzoxjk',
+      {
+        from_name: costSheetFormData.name,
+        from_email: costSheetFormData.email,
+        phone: costSheetFormData.phone,
+        hear_about_us: 'Avinea Cost Sheet Download',
+        message: 'Request for cost sheet download',
+      },
+      'VFpd616Sj6d9RlzWA'
+    ).then((result) => {
+      console.log('Cost Sheet request email sent successfully:', result.text);
+      // Trigger download
+      const link = document.createElement('a');
+      link.href = '/AVINEA - General Cost Sheet.pdf';
+      link.download = 'AVINEA - General Cost Sheet.pdf';
+      link.click();
+      alert('Cost Sheet downloaded!');
+      setCostSheetFormData({
+        name: '',
+        phone: '',
+        email: ''
+      });
+      setCostSheetFormOpen(false);
+    }, (error) => {
+      console.error('Error sending cost sheet request email:', error.text);
+      alert('Error sending request. Please try again.');
+    });
+  };
+
   return (
     <div className="font-sans relative min-h-screen overflow-x-hidden">
       {/* ✅ NAVBAR */}
       <nav
-        className="fixed top-0 left-0 right-0 bg-grey flex justify-between items-center w-full px-6 py-4 z-20 sm:grid sm:grid-cols-3 sm:items-center font-medium"
+        className={`fixed top-0 left-0 right-0 ${navbarBg} flex justify-between items-center w-full px-6 py-4 z-20 sm:grid sm:grid-cols-3 sm:items-center font-medium transition-colors duration-300`}
       >
         {/* Projects (Desktop Left) */}
         <div className="hidden sm:flex sm:justify-start relative">
           <div
-            className="text-sm hover:underline text-white cursor-pointer flex items-center justify-between w-full"
+            className={`text-sm hover:underline ${navbarTextColor} cursor-pointer flex items-center justify-between w-full`}
             onMouseEnter={() => setDropdownOpen(true)}
             onMouseLeave={() => setDropdownOpen(false)}
           >
@@ -94,7 +212,7 @@ export default function EventsExperiences() {
           </div>
           {dropdownOpen && (
             <div
-              className="absolute top-full left-0 bg-grey shadow-lg py-2 w-48 z-30"
+              className={`absolute top-full left-0 ${dropdownBg} shadow-lg py-2 w-48 z-30`}
               onMouseEnter={() => setDropdownOpen(true)}
               onMouseLeave={() => setDropdownOpen(false)}
             >
@@ -115,7 +233,7 @@ export default function EventsExperiences() {
         <div className="flex items-center justify-between w-full sm:w-auto sm:justify-center sm:col-start-2">
           <Link
             href="/"
-            className="text-lg text-white font-bold"
+            className={`text-lg ${navbarTextColor} font-bold`}
             style={{ fontFamily: 'Didot, serif' }}
           >
             NICARA
@@ -127,29 +245,29 @@ export default function EventsExperiences() {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle Menu"
           >
-            {menuOpen ? <X className="w-6 h-6 text-white" /> : <Menu className="w-6 h-6 text-white" />}
+            {menuOpen ? <X className={`w-6 h-6 ${navbarTextColor}`} /> : <Menu className={`w-6 h-6 ${navbarTextColor}`} />}
           </button>
         </div>
 
         {/* About and Contact (Desktop Right) */}
         <div className="hidden sm:flex sm:justify-end gap-5">
-          <a href="/about" className="text-sm hover:underline text-white">About</a>
-          <a href="/contact" className="text-sm hover:underline text-white">Contact</a>
+          <a href="/about" className={`text-sm hover:underline ${navbarTextColor}`}>About</a>
+          <a href="/contact" className={`text-sm hover:underline ${navbarTextColor}`}>Contact</a>
         </div>
 
         {/* Mobile Dropdown Menu */}
         {menuOpen && (
           <div className="fixed inset-0 bg-[rgb(31,44,32)] z-50 flex flex-col items-center justify-center slide-up-menu">
             <button
-              className="absolute top-6 right-6 text-white hover:text-gray-200"
+              className={`absolute top-6 right-6 ${navbarTextColor} hover:text-gray-200`}
               onClick={() => setMenuOpen(false)}
               aria-label="Close Menu"
             >
               <X className="w-8 h-8" />
             </button>
-            <div className="flex flex-col items-center space-y-4 text-white text-lg font-medium">
+            <div className={`flex flex-col items-center space-y-4 ${navbarTextColor} text-lg font-medium`}>
               <div
-                className="py-2 text-white hover:underline cursor-pointer flex items-center justify-center w-full"
+                className={`py-2 ${navbarTextColor} hover:underline cursor-pointer flex items-center justify-center w-full`}
                 onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
               >
                 Projects
@@ -159,21 +277,21 @@ export default function EventsExperiences() {
                 <div className="flex flex-col items-center w-full space-y-2">
                   <a
                     href="/project/interiors"
-                    className="py-2 text-white hover:underline"
+                    className={`py-2 ${navbarTextColor} hover:underline`}
                     onClick={() => setMenuOpen(false)}
                   >
                     Interiors
                   </a>
                   <a
                     href="/project/buy-stay"
-                    className="py-2 text-white hover:underline"
+                    className={`py-2 ${navbarTextColor} hover:underline`}
                     onClick={() => setMenuOpen(false)}
                   >
                     Buy & Stay
                   </a>
                   <a
                     href="/project/events-experiences"
-                    className="py-2 text-white hover:underline"
+                    className={`py-2 ${navbarTextColor} hover:underline`}
                     onClick={() => setMenuOpen(false)}
                   >
                     Events & Experiences
@@ -182,14 +300,14 @@ export default function EventsExperiences() {
               )}
               <a
                 href="/about"
-                className="py-2 text-white hover:underline"
+                className={`py-2 ${navbarTextColor} hover:underline`}
                 onClick={() => setMenuOpen(false)}
               >
                 About
               </a>
               <a
                 href="/contact"
-                className="py-2 text-white hover:underline"
+                className={`py-2 ${navbarTextColor} hover:underline`}
                 onClick={() => setMenuOpen(false)}
               >
                 Contact
@@ -312,22 +430,130 @@ export default function EventsExperiences() {
                 </div>
               )}
 
+              {/* Brochure Form */}
+              {brochureFormOpen && (
+                <div className="fixed inset-0 bg- bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50">
+                  <div className="bg-white p-6 shadow-lg w-96">
+                    <button
+                      onClick={() => setBrochureFormOpen(false)}
+                      className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+                    >
+                      <X className="w-6 h-6" />
+                    </button>
+                    <h3 className="text-lg font-bold mb-4 text-black">Download Brochure</h3>
+                    <form onSubmit={handleBrochureSubmit}>
+                      <div className="mb-4 text-black">
+                        <label className="block text-sm font-medium mb-2 text-black">Name</label>
+                        <input
+                          type="text"
+                          name="name"
+                          value={brochureFormData.name}
+                          onChange={handleBrochureInputChange}
+                          required
+                          className="w-full p-2 border border-black rounded-4xl"
+                        />
+                      </div>
+                      <div className="mb-4 text-black">
+                        <label className="block text-sm font-medium mb-2 text-black">Phone</label>
+                        <input
+                          type="tel"
+                          name="phone"
+                          value={brochureFormData.phone}
+                          onChange={handleBrochureInputChange}
+                          required
+                          className="w-full p-2 border border-black rounded-4xl"
+                        />
+                      </div>
+                      <div className="mb-4 text-black">
+                        <label className="block text-sm font-medium mb-2 text-black">Email</label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={brochureFormData.email}
+                          onChange={handleBrochureInputChange}
+                          required
+                          className="w-full p-2 border border-black rounded-4xl"
+                        />
+                      </div>
+                      <button type="submit" className="bg-[#7E6BF2] text-white px-4 py-2 rounded-4xl hover:bg-[#6a5acd] w-full">Submit</button>
+                    </form>
+                  </div>
+                </div>
+              )}
+
+              {/* Cost Sheet Form */}
+              {costSheetFormOpen && (
+                <div className="fixed inset-0 bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50">
+                  <div className="bg-white p-6 shadow-lg w-96">
+                    <button
+                      onClick={() => setCostSheetFormOpen(false)}
+                      className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+                    >
+                      <X className="w-6 h-6" />
+                    </button>
+                    <h3 className="text-lg font-bold mb-4 text-black">Download Cost Sheet</h3>
+                    <form onSubmit={handleCostSheetSubmit}>
+                      <div className="mb-4 text-black">
+                        <label className="block text-sm font-medium mb-2 text-black">Name</label>
+                        <input
+                          type="text"
+                          name="name"
+                          value={costSheetFormData.name}
+                          onChange={handleCostSheetInputChange}
+                          required
+                          className="w-full p-2 border border-black rounded-4xl"
+                        />
+                      </div>
+                      <div className="mb-4 text-black">
+                        <label className="block text-sm font-medium mb-2 text-black">Phone</label>
+                        <input
+                          type="tel"
+                          name="phone"
+                          value={costSheetFormData.phone}
+                          onChange={handleCostSheetInputChange}
+                          required
+                          className="w-full p-2 border border-black rounded-4xl"
+                        />
+                      </div>
+                      <div className="mb-4 text-black">
+                        <label className="block text-sm font-medium mb-2 text-black">Email</label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={costSheetFormData.email}
+                          onChange={handleCostSheetInputChange}
+                          required
+                          className="w-full p-2 border border-black rounded-4xl"
+                        />
+                      </div>
+                      <button type="submit" className="bg-[#7E6BF2] text-white px-4 py-2 rounded-4xl hover:bg-[#6a5acd] w-full">Submit</button>
+                    </form>
+                  </div>
+                </div>
+              )}
+
       <div className="h-screen relative">
-        <img
+        <Image
           src="/avinea.png"
           alt="Hero Image"
-          className="w-full h-full object-cover absolute inset-0"
+          fill
+          className="object-cover"
         />
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/100 to-transparent"></div>
         {/* Centered text */}
         <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-4 -mb-14">
         <h1 className="text-2xl sm:text-4xl lg:text-6xl font-bold text-white font-poppins opacity-60 text-center font-avenir-next-lt-pro-light font-bold">AVINEA by Vyom-Sigma</h1>
-          <button className="mt-8 px-8 py-3 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition">Explore Now</button>
+          <button
+            className="mt-8 px-8 py-3 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition"
+            onClick={() => document.getElementById('overview').scrollIntoView({ behavior: 'smooth' })}
+          >
+            Explore Now
+          </button>
         </div>
       </div>
 
-      <div className="bg-white text-black px-6 py-16 flex items-center gap-8">
+      <div id="overview" className="bg-white text-black px-6 py-16 flex items-center gap-8">
         <div className="flex-1">
           <h2 className="text-3xl font-bold mb-6 text-left" style={{ fontFamily: 'Didot, serif' }}>Overview</h2>
           <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>
@@ -337,7 +563,7 @@ export default function EventsExperiences() {
           </p>
         </div>
         <div className="flex-1">
-          <img src="/avinea.png" alt="Avinea Overview" className="w-full h-auto rounded-lg shadow-lg" />
+          <Image src="/avinea.png" alt="Avinea Overview" width={800} height={600} className="w-full h-auto rounded-lg shadow-lg" />
         </div>
       </div>
 
@@ -369,9 +595,68 @@ export default function EventsExperiences() {
       </div>
 
       <div className="bg-white text-black px-6 py-16">
+        <h2 className="text-3xl font-bold mb-6 text-center" style={{ fontFamily: 'Didot, serif' }}>Amenities</h2>
+        <p className="text-lg leading-relaxed max-w-4xl text-center mb-8 ml-60" style={{ fontFamily: 'Crimson Text, serif' }}>
+          55+ Thoughtfully curated expansive Lifestyle Amenities, including:
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl ml-33">
+          <div className="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
+            <div className="flex items-center mb-4">
+              <Waves className="w-6 h-6 text-gray-600 mr-3" />
+              <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>3 Swimming Pools</p>
+            </div>
+            <div className="flex items-center mb-4">
+              <Home className="w-6 h-6 text-gray-600 mr-3" />
+              <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>3 Clubhouses</p>
+            </div>
+            <div className="flex items-center mb-4">
+              <Dumbbell className="w-6 h-6 text-gray-600 mr-3" />
+              <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>12000 SQFT - Fitness Centre</p>
+            </div>
+            <div className="flex items-center">
+              <Route className="w-6 h-6 text-gray-600 mr-3" />
+              <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>1 KM - Jogging Trail</p>
+            </div>
+          </div>
+          <div className="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
+            <div className="flex items-center mb-4">
+              <Trophy className="w-6 h-6 text-gray-600 mr-3" />
+              <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>Unmatched Sports Facilities</p>
+            </div>
+            <div className="flex items-center mb-4">
+              <Baby className="w-6 h-6 text-gray-600 mr-3" />
+              <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>Extensive Kid&apos;s Centric Amenities</p>
+            </div>
+            <div className="flex items-center mb-4">
+              <Church className="w-6 h-6 text-gray-600 mr-3" />
+              <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>Krushna Temple</p>
+            </div>
+            <div className="flex items-center">
+              <Heart className="w-6 h-6 text-gray-600 mr-3" />
+              <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>Pet Park</p>
+            </div>
+          </div>
+          <div className="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
+            <div className="flex items-center mb-4">
+              <DoorOpen className="w-6 h-6 text-gray-600 mr-3" />
+              <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>3 Entrance Gates</p>
+            </div>
+            <div className="flex items-center mb-4">
+              <Music className="w-6 h-6 text-gray-600 mr-3" />
+              <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>Exclusive Music & Dance Training</p>
+            </div>
+            <div className="flex items-center">
+              <Sparkles className="w-6 h-6 text-gray-600 mr-3" />
+              <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>Convenience at doorstep: Movie Theatre, Spa, Cafeteria & Guest Suites</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-gray-50 text-black px-6 py-16">
         <h2 className="text-3xl font-bold mb-6 text-center" style={{ fontFamily: 'Didot, serif' }}>Master Layout</h2>
         <div className="flex justify-center">
-          <img src="/layout.jpg" alt="Master Layout" className="w-full max-w-4xl h-auto rounded-lg shadow-lg" />
+          <Image src="/layout.jpg" alt="Master Layout" width={1200} height={800} className="w-full max-w-4xl h-auto rounded-lg shadow-lg" />
         </div>
       </div>
 
@@ -385,9 +670,11 @@ export default function EventsExperiences() {
             >
               {duplicatedImages.map((image, index) => (
                 <div key={index} className="flex-shrink-0 w-1/3 px-2">
-                  <img
+                  <Image
                     src={image}
                     alt={`Gallery Image ${(index % galleryImages.length) + 1}`}
+                    width={400}
+                    height={index % 3 === 1 ? 288 : 256}
                     className={`w-full object-cover rounded-lg shadow-md ${
                       index % 3 === 1 ? 'h-72' : 'h-64'
                     }`}
@@ -409,6 +696,166 @@ export default function EventsExperiences() {
             <ChevronRight className="w-6 h-6" />
           </button>
         </div>
+      </div>
+
+      <div className="bg-white text-black px-6 py-16">
+        <h2 className="text-3xl font-bold mb-6 text-center" style={{ fontFamily: 'Didot, serif' }}>Price Plan</h2>
+        <div className="flex justify-center mb-8">
+
+        </div>
+        <div className="overflow-x-auto max-w-6xl mx-auto">
+          <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+            <thead>
+              <tr className="bg-gray-100">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-300 border-r border-gray-300">Configuration</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-300 border-r border-gray-300">Built Up Area (sq.ft.)</th>
+               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-300 border-r border-gray-300">Price</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-300">Brochure</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-200">
+              <tr>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-b border-gray-300 border-r border-gray-300">2 BHK</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b border-gray-300 border-r border-gray-300">
+                  <button
+                    onClick={() => setCostSheetFormOpen(true)}
+                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition"
+                  >
+                    On Request
+                  </button>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b border-gray-300 border-r border-gray-300">
+                  <button
+                    onClick={() => setCostSheetFormOpen(true)}
+                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition"
+                  >
+                    On Request
+                  </button>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b border-gray-300">
+                  <button
+                    onClick={() => setBrochureFormOpen(true)}
+                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition"
+                  >
+                    Download
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-b border-gray-300 border-r border-gray-300">3 BHK</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b border-gray-300 border-r border-gray-300">
+                  <button
+                    onClick={() => setCostSheetFormOpen(true)}
+                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition"
+                  >
+                    On Request
+                  </button>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b border-gray-300 border-r border-gray-300">
+                  <button
+                    onClick={() => setCostSheetFormOpen(true)}
+                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition"
+                  >
+                    On Request
+                  </button>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b border-gray-300">
+                  <button
+                    onClick={() => setBrochureFormOpen(true)}
+                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition"
+                  >
+                    Download
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-gray-300">4 BHK</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r border-gray-300">
+                  <button
+                    onClick={() => setCostSheetFormOpen(true)}
+                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition"
+                  >
+                    On Request
+                  </button>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r border-gray-300">
+                  <button
+                    onClick={() => setCostSheetFormOpen(true)}
+                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition"
+                  >
+                    On Request
+                  </button>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <button
+                    onClick={() => setBrochureFormOpen(true)}
+                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition"
+                  >
+                    Download
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className="bg-white text-black px-6 py-16 flex items-center gap-8">
+        <div className="flex-1">
+          <h2 className="text-3xl font-bold mb-9 text-center" style={{ fontFamily: 'Didot, serif' }}>Location Highlights</h2>
+          <div className="grid grid-cols-2 gap-4 ml-5">
+            <div className="flex items-center">
+              <GraduationCap className="w-6 h-6 text-gray-600 mr-3" />
+              <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>Wisdom World School - <span className="font-bold">1 Min</span></p>
+            </div>
+            <div className="flex items-center">
+              <GraduationCap className="w-6 h-6 text-gray-600 mr-3" />
+              <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>Amanora School - <span className="font-bold">4 Min</span></p>
+            </div>
+            <div className="flex items-center">
+              <MapPin className="w-6 h-6 text-gray-600 mr-3" />
+              <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>Falcon Street - <span className="font-bold">0 Min</span></p>
+            </div>
+            <div className="flex items-center">
+              <ShoppingBag className="w-6 h-6 text-gray-600 mr-3" />
+              <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>Seasons Mall - <span className="font-bold">5 Min</span></p>
+            </div>
+            <div className="flex items-center">
+              <Building className="w-6 h-6 text-gray-600 mr-3" />
+              <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>Magarpatta IT Park - <span className="font-bold">5 Min</span></p>
+            </div>
+            <div className="flex items-center">
+              <Trees className="w-6 h-6 text-gray-600 mr-3" />
+              <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>Koregaon Park - <span className="font-bold">16 Min</span></p>
+            </div>
+            <div className="flex items-center">
+              <Building className="w-6 h-6 text-gray-600 mr-3" />
+              <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>Hinjewadi IT Park - <span className="font-bold">15 Min</span></p>
+            </div>
+            <div className="flex items-center">
+              <Train className="w-6 h-6 text-gray-600 mr-3" />
+              <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>Hadapsar Railway Station - <span className="font-bold">7 Min</span></p>
+            </div>
+            <div className="flex items-center">
+              <Plane className="w-6 h-6 text-gray-600 mr-3" />
+              <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>Pune International Airport - <span className="font-bold">35 Min</span></p>
+            </div>
+            <div className="flex items-center">
+              <Stethoscope className="w-6 h-6 text-gray-600 mr-3" />
+              <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>Umang Hospital - <span className="font-bold">1 Min</span></p>
+            </div>
+          </div>
+        </div>
+        <div className="flex-1">
+          <Image src="/location.png" alt="Location Map" width={800} height={600} className="w-full h-auto rounded-lg shadow-lg" />
+        </div>
+      </div>
+
+      <div className="bg-gray-50 text-black px-6 py-16">
+        <h2 className="text-3xl font-bold mb-6 text-center" style={{ fontFamily: 'Didot, serif' }}>About the Developer</h2>
+        <p className="text-lg leading-relaxed max-w-4xl text-center mx-auto" style={{ fontFamily: 'Crimson Text, serif' }}>
+          Vyom Sigma Developers is a trusted name in Pune&apos;s real estate market, known for its commitment to quality, innovation, and customer satisfaction. Focused on blending luxury, functionality, and sustainability, they deliver world-class residential and commercial projects. With a portfolio of successful developments, Vyom Sigma continues to create timeless homes that offer not just properties, but a superior lifestyle.
+        </p>
       </div>
 
      <footer

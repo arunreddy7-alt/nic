@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, ChevronDown, Mail, Phone, ChevronRight, ChevronLeft, MapPin, Building, Home } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
@@ -305,9 +306,11 @@ export default function BuyStay() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full">
           {/* Property Card 1 */}
           <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-            <img
-              src="/int3.png"
+            <Image
+              src="/Avinea1.png"
               alt="Luxury Apartment in Hyderabad"
+              width={400}
+              height={256}
               className="w-full h-64 object-cover rounded-t-lg"
             />
             <div className="p-5">
