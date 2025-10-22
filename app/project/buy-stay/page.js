@@ -311,60 +311,32 @@ export default function BuyStay() {
               className="w-full h-64 object-cover rounded-t-lg"
             />
             <div className="p-5">
-              <h3 className="text-xl font-bold mb-3 text-gray-800">Luxury Apartment in Hyderabad</h3>
+              <h3 className="text-xl font-bold mb-3 text-gray-800">AVINEA by Vyom-Sigma</h3>
 
               <div className="space-y-2 mb-4">
                 <div className="flex items-center text-sm text-gray-600">
                   <MapPin className="w-4 h-4 mr-2 text-purple-600" />
-                  <span>Hyderabad, Telangana</span>
+                  <span>Hadapsar, Pune, MH</span>
                 </div>
                 <div className="flex items-center text-sm text-gray-600">
                   <Building className="w-4 h-4 mr-2 text-purple-600" />
-                  <span>3 BHK Apartment</span>
+                  <span>2/3/4 BHK Apartments</span>
                 </div>
               </div>
 
               <hr className="border-gray-200 mb-4" />
 
               <div className="flex justify-center items-center">
-                <button className="bg-[#755306] text-white px-6 py-2 rounded hover:bg-[#5a3d24] transition-colors text-lg font-semibold">
-                  Details
-                </button>
+                <Link href="/project/buy-stay/avinea">
+                  <button className="bg-[#755306] text-white px-6 py-2 rounded hover:bg-[#5a3d24] transition-colors text-lg font-semibold">
+                    Details
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
 
-          {/* Property Card 2 */}
-          <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-            <img
-              src="/int4.png"
-              alt="Modern Villa in Bangalore"
-              className="w-full h-64 object-cover rounded-t-lg"
-            />
-            <div className="p-5">
-              <h3 className="text-xl font-bold mb-3 text-gray-800">Modern Villa in Bangalore</h3>
-
-              <div className="space-y-2 mb-4">
-                <div className="flex items-center text-sm text-gray-600">
-                  <MapPin className="w-4 h-4 mr-2 text-purple-600" />
-                  <span>Bangalore, Karnataka</span>
-                </div>
-                <div className="flex items-center text-sm text-gray-600">
-                  <Home className="w-4 h-4 mr-2 text-purple-600" />
-                  <span>4 BHK Villa</span>
-                </div>
-              </div>
-
-              <hr className="border-gray-200 mb-4" />
-
-              <div className="flex justify-center items-center">
-                <button className="bg-[#755306] text-white px-6 py-2 rounded hover:bg-[#5a3d24] transition-colors text-lg font-semibold">
-                  Details
-                </button>
-              </div>
-            </div>
-          </div>
-
+          
 
         </div>
       </div>
