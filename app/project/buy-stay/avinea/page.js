@@ -35,8 +35,9 @@ export default function EventsExperiences() {
     email: ''
   });
   const [galleryIndex, setGalleryIndex] = useState(0);
-  const galleryImages = ['/gallery1.png', '/gallery2.png', '/gallery3.png', '/gallery4.png', '/gallery5.png', '/gallery6.png', '/gallery7.png', '/gallery8.png', '/gallery9.png'];
+  const galleryImages = ['/gallery1.png', '/gallery2.png', '/gallery3.png', '/gallery7.png', '/gallery5.png', '/gallery8.png', '/gallery4.png', '/gallery6.png', '/gallery9.png'];
   const duplicatedImages = [...galleryImages, ...galleryImages, ...galleryImages]; // 27 images for infinite sliding
+  const [imagesPerView, setImagesPerView] = useState(3);
   const [navbarBg, setNavbarBg] = useState('bg-grey');
   const [navbarTextColor, setNavbarTextColor] = useState('text-white');
   const [dropdownBg, setDropdownBg] = useState('bg-grey');
@@ -74,8 +75,22 @@ export default function EventsExperiences() {
       }
     };
 
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setImagesPerView(1);
+      } else {
+        setImagesPerView(3);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Set initial value
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   const handleContactInputChange = (e) => {
@@ -543,9 +558,9 @@ export default function EventsExperiences() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/100 to-transparent"></div>
         {/* Centered text */}
         <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-4 -mb-14">
-        <h1 className="text-2xl sm:text-4xl lg:text-6xl font-bold text-white font-poppins opacity-60 text-center font-avenir-next-lt-pro-light font-bold">AVINEA by Vyom-Sigma</h1>
+          <h1 className="text-2xl sm:text-4xl lg:text-6xl font-bold text-white font-poppins opacity-60 text-center font-avenir-next-lt-pro-light font-bold">AVINEA by Vyom-Sigma</h1>
           <button
-            className="mt-8 px-8 py-3 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition"
+            className="mt-8 px-8 py-3 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition text-sm sm:text-base"
             onClick={() => document.getElementById('overview').scrollIntoView({ behavior: 'smooth' })}
           >
             Explore Now
@@ -553,7 +568,7 @@ export default function EventsExperiences() {
         </div>
       </div>
 
-      <div id="overview" className="bg-white text-black px-6 py-16 flex items-center gap-8">
+      <div id="overview" className="bg-white text-black px-6 py-16 flex flex-col md:flex-row md:items-center gap-8">
         <div className="flex-1">
           <h2 className="text-3xl font-bold mb-6 text-left" style={{ fontFamily: 'Didot, serif' }}>Overview</h2>
           <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>
@@ -569,11 +584,11 @@ export default function EventsExperiences() {
 
       <div className="bg-gray-50 text-black px-6 py-16">
         <h2 className="text-3xl font-bold mb-6 text-center" style={{ fontFamily: 'Didot, serif' }}>Connectivity Highlights</h2>
-        <p className="text-lg leading-relaxed max-w-4xl text-center mb-8 ml-60" style={{ fontFamily: 'Crimson Text, serif' }}>
+        <p className="text-lg leading-relaxed max-w-4xl text-center mb-8 mx-auto" style={{ fontFamily: 'Crimson Text, serif' }}>
           Avinea enjoys an excellent location with seamless access to Pune&apos;s major roads and business districts.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl ml-33">
-          <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200 flex items-start gap-6 ">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200 flex items-start gap-6">
             <Train className="w-10 h-10 text-gray-600 flex-shrink-0 mt-2" />
             <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>
               Located near major metro stations, bus stops, and transport hubs for easy commuting.
@@ -596,10 +611,10 @@ export default function EventsExperiences() {
 
       <div className="bg-white text-black px-6 py-16">
         <h2 className="text-3xl font-bold mb-6 text-center" style={{ fontFamily: 'Didot, serif' }}>Amenities</h2>
-        <p className="text-lg leading-relaxed max-w-4xl text-center mb-8 ml-60" style={{ fontFamily: 'Crimson Text, serif' }}>
+        <p className="text-lg leading-relaxed max-w-4xl text-center mb-8 mx-auto" style={{ fontFamily: 'Crimson Text, serif' }}>
           55+ Thoughtfully curated expansive Lifestyle Amenities, including:
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl ml-33">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           <div className="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
             <div className="flex items-center mb-4">
               <Waves className="w-6 h-6 text-gray-600 mr-3" />
@@ -655,28 +670,28 @@ export default function EventsExperiences() {
 
       <div className="bg-gray-50 text-black px-6 py-16">
         <h2 className="text-3xl font-bold mb-6 text-center" style={{ fontFamily: 'Didot, serif' }}>Master Layout</h2>
-        <div className="flex justify-center">
+        <div className="flex justify-center px-4">
           <Image src="/layout.jpg" alt="Master Layout" width={1200} height={800} className="w-full max-w-4xl h-auto rounded-lg shadow-lg" />
         </div>
       </div>
 
       <div className="bg-gray-50 text-black px-6 py-16">
         <h2 className="text-3xl font-bold mb-6 text-center" style={{ fontFamily: 'Didot, serif' }}>Gallery</h2>
-        <div className="relative max-w-6xl mx-auto">
+        <div className="relative max-w-6xl mx-auto px-4">
           <div className="overflow-hidden rounded-lg">
             <div
               className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${galleryIndex * (100 / 3)}%)` }}
+              style={{ transform: `translateX(-${galleryIndex * (100 / imagesPerView)}%)` }}
             >
               {duplicatedImages.map((image, index) => (
-                <div key={index} className="flex-shrink-0 w-1/3 px-2">
+                <div key={index} className={`flex-shrink-0 px-2 ${imagesPerView === 1 ? 'w-full' : 'w-1/3'}`}>
                   <Image
                     src={image}
                     alt={`Gallery Image ${(index % galleryImages.length) + 1}`}
                     width={400}
-                    height={index % 3 === 1 ? 288 : 256}
+                    height={imagesPerView === 1 ? 300 : (index % 3 === 1 ? 288 : 256)}
                     className={`w-full object-cover rounded-lg shadow-md ${
-                      index % 3 === 1 ? 'h-72' : 'h-64'
+                      imagesPerView === 1 ? 'h-80' : (index % 3 === 1 ? 'h-72' : 'h-64')
                     }`}
                   />
                 </div>
@@ -701,95 +716,94 @@ export default function EventsExperiences() {
       <div className="bg-white text-black px-6 py-16">
         <h2 className="text-3xl font-bold mb-6 text-center" style={{ fontFamily: 'Didot, serif' }}>Price Plan</h2>
         <div className="flex justify-center mb-8">
-
         </div>
         <div className="overflow-x-auto max-w-6xl mx-auto">
           <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
             <thead>
               <tr className="bg-gray-100">
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-300 border-r border-gray-300">Configuration</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-300 border-r border-gray-300">Built Up Area (sq.ft.)</th>
-               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-300 border-r border-gray-300">Price</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-300">Brochure</th>
+                <th className="px-4 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-300 border-r border-gray-300">Configuration</th>
+                <th className="px-4 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-300 border-r border-gray-300">Built Up Area (sq.ft.)</th>
+                <th className="px-4 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-300 border-r border-gray-300">Price</th>
+                <th className="px-4 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-300">Brochure</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
               <tr>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-b border-gray-300 border-r border-gray-300">2 BHK</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b border-gray-300 border-r border-gray-300">
+                <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-b border-gray-300 border-r border-gray-300">2 BHK</td>
+                <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b border-gray-300 border-r border-gray-300">
                   <button
                     onClick={() => setCostSheetFormOpen(true)}
-                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition"
+                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition text-xs md:text-sm"
                   >
                     On Request
                   </button>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b border-gray-300 border-r border-gray-300">
+                <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b border-gray-300 border-r border-gray-300">
                   <button
                     onClick={() => setCostSheetFormOpen(true)}
-                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition"
+                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition text-xs md:text-sm"
                   >
                     On Request
                   </button>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b border-gray-300">
+                <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b border-gray-300">
                   <button
                     onClick={() => setBrochureFormOpen(true)}
-                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition"
+                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition text-xs md:text-sm"
                   >
                     Download
                   </button>
                 </td>
               </tr>
               <tr>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-b border-gray-300 border-r border-gray-300">3 BHK</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b border-gray-300 border-r border-gray-300">
+                <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-b border-gray-300 border-r border-gray-300">3 BHK</td>
+                <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b border-gray-300 border-r border-gray-300">
                   <button
                     onClick={() => setCostSheetFormOpen(true)}
-                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition"
+                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition text-xs md:text-sm"
                   >
                     On Request
                   </button>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b border-gray-300 border-r border-gray-300">
+                <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b border-gray-300 border-r border-gray-300">
                   <button
                     onClick={() => setCostSheetFormOpen(true)}
-                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition"
+                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition text-xs md:text-sm"
                   >
                     On Request
                   </button>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b border-gray-300">
+                <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b border-gray-300">
                   <button
                     onClick={() => setBrochureFormOpen(true)}
-                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition"
+                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition text-xs md:text-sm"
                   >
                     Download
                   </button>
                 </td>
               </tr>
               <tr>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-gray-300">4 BHK</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r border-gray-300">
+                <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-gray-300">4 BHK</td>
+                <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r border-gray-300">
                   <button
                     onClick={() => setCostSheetFormOpen(true)}
-                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition"
+                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition text-xs md:text-sm"
                   >
                     On Request
                   </button>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r border-gray-300">
+                <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r border-gray-300">
                   <button
                     onClick={() => setCostSheetFormOpen(true)}
-                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition"
+                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition text-xs md:text-sm"
                   >
                     On Request
                   </button>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   <button
                     onClick={() => setBrochureFormOpen(true)}
-                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition"
+                    className="bg-[#755306] text-white px-4 py-2 rounded-lg hover:bg-[#5e4204] transition text-xs md:text-sm"
                   >
                     Download
                   </button>
@@ -800,10 +814,10 @@ export default function EventsExperiences() {
         </div>
       </div>
 
-      <div className="bg-white text-black px-6 py-16 flex items-center gap-8">
+      <div className="bg-white text-black px-6 py-16 flex flex-col md:flex-row md:items-center gap-8">
         <div className="flex-1">
           <h2 className="text-3xl font-bold mb-9 text-center" style={{ fontFamily: 'Didot, serif' }}>Location Highlights</h2>
-          <div className="grid grid-cols-2 gap-4 ml-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="flex items-center">
               <GraduationCap className="w-6 h-6 text-gray-600 mr-3" />
               <p className="text-lg leading-relaxed text-left" style={{ fontFamily: 'Crimson Text, serif' }}>Wisdom World School - <span className="font-bold">1 Min</span></p>
@@ -853,7 +867,7 @@ export default function EventsExperiences() {
 
       <div className="bg-gray-50 text-black px-6 py-16">
         <h2 className="text-3xl font-bold mb-6 text-center" style={{ fontFamily: 'Didot, serif' }}>About the Developer</h2>
-        <p className="text-lg leading-relaxed max-w-4xl text-center mx-auto" style={{ fontFamily: 'Crimson Text, serif' }}>
+        <p className="text-lg leading-relaxed max-w-4xl text-center mx-auto px-4" style={{ fontFamily: 'Crimson Text, serif' }}>
           Vyom Sigma Developers is a trusted name in Pune&apos;s real estate market, known for its commitment to quality, innovation, and customer satisfaction. Focused on blending luxury, functionality, and sustainability, they deliver world-class residential and commercial projects. With a portfolio of successful developments, Vyom Sigma continues to create timeless homes that offer not just properties, but a superior lifestyle.
         </p>
       </div>
