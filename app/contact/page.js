@@ -265,53 +265,62 @@ export default function ContactSection() {
 
         {/* Mobile Dropdown Menu */}
         {menuOpen && (
-          <div className="absolute top-full left-0 w-full bg-[#845547] flex flex-col items-center py-4 border-t border-gray-200 sm:hidden animate-slide-down">
-            <div
-              className="py-2 text-sm text-[#fffbea] hover:underline cursor-pointer flex items-center justify-center w-full"
-              onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+          <div className="fixed inset-0 bg-[rgb(31,44,32)] z-50 flex flex-col items-center justify-center slide-up-menu">
+            <button
+              className="absolute top-6 right-6 text-white hover:text-gray-200"
+              onClick={() => setMenuOpen(false)}
+              aria-label="Close Menu"
             >
-              Projects
-              <ChevronDown className={`w-4 h-5 ml-2 transition-transform ${mobileDropdownOpen ? 'rotate-180' : ''}`} />
-            </div>
-            {mobileDropdownOpen && (
-              <div className="flex flex-col items-center w-full">
-                <a
-                  href="/project/interiors"
-                  className="py-2 text-sm text-[#fffbea] hover:underline pl-4"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Interiors
-                </a>
-                <a
-                  href="/project/buy-stay"
-                  className="py-2 text-sm text-[#fffbea] hover:underline pl-4"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Buy & Stay
-                </a>
-                <a
-                  href="/project/events-experiences"
-                  className="py-2 text-sm text-[#fffbea] hover:underline pl-4"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Events & Experiences
-                </a>
+              <X className="w-8 h-8" />
+            </button>
+            <div className="flex flex-col items-center space-y-4 text-white text-lg font-medium">
+              <div
+                className="py-2 text-white hover:underline cursor-pointer flex items-center justify-center w-full"
+                onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+              >
+                Projects
+                <ChevronDown className={`w-5 h-5 ml-2 transition-transform ${mobileDropdownOpen ? 'rotate-180' : ''}`} />
               </div>
-            )}
-            <a
-              href="/about"
-              className="py-2 text-sm text-[#fffbea] hover:underline"
-              onClick={() => setMenuOpen(false)}
-            >
-              About
-            </a>
-            <a
-              href="/contact"
-              className="py-2 text-sm text-[#fffbea] hover:underline"
-              onClick={() => setMenuOpen(false)}
-            >
-              Contact
-            </a>
+              {mobileDropdownOpen && (
+                <div className="flex flex-col items-center w-full space-y-2">
+                  <a
+                    href="/project/interiors"
+                    className="py-2 text-white hover:underline"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Interiors
+                  </a>
+                  <a
+                    href="/project/buy-stay"
+                    className="py-2 text-white hover:underline"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Buy & Stay
+                  </a>
+                  <a
+                    href="/project/events-experiences"
+                    className="py-2 text-white hover:underline"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Events & Experiences
+                  </a>
+                </div>
+              )}
+              <a
+                href="/about"
+                className="py-2 text-white hover:underline"
+                onClick={() => setMenuOpen(false)}
+              >
+                About
+              </a>
+              <a
+                href="/contact"
+                className="py-2 text-white hover:underline"
+                onClick={() => setMenuOpen(false)}
+              >
+                Contact
+              </a>
+            </div>
           </div>
         )}
       </nav>
@@ -434,8 +443,8 @@ export default function ContactSection() {
         <div className="max-w-6xl w-full grid md:grid-cols-2 gap-16 md:translate-x-19 md:translate-y-11">
         {/* Left Column - Form */}
         <div>
-          <h2 className="text-lg font-semibold mb-4" style={{ fontFamily: 'serif' }}>Contact Us</h2>
-          <p className="mb-8 text-sm leading-relaxed font-avenir-next-lt-pro-light font-medium">
+          <h2 className="text-lg font-medium mb-4 font-avenir-next-lt-pro-light" >Contact Us</h2>
+          <p className="mb-8 text-md leading-relaxed font-avenir-next-lt-pro-light font-medium"  style={{ fontFamily: 'Crimson Text, serif' }}>
             Questions or ready to get started? Fill out the form below and we’ll get back to you soon.
           </p>
 
@@ -528,7 +537,7 @@ export default function ContactSection() {
         </div>
 
         {/* Right Column - Contact Info */}
-        <div className="space-y-6 text-sm transform md:translate-x-19">
+        <div className="space-y-6 text-md transform md:translate-x-19"  style={{ fontFamily: 'Crimson Text, serif' }}>
           <p>
             <span className="font-">NICARA</span> is now offering
             1-on-1<br/> consultations via <em>the expert</em>.
@@ -587,16 +596,16 @@ export default function ContactSection() {
             {/* Links section */}
             <div className="flex flex-wrap gap-3 sm:gap-6 justify-center md:justify-start text-center md:text-left relative md:-ml-4">
               <div className="relative ">
-                <button
-                  className="md:hidden text-sm hover:underline flex items-center"
-                  onClick={() => setFooterDropdownOpen(!footerDropdownOpen)}
-                >
-                  Projects
+          <button
+            className="md:hidden text-sm hover:underline flex items-center font-avenir-next-lt-pro-light font-light"
+            onClick={() => setFooterDropdownOpen(!footerDropdownOpen)}
+          >
+            Projects
                   <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${footerDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
                 <a
                   href="#"
-                  className="hidden md:block text-sm hover:underline"
+                  className="hidden md:block text-sm hover:underline font-avenir-next-lt-pro-light font-light"
                   onMouseEnter={() => setFooterDropdownOpen(true)}
                   onMouseLeave={() => setFooterDropdownOpen(false)}
                 >
@@ -608,37 +617,40 @@ export default function ContactSection() {
                     onMouseEnter={() => setFooterDropdownOpen(true)}
                     onMouseLeave={() => setFooterDropdownOpen(false)}
                   >
-                    <a href="/project/interiors" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306]">
+                    <a href="/project/interiors" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306] font-avenir-next-lt-pro-light font-light">
                       Interiors
                     </a>
-                    <a href="/project/buy-stay" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306]">
+                    <a href="/project/buy-stay" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306] font-avenir-next-lt-pro-light font-light">
                       Buy & Stay
                     </a>
-                    <a href="/project/events-experiences" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306]">
+                    <a href="/project/events-experiences" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306] font-avenir-next-lt-pro-light font-light">
                       Events & Experiences
                     </a>
                   </div>
                 )}
               </div>
-              <a href="/about" className="text-sm hover:underline ml-4">About</a>
-              <a href="/contact" className="text-sm hover:underline ml-4">Contact</a>
+              <a href="/about" className="text-sm hover:underline ml-4 font-avenir-next-lt-pro-light font-light">About</a>
+              <a href="/contact" className="text-sm hover:underline ml-4 font-avenir-next-lt-pro-light font-light">Contact</a>
             </div>
       
             {/* Description section */}
-            <div className="text-sm text-center md:text-left md:-mr-39 md:ml-80 px-4 md:px-0">
+            <div className="text-md text-center md:text-left md:-mr-39 md:ml-80 px-4 md:px-0" style={{ fontFamily: 'Crimson Text, serif' }}>
               Established in 2019, Nicara Design is a full-service design firm based in Hyderabad, India.
             </div>
-      
+
             {/* Social section */}
-            <div className="text-sm text-center md:text-left md:-mr-19 md:ml-52 space-y-1 px-4 md:px-0">
+            <div className="text-md text-center md:text-left md:-mr-19 md:ml-52 space-y-1 px-4 md:px-0" style={{ fontFamily: 'Crimson Text, serif' }}>
               <div>
                 IG: <a href="https://www.instagram.com/nicaradesign?igsh=MTRyZHkzeDNtMGRoeg==" className="underline hover:no-underline">@nicaradesign</a>
               </div>
+              <div>
+                Phone: <a href="tel:8559901234" className="underline hover:no-underline">+91 855 990 1234</a>
+              </div>
             </div>
           </div>
-      
+
           {/* Bottom section */}
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm gap-4 text-center md:text-left -ml-5">
+          <div className="flex flex-col md:flex-row justify-between items-center text-md gap-4 text-center md:text-left -ml-5" style={{ fontFamily: 'Crimson Text, serif' }}>
             <div>
               Questions? Reach out:<br />
               <a href="mailto:hello@dwelltales.com" className="underline hover:no-underline">
@@ -646,7 +658,7 @@ export default function ContactSection() {
               </a>
             </div>
             </div>
-            <div className="ml-256 text-sm -mb-12 -mt-18">Nicara Design © 2025</div>
+            <div className="ml-256 text-sm -mb-12 -mt-18" style={{ fontFamily: 'font-avenir-next-lt-pro-light, serif' }}>Nicara Design © 2025</div>
         </div>
       </footer>
       </div>

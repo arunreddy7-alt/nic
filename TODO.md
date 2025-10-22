@@ -1,6 +1,4 @@
-- [x] Update popup form container to square shape (add h-80 for equal width and height)
-- [x] Change form heading to "Get a Free Design Consultation"
-- [x] Update form fields to include Name, Email, and Phone Number (remove Message field)
-- [x] Verify close button (X) is present and functional
-- [x] Make the form bigger to fit all content (increase size from w-80 h-80 to w-96 h-96)
-- [x] Move send button to left and make its width bigger (change self-center to self-start and add w-32)
+- [x] Add slide-up animation in globals.css for mobile menu
+- [ ] Modify mobile menu in page.js to full-screen fixed overlay with green background
+- [ ] Update menu items to be vertically centered: Interiors, Buy & Stay, Events & Experiences, About, Contact
+- [ ] Add close button (X) in top-right of mobile menu

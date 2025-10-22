@@ -59,6 +59,34 @@ body {
   animation: zoomPulse 2s ease-in-out infinite;
 }
 
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease-out forwards;
+}
+
+@keyframes slideUpMenu {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-up-menu {
+  animation: slideUpMenu 0.5s ease-out forwards;
+}
+
 .hero-bg {
   background-image: url(/hero.png);
   background-size: cover;
