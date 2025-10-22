@@ -307,7 +307,7 @@ export default function BuyStay() {
           {/* Property Card 1 */}
           <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
             <Image
-              src="/Avinea1.png"
+              src="/buy&stay1.png"
               alt="Luxury Apartment in Hyderabad"
               width={400}
               height={256}
