@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
+import Image from "next/image";
 import Link from 'next/link';
-import Image from 'next/image';
-import { Menu, X, ChevronDown, Mail, Phone, ChevronRight, ChevronLeft, MapPin, Building, Home } from 'lucide-react';
+import { Menu, X, ChevronDown, Mail, Phone, ChevronRight, ChevronLeft } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
-export default function BuyStay() {
+export default function FamilyFarmhouse() {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -40,12 +40,12 @@ export default function BuyStay() {
         from_name: contactFormData.name,
         from_email: contactFormData.email,
         phone: contactFormData.phone,
-        hear_about_us: 'Buy & Stay Page Floating Contact Form',
+        hear_about_us: 'Family Farmhouse Page Floating Contact Form',
         message: contactFormData.message,
       },
       'VFpd616Sj6d9RlzWA'
     ).then((result) => {
-      console.log('Buy & Stay page floating contact email sent successfully:', result.text);
+      console.log('Family Farmhouse page floating contact email sent successfully:', result.text);
       alert('Message sent successfully!');
       setContactFormData({
         name: '',
@@ -54,13 +54,14 @@ export default function BuyStay() {
         message: ''
       });
     }, (error) => {
-      console.error('Error sending Buy & Stay page floating contact email:', error.text);
+      console.error('Error sending Family Farmhouse page floating contact email:', error.text);
       alert('Error sending message. Please try again.');
     });
   };
 
   return (
-    <div className="font-sans relative min-h-screen bg-[#845547] overflow-x-hidden">
+    <div className="font-sans relative min-h-screen bg-white overflow-x-hidden">
+
       {/* ✅ NAVBAR */}
       <nav
         className="fixed top-0 left-0 right-0 bg-white flex justify-between items-center w-full px-6 py-4 z-20 sm:grid sm:grid-cols-3 sm:items-center font-medium"
@@ -68,7 +69,7 @@ export default function BuyStay() {
         {/* Projects (Desktop Left) */}
         <div className="hidden sm:flex sm:justify-start relative">
           <div
-            className="text-sm hover:underline text-black cursor-pointer flex items-center justify-between w-full"
+            className="text-sm hover:underline text-black cursor-pointer flex items-center justify-between w-full font-avenir-next-lt-pro-light font-medium"
             onMouseEnter={() => setDropdownOpen(true)}
             onMouseLeave={() => setDropdownOpen(false)}
           >
@@ -80,13 +81,13 @@ export default function BuyStay() {
               onMouseEnter={() => setDropdownOpen(true)}
               onMouseLeave={() => setDropdownOpen(false)}
             >
-              <Link href="/project/interiors" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">
+              <Link href="/project/interiors" className="block px-4 py-2 text-sm text-black hover:bg-gray-100 font-avenir-next-lt-pro-light font-medium">
                 Interiors
               </Link>
-              <Link href="/project/buy-stay" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">
+              <Link href="/project/buy-stay" className="block px-4 py-2 text-sm text-black hover:bg-gray-100 font-avenir-next-lt-pro-light font-medium">
                 Buy & Stay
               </Link>
-              <Link href="/project/events-experiences" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">
+              <Link href="/project/events-experiences" className="block px-4 py-2 text-sm text-black hover:bg-gray-100 font-avenir-next-lt-pro-light font-medium">
                 Events & Experiences
               </Link>
             </div>
@@ -115,8 +116,8 @@ export default function BuyStay() {
 
         {/* About and Contact (Desktop Right) */}
         <div className="hidden sm:flex sm:justify-end gap-5">
-          <a href="/about" className="text-sm hover:underline text-black">About</a>
-          <a href="/contact" className="text-sm hover:underline text-black">Contact</a>
+          <a href="/about" className="text-sm hover:underline text-black font-avenir-next-lt-pro-light font-medium">About</a>
+          <a href="/contact" className="text-sm hover:underline text-black font-avenir-next-lt-pro-light font-medium">Contact</a>
         </div>
 
         {/* Mobile Dropdown Menu */}
@@ -295,128 +296,88 @@ export default function BuyStay() {
           </div>
         )}
 
-      <div className="relative min-h-screen bg-white text-black flex flex-col items-center px-6 pt-35 pb-16">
-        {/* Section Heading */}
-        <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 tracking-wide" style={{ fontFamily: 'Didot, serif' }}>Featured Properties</h1>
-          <p className="text-lg text-gray-600">Discover premium apartments and villas in prime locations.</p>
-        </div>
-
-        {/* Property Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full">
-          {/* Property Card 1 */}
-          <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-            <Image
-              src="/buy&stay1.png"
-              alt="Luxury Apartment in Hyderabad"
-              width={400}
-              height={256}
-              className="w-full h-64 object-cover rounded-t-lg"
-            />
-            <div className="p-5">
-              <h3 className="text-xl font-bold mb-3 text-gray-800">AVINEA by Vyom-Sigma</h3>
-
-              <div className="space-y-2 mb-4">
-                <div className="flex items-center text-sm text-gray-600">
-                  <MapPin className="w-4 h-4 mr-2 text-purple-600" />
-                  <span>Hadapsar, Pune, MH</span>
-                </div>
-                <div className="flex items-center text-sm text-gray-600">
-                  <Building className="w-4 h-4 mr-2 text-purple-600" />
-                  <span>2/3/4 BHK Apartments</span>
-                </div>
-              </div>
-
-              <hr className="border-gray-200 mb-4" />
-
-              <div className="flex justify-center items-center">
-                <Link href="/project/buy-stay/avinea">
-                  <button className="bg-[#755306] text-white px-6 py-2 rounded hover:bg-[#5a3d24] transition-colors text-lg font-semibold">
-                    Details
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          
-
+      <div className="pt-24 min-h-screen flex flex-col items-center justify-center px-4">
+        <div className="flex flex-col items-center">
+          <Image src="/int6.png" alt="Family Farmhouse" width={700} height={400} className="w-[700px] h-[400px] object-cover" />
+          <h1 className="mt-4 text-black text-center font-avenir-next-lt-pro-light font-medium text-2xl">Family Farmhouse - East Texas</h1>
+          <p className="mt-2 text-black text-center font-avenir-next-lt-pro-light font-light">A warm and inviting farmhouse design perfect for family living.</p>
+          <Link href="/project/interiors" className="mt-4 text-black hover:underline font-avenir-next-lt-pro-light font-medium">← Back to Interiors</Link>
         </div>
       </div>
       <footer
-        className="text-amber-50 py-16 sm:py-24 px-4 sm:px-10 md:px-16 lg:px-24 xl:px-32"
-        style={{ backgroundColor: '#755306' }}
-      >
-        <div className="mx-auto w-full max-w-[2200px] space-y-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {/* Links section */}
-            <div className="flex flex-wrap gap-3 sm:gap-6 justify-center md:justify-start text-center md:text-left relative md:-ml-4">
-                          <div className="relative ">
-                      <button
-                        className="md:hidden text-md hover:underline flex items-center font-avenir-next-lt-pro-light font-light"
-                        onClick={() => setFooterDropdownOpen(!footerDropdownOpen)}
-                      >
-                        Projects
-                              <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${footerDropdownOpen ? 'rotate-180' : ''}`} />
-                            </button>
-                            <a
-                              href="#"
-                              className="hidden md:block text-md hover:underline font-avenir-next-lt-pro-light font-light"
+      className="mt-15 md:mt-30 text-amber-50 py-16 sm:py-24 px-4 sm:px-10 md:px-16 lg:px-24 xl:px-32"
+      style={{ backgroundColor: '#755306' }}
+    >
+      <div className="mx-auto w-full max-w-[2200px] space-y-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          {/* Links section */}
+          <div className="flex flex-wrap gap-3 sm:gap-6 justify-center md:justify-start text-center md:text-left relative md:-ml-4">
+                        <div className="relative ">
+                    <button
+                      className="md:hidden text-md hover:underline flex items-center font-avenir-next-lt-pro-light font-light"
+                      onClick={() => setFooterDropdownOpen(!footerDropdownOpen)}
+                    >
+                      Projects
+                            <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${footerDropdownOpen ? 'rotate-180' : ''}`} />
+                          </button>
+                          <a
+                            href="#"
+                            className="hidden md:block text-md hover:underline font-avenir-next-lt-pro-light font-light"
+                            onMouseEnter={() => setFooterDropdownOpen(true)}
+                            onMouseLeave={() => setFooterDropdownOpen(false)}
+                          >
+                            Projects
+                          </a>
+                          {footerDropdownOpen && (
+                            <div
+                              className="absolute bottom-full left-0 bg-[#755306] shadow-lg py-2 w-48 z-30"
                               onMouseEnter={() => setFooterDropdownOpen(true)}
                               onMouseLeave={() => setFooterDropdownOpen(false)}
                             >
-                              Projects
-                            </a>
-                            {footerDropdownOpen && (
-                              <div
-                                className="absolute bottom-full left-0 bg-[#755306] shadow-lg py-2 w-48 z-30"
-                                onMouseEnter={() => setFooterDropdownOpen(true)}
-                                onMouseLeave={() => setFooterDropdownOpen(false)}
-                              >
-                                <a href="/project/interiors" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306] font-avenir-next-lt-pro-light font-light">
-                                  Interiors
-                                </a>
-                                <a href="/project/buy-stay" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306] font-avenir-next-lt-pro-light font-light">
-                                  Buy & Stay
-                                </a>
-                                <a href="/project/events-experiences" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306] font-avenir-next-lt-pro-light font-light">
-                                  Events & Experiences
-                                </a>
-                              </div>
-                            )}
-                          </div>
-                          <a href="/about" className="text-md hover:underline ml-4 font-avenir-next-lt-pro-light font-light">About</a>
-                          <a href="/contact" className="text-md hover:underline ml-4 font-avenir-next-lt-pro-light font-light">Contact</a>
+                              <a href="/project/interiors" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306] font-avenir-next-lt-pro-light font-light">
+                                Interiors
+                              </a>
+                              <a href="/project/buy-stay" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306] font-avenir-next-lt-pro-light font-light">
+                                Buy & Stay
+                              </a>
+                              <a href="/project/events-experiences" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306] font-avenir-next-lt-pro-light font-light">
+                                Events & Experiences
+                              </a>
+                            </div>
+                          )}
                         </div>
-                  
-                        {/* Description section */}
-                        <div className="text-[1.05rem] text-center md:text-left md:-mr-39 md:ml-80 px-4 md:px-0" style={{ fontFamily: 'Crimson Text, serif' }}>
-                           Established in 2019, Nicara Design is a full-service design firm based in Hyderabad, India.
+                        <a href="/about" className="text-md hover:underline ml-4 font-avenir-next-lt-pro-light font-light">About</a>
+                        <a href="/contact" className="text-md hover:underline ml-4 font-avenir-next-lt-pro-light font-light">Contact</a>
+                      </div>
+                
+                      {/* Description section */}
+                      <div className="text-[1.05rem] text-center md:text-left md:-mr-39 md:ml-80 px-4 md:px-0" style={{ fontFamily: 'Crimson Text, serif' }}>
+                         Established in 2019, Nicara Design is a full-service design firm based in Hyderabad, India.
+                      </div>
+          
+                      {/* Social section */}
+                      <div className="text-[1.05rem] text-center md:text-left md:-mr-19 md:ml-52 space-y-1 px-4 md:px-0" style={{ fontFamily: 'Crimson Text, serif' }}>
+                        <div>
+                          IG: <a href="https://www.instagram.com/nicaradesign?igsh=MTRyZHkzeDNtMGRoeg==" className="underline hover:no-underline">@nicaradesign</a>
                         </div>
-            
-                        {/* Social section */}
-                        <div className="text-[1.05rem] text-center md:text-left md:-mr-19 md:ml-52 space-y-1 px-4 md:px-0" style={{ fontFamily: 'Crimson Text, serif' }}>
-                          <div>
-                            IG: <a href="https://www.instagram.com/nicaradesign?igsh=MTRyZHkzeDNtMGRoeg==" className="underline hover:no-underline">@nicaradesign</a>
-                          </div>
-                          <div>
-                            Phone: <a href="tel:8559901234" className="underline hover:no-underline">+91 855 990 1234</a>
-                          </div>
+                        <div>
+                          Phone: <a href="tel:8559901234" className="underline hover:no-underline">+91 855 990 1234</a>
                         </div>
                       </div>
-            
-                      {/* Bottom section */}
-                      <div className="flex flex-col md:flex-row justify-between items-center text-[1.05rem] gap-4 text-center md:text-left -ml-5" style={{ fontFamily: 'Crimson Text, serif' }}>
-                        <div>
-                          Questions? Reach out:<br />
-                          <a href="mailto:hello@dwelltales.com" className="underline hover:no-underline">
-                          hello@dwelltales.com
-                          </a>
-                        </div>
-                        </div>
-                        <div className="ml-256 text-md -mb-12 -mt-18" style={{ fontFamily: 'font-avenir-next-lt-pro-light, serif' }}>Nicara Design © 2025</div>
                     </div>
-                  </footer>
+          
+                    {/* Bottom section */}
+                    <div className="flex flex-col md:flex-row justify-between items-center text-[1.05rem] gap-4 text-center md:text-left -ml-5" style={{ fontFamily: 'Crimson Text, serif' }}>
+                      <div>
+                        Questions? Reach out:<br />
+                        <a href="mailto:hello@dwelltales.com" className="underline hover:no-underline">
+                        hello@dwelltales.com
+                        </a>
+                      </div>
+                      </div>
+                      <div className="ml-256 text-md -mb-12 -mt-18" style={{ fontFamily: 'font-avenir-next-lt-pro-light, serif' }}>Nicara Design © 2025</div>
+                  </div>
+                </footer>
     </div>
   );
 }

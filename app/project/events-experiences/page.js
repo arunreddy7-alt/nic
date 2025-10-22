@@ -316,72 +316,72 @@ export default function EventsExperiences() {
        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
          {/* Links section */}
          <div className="flex flex-wrap gap-3 sm:gap-6 justify-center md:justify-start text-center md:text-left relative md:-ml-4">
-              <div className="relative ">
-          <button
-            className="md:hidden text-sm hover:underline flex items-center font-avenir-next-lt-pro-light font-light"
-            onClick={() => setFooterDropdownOpen(!footerDropdownOpen)}
-          >
-            Projects
-                  <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${footerDropdownOpen ? 'rotate-180' : ''}`} />
-                </button>
-                <a
-                  href="#"
-                  className="hidden md:block text-sm hover:underline font-avenir-next-lt-pro-light font-light"
-                  onMouseEnter={() => setFooterDropdownOpen(true)}
-                  onMouseLeave={() => setFooterDropdownOpen(false)}
-                >
-                  Projects
-                </a>
-                {footerDropdownOpen && (
-                  <div
-                    className="absolute bottom-full left-0 bg-[#755306] shadow-lg py-2 w-48 z-30"
-                    onMouseEnter={() => setFooterDropdownOpen(true)}
-                    onMouseLeave={() => setFooterDropdownOpen(false)}
-                  >
-                    <a href="/project/interiors" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306] font-avenir-next-lt-pro-light font-light">
-                      Interiors
-                    </a>
-                    <a href="/project/buy-stay" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306] font-avenir-next-lt-pro-light font-light">
-                      Buy & Stay
-                    </a>
-                    <a href="/project/events-experiences" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306] font-avenir-next-lt-pro-light font-light">
-                      Events & Experiences
-                    </a>
-                  </div>
-                )}
-              </div>
-              <a href="/about" className="text-sm hover:underline ml-4 font-avenir-next-lt-pro-light font-light">About</a>
-              <a href="/contact" className="text-sm hover:underline ml-4 font-avenir-next-lt-pro-light font-light">Contact</a>
-            </div>
-      
-            {/* Description section */}
-            <div className="text-md text-center md:text-left md:-mr-39 md:ml-80 px-4 md:px-0" style={{ fontFamily: 'Crimson Text, serif' }}>
-              Established in 2019, Nicara Design is a full-service design firm based in Hyderabad, India.
-            </div>
-
-            {/* Social section */}
-            <div className="text-md text-center md:text-left md:-mr-19 md:ml-52 space-y-1 px-4 md:px-0" style={{ fontFamily: 'Crimson Text, serif' }}>
-              <div>
-                IG: <a href="https://www.instagram.com/nicaradesign?igsh=MTRyZHkzeDNtMGRoeg==" className="underline hover:no-underline">@nicaradesign</a>
-              </div>
-              <div>
-                Phone: <a href="tel:8559901234" className="underline hover:no-underline">+91 855 990 1234</a>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom section */}
-          <div className="flex flex-col md:flex-row justify-between items-center text-md gap-4 text-center md:text-left -ml-5" style={{ fontFamily: 'Crimson Text, serif' }}>
-            <div>
-              Questions? Reach out:<br />
-              <a href="mailto:hello@dwelltales.com" className="underline hover:no-underline">
-              hello@dwelltales.com
-              </a>
-            </div>
-            </div>
-            <div className="ml-256 text-sm -mb-12 -mt-18" style={{ fontFamily: 'font-avenir-next-lt-pro-light, serif' }}>Nicara Design © 2025</div>
-        </div>
-      </footer>
+                       <div className="relative ">
+                   <button
+                     className="md:hidden text-md hover:underline flex items-center font-avenir-next-lt-pro-light font-light"
+                     onClick={() => setFooterDropdownOpen(!footerDropdownOpen)}
+                   >
+                     Projects
+                           <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${footerDropdownOpen ? 'rotate-180' : ''}`} />
+                         </button>
+                         <a
+                           href="#"
+                           className="hidden md:block text-md hover:underline font-avenir-next-lt-pro-light font-light"
+                           onMouseEnter={() => setFooterDropdownOpen(true)}
+                           onMouseLeave={() => setFooterDropdownOpen(false)}
+                         >
+                           Projects
+                         </a>
+                         {footerDropdownOpen && (
+                           <div
+                             className="absolute bottom-full left-0 bg-[#755306] shadow-lg py-2 w-48 z-30"
+                             onMouseEnter={() => setFooterDropdownOpen(true)}
+                             onMouseLeave={() => setFooterDropdownOpen(false)}
+                           >
+                             <a href="/project/interiors" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306] font-avenir-next-lt-pro-light font-light">
+                               Interiors
+                             </a>
+                             <a href="/project/buy-stay" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306] font-avenir-next-lt-pro-light font-light">
+                               Buy & Stay
+                             </a>
+                             <a href="/project/events-experiences" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306] font-avenir-next-lt-pro-light font-light">
+                               Events & Experiences
+                             </a>
+                           </div>
+                         )}
+                       </div>
+                       <a href="/about" className="text-md hover:underline ml-4 font-avenir-next-lt-pro-light font-light">About</a>
+                       <a href="/contact" className="text-md hover:underline ml-4 font-avenir-next-lt-pro-light font-light">Contact</a>
+                     </div>
+               
+                     {/* Description section */}
+                     <div className="text-[1.05rem] text-center md:text-left md:-mr-39 md:ml-80 px-4 md:px-0" style={{ fontFamily: 'Crimson Text, serif' }}>
+                        Established in 2019, Nicara Design is a full-service design firm based in Hyderabad, India.
+                     </div>
+         
+                     {/* Social section */}
+                     <div className="text-[1.05rem] text-center md:text-left md:-mr-19 md:ml-52 space-y-1 px-4 md:px-0" style={{ fontFamily: 'Crimson Text, serif' }}>
+                       <div>
+                         IG: <a href="https://www.instagram.com/nicaradesign?igsh=MTRyZHkzeDNtMGRoeg==" className="underline hover:no-underline">@nicaradesign</a>
+                       </div>
+                       <div>
+                         Phone: <a href="tel:8559901234" className="underline hover:no-underline">+91 855 990 1234</a>
+                       </div>
+                     </div>
+                   </div>
+         
+                   {/* Bottom section */}
+                   <div className="flex flex-col md:flex-row justify-between items-center text-[1.05rem] gap-4 text-center md:text-left -ml-5" style={{ fontFamily: 'Crimson Text, serif' }}>
+                     <div>
+                       Questions? Reach out:<br />
+                       <a href="mailto:hello@dwelltales.com" className="underline hover:no-underline">
+                       hello@dwelltales.com
+                       </a>
+                     </div>
+                     </div>
+                     <div className="ml-256 text-md -mb-12 -mt-18" style={{ fontFamily: 'font-avenir-next-lt-pro-light, serif' }}>Nicara Design © 2025</div>
+                 </div>
+               </footer>
     </div>
   );
 }

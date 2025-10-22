@@ -241,7 +241,7 @@ export default function ContactSection() {
         <div className="flex items-center justify-between w-full sm:w-auto sm:justify-center sm:col-start-2">
           <Link
             href="/"
-            className="text-lg text-black font-bold"
+            className="text-lg text-white font-bold"
             style={{ fontFamily: 'Didot, serif' }}
           >
             NICARA
@@ -444,7 +444,7 @@ export default function ContactSection() {
         {/* Left Column - Form */}
         <div>
           <h2 className="text-lg font-medium mb-4 font-avenir-next-lt-pro-light" >Contact Us</h2>
-          <p className="mb-8 text-md leading-relaxed font-avenir-next-lt-pro-light font-medium"  style={{ fontFamily: 'Crimson Text, serif' }}>
+          <p className="mb-8 text-lg leading-relaxed font-avenir-next-lt-pro-light font-medium"  style={{ fontFamily: 'Crimson Text, serif' }}>
             Questions or ready to get started? Fill out the form below and we’ll get back to you soon.
           </p>
 
@@ -537,7 +537,7 @@ export default function ContactSection() {
         </div>
 
         {/* Right Column - Contact Info */}
-        <div className="space-y-6 text-md transform md:translate-x-19"  style={{ fontFamily: 'Crimson Text, serif' }}>
+        <div className="space-y-6 text-lg transform md:translate-x-19"  style={{ fontFamily: 'Crimson Text, serif' }}>
           <p>
             <span className="font-">NICARA</span> is now offering
             1-on-1<br/> consultations via <em>the expert</em>.
@@ -597,7 +597,7 @@ export default function ContactSection() {
             <div className="flex flex-wrap gap-3 sm:gap-6 justify-center md:justify-start text-center md:text-left relative md:-ml-4">
               <div className="relative ">
           <button
-            className="md:hidden text-sm hover:underline flex items-center font-avenir-next-lt-pro-light font-light"
+            className="md:hidden text-md hover:underline flex items-center font-avenir-next-lt-pro-light font-light"
             onClick={() => setFooterDropdownOpen(!footerDropdownOpen)}
           >
             Projects
@@ -605,7 +605,7 @@ export default function ContactSection() {
                 </button>
                 <a
                   href="#"
-                  className="hidden md:block text-sm hover:underline font-avenir-next-lt-pro-light font-light"
+                  className="hidden md:block text-md hover:underline font-avenir-next-lt-pro-light font-light"
                   onMouseEnter={() => setFooterDropdownOpen(true)}
                   onMouseLeave={() => setFooterDropdownOpen(false)}
                 >
@@ -629,17 +629,17 @@ export default function ContactSection() {
                   </div>
                 )}
               </div>
-              <a href="/about" className="text-sm hover:underline ml-4 font-avenir-next-lt-pro-light font-light">About</a>
-              <a href="/contact" className="text-sm hover:underline ml-4 font-avenir-next-lt-pro-light font-light">Contact</a>
+              <a href="/about" className="text-md hover:underline ml-4 font-avenir-next-lt-pro-light font-light">About</a>
+              <a href="/contact" className="text-md hover:underline ml-4 font-avenir-next-lt-pro-light font-light">Contact</a>
             </div>
       
             {/* Description section */}
-            <div className="text-md text-center md:text-left md:-mr-39 md:ml-80 px-4 md:px-0" style={{ fontFamily: 'Crimson Text, serif' }}>
-              Established in 2019, Nicara Design is a full-service design firm based in Hyderabad, India.
+            <div className="text-[1.05rem] text-center md:text-left md:-mr-39 md:ml-80 px-4 md:px-0" style={{ fontFamily: 'Crimson Text, serif' }}>
+               Established in 2019, Nicara Design is a full-service design firm based in Hyderabad, India.
             </div>
 
             {/* Social section */}
-            <div className="text-md text-center md:text-left md:-mr-19 md:ml-52 space-y-1 px-4 md:px-0" style={{ fontFamily: 'Crimson Text, serif' }}>
+            <div className="text-[1.05rem] text-center md:text-left md:-mr-19 md:ml-52 space-y-1 px-4 md:px-0" style={{ fontFamily: 'Crimson Text, serif' }}>
               <div>
                 IG: <a href="https://www.instagram.com/nicaradesign?igsh=MTRyZHkzeDNtMGRoeg==" className="underline hover:no-underline">@nicaradesign</a>
               </div>
@@ -650,7 +650,7 @@ export default function ContactSection() {
           </div>
 
           {/* Bottom section */}
-          <div className="flex flex-col md:flex-row justify-between items-center text-md gap-4 text-center md:text-left -ml-5" style={{ fontFamily: 'Crimson Text, serif' }}>
+          <div className="flex flex-col md:flex-row justify-between items-center text-[1.05rem] gap-4 text-center md:text-left -ml-5" style={{ fontFamily: 'Crimson Text, serif' }}>
             <div>
               Questions? Reach out:<br />
               <a href="mailto:hello@dwelltales.com" className="underline hover:no-underline">
@@ -658,7 +658,7 @@ export default function ContactSection() {
               </a>
             </div>
             </div>
-            <div className="ml-256 text-sm -mb-12 -mt-18" style={{ fontFamily: 'font-avenir-next-lt-pro-light, serif' }}>Nicara Design © 2025</div>
+            <div className="ml-256 text-md -mb-12 -mt-18" style={{ fontFamily: 'font-avenir-next-lt-pro-light, serif' }}>Nicara Design © 2025</div>
         </div>
       </footer>
       </div>

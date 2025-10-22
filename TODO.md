@@ -1,4 +1,10 @@
-- [x] Add slide-up animation in globals.css for mobile menu
-- [ ] Modify mobile menu in page.js to full-screen fixed overlay with green background
-- [ ] Update menu items to be vertically centered: Interiors, Buy & Stay, Events & Experiences, About, Contact
-- [ ] Add close button (X) in top-right of mobile menu
+# TODO: Implement Separate Pages for Interior Images
+
+- [x] Create page for Beverly Drive (/project/interiors/beverly-drive)
+- [x] Create page for Bar A Ranch (/project/interiors/bar-a-ranch)
+- [x] Create page for Contemporary Cabins (/project/interiors/contemporary-cabins)
+- [x] Create page for Fairfax Avenue (/project/interiors/fairfax-avenue)
+- [x] Create page for Vermont Modern (/project/interiors/vermont-modern)
+- [x] Create page for Family Farmhouse (/project/interiors/family-farmhouse)
+- [x] Create page for Clarksville (/project/interiors/clarksville)
+- [x] Test navigation by running the app and clicking images
