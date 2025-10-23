@@ -310,7 +310,7 @@ export default function BeverlyDrive() {
 </p>
 <div className="flex flex-col sm:flex-row">
   <Image src="/beverly2.png" alt="Beverly Drive" width={1920} height={1080} className="w-full sm:w-4/7 h-auto object-cover sm:-ml-5 mt-20" />
-  <Image src="/beverly1.png" alt="Beverly Drive" width={920} height={580} className="w-full sm:w-[25%] h-auto object-contain sm:ml-52 sm:-mt-190" />
+  <Image src="/Beverly1.png" alt="Beverly Drive" width={920} height={580} className="w-full sm:w-[25%] h-auto object-contain sm:ml-52 sm:-mt-190" />
   <Image src="/beverly3.png" alt="Beverly Drive" width={920} height={580} className="w-full sm:w-[25%] h-auto object-contain sm:-ml-88 sm:mt-85" />
 </div>
 <p className="text-black text-left font-avenir-next-lt-pro-light font-medium text-sm mb-4 mt-8 sm:-mt-22 leading-relaxed max-w-3xl mx-4 sm:mx-auto sm:ml-249">
@@ -329,7 +329,7 @@ export default function BeverlyDrive() {
 
 <div className="relative">
   <Image
-    src="/Beverly7.png"
+    src="/beverly7.png"
     alt="Beverly Drive"
     width={920}
     height={580}
@@ -337,7 +337,7 @@ export default function BeverlyDrive() {
   />
 
   <Image
-    src="/Beverly6.png"
+    src="/beverly6.png"
     alt="Beverly Drive"
     width={920}
     height={580}
