@@ -232,7 +232,7 @@ export default function Clarksville() {
           <div
             onMouseEnter={() => setIsFormHovered(true)}
             onMouseLeave={() => setIsFormHovered(false)}
-            className="fixed right-0 top-1/2 transform -translate-y-3/5 sm:-translate-y-2/4 z-20 bg-white shadow-lg p-6 rounded w-80 sm:w-96 mr-12"
+            className="fixed right-0 top-1/2 transform -translate-y-3/5 sm:-translate-y-2/4 z-20 bg-white shadow-lg p-6 rounded w-80 sm:w-96 mr-4 sm:mr-12"
             style={{ marginTop: '50px' }}
           >
             <button
@@ -296,13 +296,68 @@ export default function Clarksville() {
           </div>
         )}
 
-      <div className="pt-24 min-h-screen flex flex-col items-center justify-center px-4">
-        <div className="flex flex-col items-center">
-          <Image src="/int7.png" alt="Clarksville" width={700} height={400} className="w-[700px] h-[400px] object-cover" />
-          <h1 className="mt-4 text-black text-center font-avenir-next-lt-pro-light font-medium text-2xl">Clarksville - Tennessee</h1>
-          <p className="mt-2 text-black text-center font-avenir-next-lt-pro-light font-light">A charming interior design project in the heart of Tennessee.</p>
-          <Link href="/project/interiors" className="mt-4 text-black hover:underline font-avenir-next-lt-pro-light font-medium">← Back to Interiors</Link>
+      <div className="pt-24 min-h-screen px-4">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-4">
+          <h1 className="text-black font-avenir-next-lt-pro-light font-medium text-sm mb-4">Clarksville — Austin, Texas</h1>
+          <p className="text-black font-avenir-next-lt-pro-light font-medium text-sm mb-4">1933 Bungalow</p>
         </div>
+        {/* Full Page Image */}
+        <Image src="/int7.png" alt="Clarksville" width={1920} height={1080} className="w-full h-screen object-cover mb-4 " />
+        {/* Description */}
+        <p className="text-black text-left font-avenir-next-lt-pro-light font-medium text-sm mb-4 mt-20 leading-relaxed max-w-3xl mx-auto sm:ml-55">
+        Charlie Rice is the sort of person you’d want for a neighbor. Not only because<br/> his bungalow is always brimming with joyful gatherings, freshly cut flowers,<br/> and the occasional swing band on the front porch, but also because—if you’re<br/> lucky—you might even clinch an invite to one of his famous five-course dinner<br/> parties.
+</p>
+<div className="flex flex-col sm:flex-row">
+  <Image src="/c1.png" alt="Clarksville" width={1920} height={1080} className="w-full sm:w-4/7 h-auto object-cover sm:-ml-5 mt-20" />
+  <Image src="/c2.png" alt="Clarksville" width={920} height={580} className="w-full sm:w-[25%] h-auto object-contain sm:ml-52 sm:-mt-190" />
+  <Image src="/c3.png" alt="Clarksville" width={920} height={580} className="w-full sm:w-[25%] h-auto object-contain sm:-ml-88 mt-85" />
+
+</div>
+<p className="text-black text-left font-avenir-next-lt-pro-light font-medium text-sm mb-4 mt-8 sm:-mt-22 leading-relaxed max-w-3xl mx-auto sm:ml-249">
+We retrofitted an antique oak-back bar with mirrored<br/> glass and lighting to create a cozy glow reminiscent<br/> of a 1920s speakeasy. Nothing has ever felt more quintessentially Austin than this entertainer’s jewel<br/> box bachelor pad.</p>
+<div className="flex flex-col sm:flex-row">
+  <Image src="/c4.png" alt="Clarksville" width={920} height={580} className="w-full sm:w-[35%] h-auto object-contain sm:ml-37 mt-30" />
+  <Image src="/c5.png" alt="Clarksville" width={920} height={580} className="w-full sm:w-[34%] h-auto object-contain sm:ml-35 mt-30" />
+</div>
+<Image src="/c6.png" alt="Clarksville" width={1920} height={1080} className="w-[100%] h-screen object-cover mt-40" />
+<div className="pt-28"> {/* was pt-20 — increased slightly */}
+  <p className="text-black text-left font-avenir-next-lt-pro-light font-medium text-sm mb-4 leading-relaxed max-w-3xl mx-auto sm:ml-180">
+    Builder: Richard Gift<br/><br/>
+    Photography: Lindsay Brown<br/><br/>
+    Awards: Austin Home- Best Use of a Collection, Antiques, or Art and Austin<br/> Home- Best Use of Color<br/><br/>
+    Press: Clever, Architectural Digest, Austin Home, Tribeza, The Identite<br/> Collective, Cottage Home, Good House Keeping
+  </p>
+</div>
+
+<div className="relative">
+  <Image
+    src="/c7.png"
+    alt="Beverly Drive"
+    width={920}
+    height={580}
+    className="w-[32%] h-auto object-contain ml-19 mt-135 max-md:w-[90%] max-md:ml-0 max-md:mt-8 max-md:mx-auto"
+  />
+
+  <Image
+    src="/c9.png"
+    alt="Beverly Drive"
+    width={920}
+    height={580}
+    className="w-[32%] h-auto object-contain ml-19 -mt-313 max-md:w-[90%] max-md:ml-0 max-md:mt-8 max-md:mx-auto"
+  />
+
+  <Image
+    src="/c8.png"
+    alt="Beverly Drive"
+    width={1920}
+    height={1080}
+    className="w-4/7 h-auto object-cover ml-180 -mt-85 max-md:w-[95%] max-md:ml-0 max-md:mt-8 max-md:mx-auto"
+  />
+</div>
+<Image src="/c10.png" alt="Clarksville" width={1920} height={1080} className="w-full h-screen object-cover mt-40" />
+
+
       </div>
       <footer
       className="mt-15 md:mt-30 text-amber-50 py-16 sm:py-24 px-4 sm:px-10 md:px-16 lg:px-24 xl:px-32"

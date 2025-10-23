@@ -232,7 +232,7 @@ export default function VermontModern() {
           <div
             onMouseEnter={() => setIsFormHovered(true)}
             onMouseLeave={() => setIsFormHovered(false)}
-            className="fixed right-0 top-1/2 transform -translate-y-3/5 sm:-translate-y-2/4 z-20 bg-white shadow-lg p-6 rounded w-80 sm:w-96 mr-12"
+            className="fixed right-0 top-1/2 transform -translate-y-3/5 sm:-translate-y-2/4 z-20 bg-white shadow-lg p-6 rounded w-80 sm:w-96 mr-4 sm:mr-12"
             style={{ marginTop: '50px' }}
           >
             <button
@@ -296,13 +296,69 @@ export default function VermontModern() {
           </div>
         )}
 
-      <div className="pt-24 min-h-screen flex flex-col items-center justify-center px-4">
-        <div className="flex flex-col items-center">
-          <Image src="/int5.png" alt="Vermont Modern" width={700} height={400} className="w-[700px] h-[400px] object-cover" />
-          <h1 className="mt-4 text-black text-center font-avenir-next-lt-pro-light font-medium text-2xl">Vermont Modern - Charlotte, Vermont</h1>
-          <p className="mt-2 text-black text-center font-avenir-next-lt-pro-light font-light">A contemporary design project in the picturesque Vermont landscape.</p>
-          <Link href="/project/interiors" className="mt-4 text-black hover:underline font-avenir-next-lt-pro-light font-medium">← Back to Interiors</Link>
+      <div className="pt-24 min-h-screen px-4">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-4">
+          <h1 className="text-black font-avenir-next-lt-pro-light font-medium text-sm mb-4">Vermont Modern - Charlotte, Vermont</h1>
+          <p className="text-black font-avenir-next-lt-pro-light font-medium text-sm mb-4">Handbuilt in 1968</p>
         </div>
+        {/* Full Page Image */}
+        <Image src="/int5.png" alt="Vermont Modern" width={1920} height={1080} className="w-full h-screen object-cover mb-4 " />
+        {/* Description */}
+        <p className="text-black text-left font-avenir-next-lt-pro-light font-medium text-sm mb-4 mt-20 leading-relaxed max-w-3xl mx-auto sm:ml-55">
+        Hand built by Carl L. Bausch, Jr. in 1968, the property features a main house and a studio for his <br/>
+        artist wife. While an innovative structure with amazing light, scale, and setting, the home needed <br/>
+        lots of work. We set off on a journey to thoughtfully update this architectural gem to fit its new<br/>
+        role as a family home and Airbnb in the verdant and charming town of Charlotte, VT.
+</p>
+<div className="flex flex-col sm:flex-row">
+  <Image src="/v1.png" alt="Vermont Modern" width={1920} height={1080} className="w-full sm:w-4/7 h-auto object-cover sm:-ml-5 mt-20" />
+  <Image src="/v2.png" alt="Vermont Modern" width={920} height={580} className="w-full sm:w-[25%] h-auto object-contain sm:ml-52 sm:-mt-190" />
+  <Image src="/v3.png" alt="Vermont Modern" width={920} height={580} className="w-full sm:w-[25%] h-auto object-contain sm:-ml-88 mt-85" />
+
+</div>
+<p className="text-black text-left font-avenir-next-lt-pro-light font-medium text-sm mb-4 mt-8 sm:-mt-22 leading-relaxed max-w-3xl mx-auto sm:ml-249">
+In the dining room, Cox created what she likes to<br/> call a color corridor by drenching the walls in berry-<br/>hued paint—a move that gave the illusion that the<br/> barely 8-foot-tall ceilings are a little bit higher than<br/> they actually are.
+</p>
+<div className="flex flex-col sm:flex-row">
+  <Image src="/v4.png" alt="Vermont Modern" width={920} height={580} className="w-full sm:w-[35%] h-auto object-contain sm:ml-37 mt-30" />
+  <Image src="/v5.png" alt="Vermont Modern" width={920} height={580} className="w-full sm:w-[34%] h-auto object-contain sm:ml-35 mt-30" />
+</div>
+<Image src="/v6.png" alt="Vermont Modern" width={1920} height={1080} className="w-[100%] h-screen object-cover mt-40" />
+<div className="pt-28"> {/* was pt-20 — increased slightly */}
+  <p className="text-black text-left font-avenir-next-lt-pro-light font-medium text-sm mb-4 leading-relaxed max-w-3xl mx-auto sm:ml-180">
+  Constructed in 1968 by architect Carl L. Bausch, Jr., it features slit windows that are almost as<br/> tall as the wood-burning stove’s chimney, cantilevered skylights that drench the living area in<br/> sunshine, and stilts that support the shingle-clad structure.
+  </p>
+</div>
+
+<div className="relative">
+  <Image
+    src="/v9.png"
+    alt="Beverly Drive"
+    width={920}
+    height={580}
+    className="w-[32%] h-auto object-contain ml-19 mt-135 max-md:w-[90%] max-md:ml-0 max-md:mt-8 max-md:mx-auto"
+  />
+
+  <Image
+    src="/v7.png"
+    alt="Beverly Drive"
+    width={920}
+    height={580}
+    className="w-[32%] h-auto object-contain ml-19 -mt-313 max-md:w-[90%] max-md:ml-0 max-md:mt-8 max-md:mx-auto"
+  />
+
+  <Image
+    src="/v8.png"
+    alt="Beverly Drive"
+    width={1920}
+    height={1080}
+    className="w-4/7 h-auto object-cover ml-180 -mt-85 max-md:w-[95%] max-md:ml-0 max-md:mt-8 max-md:mx-auto"
+  />
+</div>
+<Image src="/v10.png" alt="Vermont Modern" width={1920} height={1080} className="w-full h-screen object-cover mt-40" />
+
+
       </div>
       <footer
       className="mt-15 md:mt-30 text-amber-50 py-16 sm:py-24 px-4 sm:px-10 md:px-16 lg:px-24 xl:px-32"

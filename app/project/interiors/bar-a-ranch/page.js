@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Menu, X, ChevronDown, Mail, Phone, ChevronRight, ChevronLeft } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
-export default function BarARanch() {
+const BarARanch = () => {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -232,7 +232,7 @@ export default function BarARanch() {
           <div
             onMouseEnter={() => setIsFormHovered(true)}
             onMouseLeave={() => setIsFormHovered(false)}
-            className="fixed right-0 top-1/2 transform -translate-y-3/5 sm:-translate-y-2/4 z-20 bg-white shadow-lg p-6 rounded w-80 sm:w-96 mr-12"
+            className="fixed right-0 top-1/2 transform -translate-y-3/5 sm:-translate-y-2/4 z-20 bg-white shadow-lg p-6 rounded w-80 sm:w-96 mr-4 sm:mr-12"
             style={{ marginTop: '50px' }}
           >
             <button
@@ -296,12 +296,40 @@ export default function BarARanch() {
           </div>
         )}
 
-      <div className="pt-24 min-h-screen flex flex-col items-center justify-center px-4">
-        <div className="flex flex-col items-center">
-          <Image src="/int2.png" alt="Bar A Ranch" width={700} height={400} className="w-[700px] h-[400px] object-cover" />
-          <h1 className="mt-4 text-black text-center font-avenir-next-lt-pro-light font-medium text-2xl">A Bar A Ranch, Wyoming - In Process</h1>
-          <p className="mt-2 text-black text-center font-avenir-next-lt-pro-light font-light">An ongoing interior design project blending rustic charm with modern comfort.</p>
-          <Link href="/project/interiors" className="mt-4 text-black hover:underline font-avenir-next-lt-pro-light font-medium">← Back to Interiors</Link>
+      <div className="pt-24 min-h-screen flex flex-col items-center justify-center px-4 relative">
+        <div className="absolute top-4 left-4 text-black font-avenir-next-lt-pro-light font-medium text-sm mt-20">
+          A Bar A Ranch, Wyoming — In Process
+        </div>
+        <div className="flex flex-col items-center gap-8 mt-12">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <Image src="/bar1.png" alt="Bar A Ranch 1" width={385} height={298} className="w-full h-auto object-cover" />
+            <Image src="/bar2.png" alt="Bar A Ranch 2" width={320} height={240} className="w-full h-auto object-cover" />
+            <Image src="/bar3.png" alt="Bar A Ranch 3" width={280} height={350} className="w-full h-auto object-cover" />
+            <Image src="/bar4.png" alt="Bar A Ranch 4" width={350} height={280} className="w-full h-auto object-cover" />
+            <Image src="/bar5.png" alt="Bar A Ranch 5" width={300} height={320} className="w-full h-auto object-cover sm:mt-20" />
+            <Image src="/bar6.png" alt="Bar A Ranch 6" width={290} height={340} className="w-full h-auto object-cover" />
+            <Image src="/bar7.png" alt="Bar A Ranch 7" width={330} height={290} className="w-full h-auto object-cover" />
+            <Image src="/bar8.png" alt="Bar A Ranch 8" width={310} height={310} className="w-full h-auto object-cover sm:ml-119" />
+          </div>
+          <div className="flex flex-col sm:flex-row items-start gap-8 mt-14">
+            <div className="text-left">
+              <h4 className="text-sm font-bold mb-4 text-black font-avenir-next-lt-pro-light font-medium">Project Info -</h4 >
+              <p className="text-sm mb-2 text-black font-avenir-next-lt-pro-light font-medium">Location: Encampment, Wyoming</p>
+              <p className="text-sm mb-2 text-black font-avenir-next-lt-pro-light font-medium">Historic Preservation</p>
+              <p className="text-sm text-black font-avenir-next-lt-pro-light font-medium" >1920&apos;s Guest Ranch & Guest Cabins</p>
+            </div>
+            <div className="text-left sm:ml-40">
+              <p className="text-sm text-black font-avenir-next-lt-pro-light font-medium leading-relaxed">
+                Founded in 1922 and having one of the only surviving buildings designed by Thomas Molesworth, this iconic<br/> guest ranch has a long history of gathering generations of families to ride horses, fly fish, and enjoy the<br/> charms of the west.
+              </p>
+              <p className="text-sm text-black font-avenir-next-lt-pro-light font-medium leading-relaxed mt-4">
+                We were commissioned to re-envision the guest cabins design to create a cohesive feeling across the ranch<br/> that can be implemented over time.
+              </p>
+              <p className="text-sm text-black font-avenir-next-lt-pro-light font-medium leading-relaxed mt-4">
+                The design marries utility and “working ranch” style, with the tradition of western design founded by the<br/> artists in the Cody, WY community. With updates to materiality and color, we hope to create a style for the<br/> Ranch that will stay relevant for the next 100 years.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
       <footer
@@ -380,4 +408,6 @@ export default function BarARanch() {
                 </footer>
     </div>
   );
-}
+};
+
+export default BarARanch;

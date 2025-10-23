@@ -232,7 +232,7 @@ export default function ContemporaryCabins() {
           <div
             onMouseEnter={() => setIsFormHovered(true)}
             onMouseLeave={() => setIsFormHovered(false)}
-            className="fixed right-0 top-1/2 transform -translate-y-3/5 sm:-translate-y-2/4 z-20 bg-white shadow-lg p-6 rounded w-80 sm:w-96 mr-12"
+            className="fixed right-0 top-1/2 transform -translate-y-3/5 sm:-translate-y-2/4 z-20 bg-white shadow-lg p-6 rounded w-80 sm:w-96 mr-4 sm:mr-12"
             style={{ marginTop: '50px' }}
           >
             <button
@@ -296,13 +296,56 @@ export default function ContemporaryCabins() {
           </div>
         )}
 
-      <div className="pt-24 min-h-screen flex flex-col items-center justify-center px-4">
-        <div className="flex flex-col items-center">
-          <Image src="/int4-1.png" alt="Contemporary Cabins" width={700} height={400} className="w-[700px] h-[400px] object-cover" />
-          <h1 className="mt-4 text-black text-center font-avenir-next-lt-pro-light font-medium text-2xl">Contemporary Cabins, Washington - In Process</h1>
-          <p className="mt-2 text-black text-center font-avenir-next-lt-pro-light font-light">Modern cabin designs blending contemporary aesthetics with natural surroundings.</p>
-          <Link href="/project/interiors" className="mt-4 text-black hover:underline font-avenir-next-lt-pro-light font-medium">← Back to Interiors</Link>
+      <div className="pt-24 min-h-screen flex flex-col items-center justify-center px-4 relative">
+        <div className="absolute top-4 left-4 text-black font-avenir-next-lt-pro-light font-medium text-sm mt-20">
+          Contemporary Cabin I & II, Seabeck, Washington — In Process
         </div>
+        <div className="flex flex-col sm:flex-row gap-4 mt-12">
+        <Image
+    src="/con1.png"
+    alt="Contemporary Cabin 1"
+    width={380}
+    height={280}
+    className="w-full sm:w-[390px] h-auto sm:h-[270px] object-cover"
+  />
+
+  {/* Middle image */}
+  <Image
+    src="/con2.png"
+    alt="Contemporary Cabin 2"
+    width={300}
+    height={200}
+    className="w-full sm:w-[460px] h-auto sm:h-[640px] object-cover sm:ml-10"
+  />
+
+  {/* Right image */}
+  <Image
+    src="/con3.png"
+    alt="Contemporary Cabin 3"
+    width={380}
+    height={280}
+    className="w-full sm:w-[390px] h-auto sm:h-[270px] object-cover mt-0 sm:ml-10"
+  />
+    </div>
+    <div className="flex flex-col sm:flex-row items-start gap-8 mt-34">
+            <div className="text-left">
+              <h4 className="text-sm font-bold mb-4 text-black font-avenir-next-lt-pro-light font-medium">Project Info -</h4 >
+              <p className="text-sm mb-2 text-black font-avenir-next-lt-pro-light font-medium">2015 Little House (featured in Dwell), 2023 Main<br/> House</p>
+              <p className="text-sm mb-2 text-black font-avenir-next-lt-pro-light font-medium">Location: Seabeck, Washington</p>
+              <p className="text-sm text-black font-avenir-next-lt-pro-light font-medium" >Architect: MW|Works</p>
+            </div>
+            <div className="text-left sm:ml-40">
+              <p className="text-sm text-black font-avenir-next-lt-pro-light font-medium leading-relaxed">
+              After working with the clients to complete what will now be the guest quarters on this stunning Hood Canal<br/> property, we were commissioned to guide the design of the Main House.
+             </p>
+              <p className="text-sm text-black font-avenir-next-lt-pro-light font-medium leading-relaxed mt-4">
+              Working with MW|Works in Washington State, we hope to build a cozy yet contemporary dwelling that<br/> highlights the beauty of the landscape and allows for seamless integration of indoor and outdoor spaces.
+              </p>
+              <p className="text-sm text-black font-avenir-next-lt-pro-light font-medium leading-relaxed mt-4">
+              Punchy colors, warm woods, and integrated architecture will be the standout characteristics of this design.
+              </p>
+            </div>
+          </div>
       </div>
       <footer
       className="mt-15 md:mt-30 text-amber-50 py-16 sm:py-24 px-4 sm:px-10 md:px-16 lg:px-24 xl:px-32"

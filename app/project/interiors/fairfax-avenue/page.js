@@ -232,7 +232,7 @@ export default function FairfaxAvenue() {
           <div
             onMouseEnter={() => setIsFormHovered(true)}
             onMouseLeave={() => setIsFormHovered(false)}
-            className="fixed right-0 top-1/2 transform -translate-y-3/5 sm:-translate-y-2/4 z-20 bg-white shadow-lg p-6 rounded w-80 sm:w-96 mr-12"
+            className="fixed right-0 top-1/2 transform -translate-y-3/5 sm:-translate-y-2/4 z-20 bg-white shadow-lg p-6 rounded w-80 sm:w-96 mr-4 sm:mr-12"
             style={{ marginTop: '50px' }}
           >
             <button
@@ -296,14 +296,43 @@ export default function FairfaxAvenue() {
           </div>
         )}
 
-      <div className="pt-24 min-h-screen flex flex-col items-center justify-center px-4">
-        <div className="flex flex-col items-center">
-          <Image src="/int4.png" alt="Fairfax Avenue" width={700} height={400} className="w-[700px] h-[400px] object-cover" />
-          <h1 className="mt-4 text-black text-center font-avenir-next-lt-pro-light font-medium text-2xl">Fairfax Avenue, Highland Park - Coming Soon</h1>
-          <p className="mt-2 text-black text-center font-avenir-next-lt-pro-light font-light">An upcoming luxury interior project in Highland Park.</p>
-          <Link href="/project/interiors" className="mt-4 text-black hover:underline font-avenir-next-lt-pro-light font-medium">← Back to Interiors</Link>
-        </div>
-      </div>
+      <div className="pt-24 min-h-screen flex flex-col items-center justify-center px-4 relative">
+              <div className="absolute top-4 left-4 text-black font-avenir-next-lt-pro-light font-medium text-sm mt-20">
+              Fairfax Avenue, Highland Park — Coming Soon
+              </div>
+              <div className="flex flex-col items-center gap-8 mt-12">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <Image src="/fair1.png" alt="Bar A Ranch 1" width={385} height={298} className="w-full h-auto object-cover" />
+                  <Image src="/fair2.png" alt="Bar A Ranch 2" width={320} height={240} className="w-full h-auto object-cover" />
+                  <Image src="/fair3.png" alt="Bar A Ranch 3" width={280} height={350} className="w-full h-auto object-cover" />
+                  <Image src="/fair4.png" alt="Bar A Ranch 4" width={350} height={280} className="w-full h-auto object-cover" />
+                  <Image src="/fair5.png" alt="Bar A Ranch 5" width={300} height={320} className="w-full h-auto object-cover sm:mt-20" />
+                  <Image src="/fair6.png" alt="Bar A Ranch 6" width={290} height={340} className="w-full h-auto object-cover" />
+                  <Image src="/fair7.png" alt="Bar A Ranch 7" width={330} height={290} className="w-full h-auto object-cover" />
+                  <Image src="/fair8.png" alt="Bar A Ranch 8" width={310} height={310} className="w-full h-auto object-cover sm:ml-119" />
+                </div>
+                <div className="flex flex-col sm:flex-row items-start gap-8 mt-14">
+                  <div className="text-left">
+                    <h4 className="text-sm font-bold mb-4 text-black font-avenir-next-lt-pro-light font-medium">Project Info -</h4 >
+                    <p className="text-sm mb-2 text-black font-avenir-next-lt-pro-light font-medium">Location: Highland Park, Dallas, Texas<br/>
+                    Historic Preservation — 1927 Georgian</p>
+                    <p className="text-sm mb-2 text-black font-avenir-next-lt-pro-light font-medium">Builder: Diane Lewis Design
+                    </p>
+                    <p className="text-sm text-black font-avenir-next-lt-pro-light font-medium" >Completed project coming soon.
+
+</p>
+                  </div>
+                  <div className="text-left sm:ml-40">
+                    <p className="text-sm text-black font-avenir-next-lt-pro-light font-medium leading-relaxed">
+                    A full gut renovation, this project is inventive, spirited, and fearless, with inspiration ranging from the Swiss<br/> alps to ancient Rome. We’ve created a high degree of theatricality for this art loving, joyful family of three.
+                    </p>
+                    <p className="text-sm text-black font-avenir-next-lt-pro-light font-medium leading-relaxed mt-4">
+                    This project truly lets the creative spirit free with its playful yet sophisticated palette and bold commitment<br/> to pattern and custom design elements.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
       <footer
       className="mt-15 md:mt-30 text-amber-50 py-16 sm:py-24 px-4 sm:px-10 md:px-16 lg:px-24 xl:px-32"
       style={{ backgroundColor: '#755306' }}
