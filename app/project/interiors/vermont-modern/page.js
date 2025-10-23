@@ -305,11 +305,8 @@ export default function VermontModern() {
         {/* Full Page Image */}
         <Image src="/int5.png" alt="Vermont Modern" width={1920} height={1080} className="w-full h-screen object-cover mb-4 " />
         {/* Description */}
-        <p className="text-black text-left font-avenir-next-lt-pro-light font-medium text-sm mb-4 mt-20 leading-relaxed max-w-3xl mx-auto sm:ml-55">
-        Hand built by Carl L. Bausch, Jr. in 1968, the property features a main house and a studio for his <br/>
-        artist wife. While an innovative structure with amazing light, scale, and setting, the home needed <br/>
-        lots of work. We set off on a journey to thoughtfully update this architectural gem to fit its new<br/>
-        role as a family home and Airbnb in the verdant and charming town of Charlotte, VT.
+        <p className="text-black text-left font-avenir-next-lt-pro-light font-medium text-sm mb-4 mt-20 leading-relaxed max-w-3xl mx-4 sm:mx-auto sm:ml-55">
+        Hand built by Carl L. Bausch, Jr. in 1968, the property features a main house and a studio for his <br className="hidden sm:block" /> artist wife. While an innovative structure with amazing light, scale, and setting, the home needed <br className="hidden sm:block" /> lots of work. We set off on a journey to thoughtfully update this architectural gem to fit its new<br className="hidden sm:block" /> role as a family home and Airbnb in the verdant and charming town of Charlotte, VT.
 </p>
 <div className="flex flex-col sm:flex-row">
   <Image src="/v1.png" alt="Vermont Modern" width={1920} height={1080} className="w-full sm:w-4/7 h-auto object-cover sm:-ml-5 mt-20" />
@@ -317,8 +314,8 @@ export default function VermontModern() {
   <Image src="/v3.png" alt="Vermont Modern" width={920} height={580} className="w-full sm:w-[25%] h-auto object-contain sm:-ml-88 mt-85" />
 
 </div>
-<p className="text-black text-left font-avenir-next-lt-pro-light font-medium text-sm mb-4 mt-8 sm:-mt-22 leading-relaxed max-w-3xl mx-auto sm:ml-249">
-In the dining room, Cox created what she likes to<br/> call a color corridor by drenching the walls in berry-<br/>hued paint—a move that gave the illusion that the<br/> barely 8-foot-tall ceilings are a little bit higher than<br/> they actually are.
+<p className="text-black text-left font-avenir-next-lt-pro-light font-medium text-sm mb-4 mt-8 sm:-mt-22 leading-relaxed max-w-3xl mx-4 sm:mx-auto sm:ml-249">
+In the dining room, Cox created what she likes to<br className="hidden sm:block" /> call a color corridor by drenching the walls in berry-<br className="hidden sm:block" />hued paint—a move that gave the illusion that the<br className="hidden sm:block" /> barely 8-foot-tall ceilings are a little bit higher than<br className="hidden sm:block" /> they actually are.
 </p>
 <div className="flex flex-col sm:flex-row">
   <Image src="/v4.png" alt="Vermont Modern" width={920} height={580} className="w-full sm:w-[35%] h-auto object-contain sm:ml-37 mt-30" />
@@ -326,8 +323,8 @@ In the dining room, Cox created what she likes to<br/> call a color corridor by 
 </div>
 <Image src="/v6.png" alt="Vermont Modern" width={1920} height={1080} className="w-[100%] h-screen object-cover mt-40" />
 <div className="pt-28"> {/* was pt-20 — increased slightly */}
-  <p className="text-black text-left font-avenir-next-lt-pro-light font-medium text-sm mb-4 leading-relaxed max-w-3xl mx-auto sm:ml-180">
-  Constructed in 1968 by architect Carl L. Bausch, Jr., it features slit windows that are almost as<br/> tall as the wood-burning stove’s chimney, cantilevered skylights that drench the living area in<br/> sunshine, and stilts that support the shingle-clad structure.
+  <p className="text-black text-left font-avenir-next-lt-pro-light font-medium text-sm mb-4 leading-relaxed max-w-3xl mx-4 sm:mx-auto sm:ml-180">
+  Constructed in 1968 by architect Carl L. Bausch, Jr., it features slit windows that are almost as<br className="hidden sm:block" /> tall as the wood-burning stove’s chimney, cantilevered skylights that drench the living area in<br className="hidden sm:block" /> sunshine, and stilts that support the shingle-clad structure.
   </p>
 </div>
 

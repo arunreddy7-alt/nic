@@ -305,19 +305,16 @@ export default function BeverlyDrive() {
         {/* Full Page Image */}
         <Image src="/int1.png" alt="Beverly Drive" width={1920} height={1080} className="w-full h-screen object-cover mb-4 " />
         {/* Description */}
-        <p className="text-black text-left font-avenir-next-lt-pro-light font-medium text-sm mb-4 mt-20 leading-relaxed max-w-3xl mx-auto sm:ml-55">
-  This full gut renovation of this iconic Dallas home and one of very few remaining<br/>
-  streamline modern homes in Texas focuses on era specific details and<br/>
-  preserving the energy of the original build while updating the layout and<br/>
-  functionality to accommodate modern life.
+        <p className="text-black text-left font-avenir-next-lt-pro-light font-medium text-sm mb-4 mt-20 leading-relaxed max-w-3xl mx-4 sm:mx-auto sm:ml-55">
+  This full gut renovation of this iconic Dallas home and one of very few remaining<br className="hidden sm:block" /> streamline modern homes in Texas focuses on era specific details and<br className="hidden sm:block" /> preserving the energy of the original build while updating the layout and<br className="hidden sm:block" /> functionality to accommodate modern life.
 </p>
 <div className="flex flex-col sm:flex-row">
   <Image src="/beverly2.png" alt="Beverly Drive" width={1920} height={1080} className="w-full sm:w-4/7 h-auto object-cover sm:-ml-5 mt-20" />
   <Image src="/beverly1.png" alt="Beverly Drive" width={920} height={580} className="w-full sm:w-[25%] h-auto object-contain sm:ml-52 sm:-mt-190" />
   <Image src="/beverly3.png" alt="Beverly Drive" width={920} height={580} className="w-full sm:w-[25%] h-auto object-contain sm:-ml-88 sm:mt-85" />
 </div>
-<p className="text-black text-left font-avenir-next-lt-pro-light font-medium text-sm mb-4 mt-8 sm:-mt-22 leading-relaxed max-w-3xl mx-auto sm:ml-249">
-  She began by conducting intensive research and<br/> was soon drawn to certain Art Moderne principles<br/>—organic silhouettes juxtaposed with linear<br/> architectural details, moments of saturated color<br/> and reflective materials against neutral fields.
+<p className="text-black text-left font-avenir-next-lt-pro-light font-medium text-sm mb-4 mt-8 sm:-mt-22 leading-relaxed max-w-3xl mx-4 sm:mx-auto sm:ml-249">
+  She began by conducting intensive research and<br className="hidden sm:block" /> was soon drawn to certain Art Moderne principles<br className="hidden sm:block" />—organic silhouettes juxtaposed with linear<br className="hidden sm:block" /> architectural details, moments of saturated color<br className="hidden sm:block" /> and reflective materials against neutral fields.
 </p>
 <div className="flex flex-col sm:flex-row">
   <Image src="/beverly4.png" alt="Beverly Drive" width={920} height={580} className="w-full sm:w-[35%] h-auto object-contain sm:ml-37 sm:mt-30" />
@@ -325,13 +322,8 @@ export default function BeverlyDrive() {
 </div>
 <Image src="/int1.png" alt="Beverly Drive" width={1920} height={1080} className="w-[100%] h-screen object-cover mt-40" />
 <div className="pt-28"> {/* was pt-20 — increased slightly */}
-  <p className="text-black text-left font-avenir-next-lt-pro-light font-medium text-sm mb-4 leading-relaxed max-w-3xl mx-auto sm:ml-180">
-    To amplify the volume downstairs, Cox—who, named after the artist Milton Avery,<br/>
-    looked to his oeuvre to inspire her own color choices—was clever not to miss the<br/>
-    opportunity to make a few bold gestures. Among them: lacquering the dining room<br/>
-    ceiling in a peachy hue from Fine Paints of Europe; lining the bar with industrial-grade<br/>
-    high-polish aluminum siding; anchoring the living room with a vintage purple B&B Italia<br/>
-    daybed; and soaking the den in texture-rich shades of blue-green.
+  <p className="text-black text-left font-avenir-next-lt-pro-light font-medium text-sm mb-4 leading-relaxed max-w-3xl mx-4 sm:mx-auto sm:ml-180">
+    To amplify the volume downstairs, Cox—who, named after the artist Milton Avery,<br className="hidden sm:block" /> looked to his oeuvre to inspire her own color choices—was clever not to miss the<br className="hidden sm:block" /> opportunity to make a few bold gestures. Among them: lacquering the dining room<br className="hidden sm:block" /> ceiling in a peachy hue from Fine Paints of Europe; lining the bar with industrial-grade<br className="hidden sm:block" /> high-polish aluminum siding; anchoring the living room with a vintage purple B&B Italia<br className="hidden sm:block" /> daybed; and soaking the den in texture-rich shades of blue-green.
   </p>
 </div>
 

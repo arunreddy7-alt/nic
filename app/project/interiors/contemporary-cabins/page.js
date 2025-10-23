@@ -336,10 +336,10 @@ export default function ContemporaryCabins() {
             </div>
             <div className="text-left sm:ml-40">
               <p className="text-sm text-black font-avenir-next-lt-pro-light font-medium leading-relaxed">
-              After working with the clients to complete what will now be the guest quarters on this stunning Hood Canal<br/> property, we were commissioned to guide the design of the Main House.
+              After working with the clients to complete what will now be the guest quarters on this stunning Hood Canal<br className="hidden sm:block" /> property, we were commissioned to guide the design of the Main House.
              </p>
               <p className="text-sm text-black font-avenir-next-lt-pro-light font-medium leading-relaxed mt-4">
-              Working with MW|Works in Washington State, we hope to build a cozy yet contemporary dwelling that<br/> highlights the beauty of the landscape and allows for seamless integration of indoor and outdoor spaces.
+              Working with MW|Works in Washington State, we hope to build a cozy yet contemporary dwelling that<br className="hidden sm:block" /> highlights the beauty of the landscape and allows for seamless integration of indoor and outdoor spaces.
               </p>
               <p className="text-sm text-black font-avenir-next-lt-pro-light font-medium leading-relaxed mt-4">
               Punchy colors, warm woods, and integrated architecture will be the standout characteristics of this design.

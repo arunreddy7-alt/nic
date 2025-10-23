@@ -320,13 +320,13 @@ const BarARanch = () => {
             </div>
             <div className="text-left sm:ml-40">
               <p className="text-sm text-black font-avenir-next-lt-pro-light font-medium leading-relaxed">
-                Founded in 1922 and having one of the only surviving buildings designed by Thomas Molesworth, this iconic<br/> guest ranch has a long history of gathering generations of families to ride horses, fly fish, and enjoy the<br/> charms of the west.
+                Founded in 1922 and having one of the only surviving buildings designed by Thomas Molesworth, this iconic<br className="hidden sm:block" /> guest ranch has a long history of gathering generations of families to ride horses, fly fish, and enjoy the<br className="hidden sm:block" /> charms of the west.
               </p>
               <p className="text-sm text-black font-avenir-next-lt-pro-light font-medium leading-relaxed mt-4">
-                We were commissioned to re-envision the guest cabins design to create a cohesive feeling across the ranch<br/> that can be implemented over time.
+                We were commissioned to re-envision the guest cabins design to create a cohesive feeling across the ranch<br className="hidden sm:block" /> that can be implemented over time.
               </p>
               <p className="text-sm text-black font-avenir-next-lt-pro-light font-medium leading-relaxed mt-4">
-                The design marries utility and “working ranch” style, with the tradition of western design founded by the<br/> artists in the Cody, WY community. With updates to materiality and color, we hope to create a style for the<br/> Ranch that will stay relevant for the next 100 years.
+                The design marries utility and “working ranch” style, with the tradition of western design founded by the<br className="hidden sm:block" /> artists in the Cody, WY community. With updates to materiality and color, we hope to create a style for the<br className="hidden sm:block" /> Ranch that will stay relevant for the next 100 years.
               </p>
             </div>
           </div>

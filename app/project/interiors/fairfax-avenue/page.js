@@ -324,10 +324,10 @@ export default function FairfaxAvenue() {
                   </div>
                   <div className="text-left sm:ml-40">
                     <p className="text-sm text-black font-avenir-next-lt-pro-light font-medium leading-relaxed">
-                    A full gut renovation, this project is inventive, spirited, and fearless, with inspiration ranging from the Swiss<br/> alps to ancient Rome. We’ve created a high degree of theatricality for this art loving, joyful family of three.
+                    A full gut renovation, this project is inventive, spirited, and fearless, with inspiration ranging from the Swiss<br className="hidden sm:block" /> alps to ancient Rome. We’ve created a high degree of theatricality for this art loving, joyful family of three.
                     </p>
                     <p className="text-sm text-black font-avenir-next-lt-pro-light font-medium leading-relaxed mt-4">
-                    This project truly lets the creative spirit free with its playful yet sophisticated palette and bold commitment<br/> to pattern and custom design elements.
+                    This project truly lets the creative spirit free with its playful yet sophisticated palette and bold commitment<br className="hidden sm:block" /> to pattern and custom design elements.
                     </p>
                   </div>
                 </div>
