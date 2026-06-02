@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import FloatingContactBar from "../../../components/FloatingContactBar";
+import Footer from "../../../components/Footer";
 
 const images = {
   cover: {
@@ -93,7 +94,7 @@ export default function ApartmentAtAparna() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
-  const [footerDropdownOpen, setFooterDropdownOpen] = useState(false);
+
 
   return (
     <div className="font-sans relative min-h-screen overflow-x-hidden bg-[#f7f4ee] text-black">
@@ -236,80 +237,7 @@ export default function ApartmentAtAparna() {
         </div>
       </main>
 
-      <footer className="text-amber-50 px-4 py-16 sm:px-10 sm:py-24 md:px-16 lg:px-24 xl:px-32" style={{ backgroundColor: "#755306" }}>
-        <div className="mx-auto w-full max-w-[2200px] space-y-10">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div className="relative flex flex-wrap justify-center gap-6 text-center md:justify-start md:text-left">
-              <div className="relative">
-                <button className="flex text-md font-light hover:underline md:hidden" onClick={() => setFooterDropdownOpen(!footerDropdownOpen)}>
-                  Projects
-                  <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${footerDropdownOpen ? "rotate-180" : ""}`} />
-                </button>
-                <a
-                  href="#"
-                  className="hidden text-md font-light hover:underline md:block"
-                  onMouseEnter={() => setFooterDropdownOpen(true)}
-                  onMouseLeave={() => setFooterDropdownOpen(false)}
-                >
-                  Projects
-                </a>
-                {footerDropdownOpen && (
-                  <div
-                    className="absolute bottom-full left-0 z-30 w-48 bg-[#755306] py-2 shadow-lg"
-                    onMouseEnter={() => setFooterDropdownOpen(true)}
-                    onMouseLeave={() => setFooterDropdownOpen(false)}
-                  >
-                    <a href="/project/interiors" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306]">
-                      Interiors
-                    </a>
-                    <a href="/project/events-experiences" className="block px-4 py-2 text-sm text-amber-50 hover:bg-amber-50 hover:text-[#755306]">
-                      Events & Experiences
-                    </a>
-                  </div>
-                )}
-              </div>
-              <a href="/about" className="text-md font-light hover:underline">
-                About
-              </a>
-              <a href="/contact" className="text-md font-light hover:underline">
-                Contact
-              </a>
-            </div>
-
-            <div className="px-4 text-center text-[1.05rem] md:px-0 md:text-left" style={{ fontFamily: "Crimson Text, serif" }}>
-              Established in 2019, Nicara is a full-service design and lifestyle studio based in Hyderabad, India.
-            </div>
-
-            <div className="space-y-1 px-4 text-center text-[1.05rem] md:px-0 md:text-left" style={{ fontFamily: "Crimson Text, serif" }}>
-              <div>
-                IG:{" "}
-                <a href="https://www.instagram.com/nicaradesign?igsh=MTRyZHkzeDNtMGRoeg==" className="underline hover:no-underline">
-                  @nicaradesign
-                </a>
-              </div>
-              <div>
-                Phone:{" "}
-                <a href="tel:8559901234" className="underline hover:no-underline">
-                  +91 855 990 1234
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col justify-between gap-4 text-center text-[1.05rem] md:flex-row md:text-left" style={{ fontFamily: "Crimson Text, serif" }}>
-            <div>
-              Questions? Reach out:
-              <br />
-              <a href="mailto:hello@dwelltales.com" className="underline hover:no-underline">
-                hello@dwelltales.com
-              </a>
-            </div>
-            <div className="text-md" style={{ fontFamily: "var(--font-avenir-next-lt-pro-light), serif" }}>
-              Nicara Design &copy; 2025
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
       <FloatingContactBar />
     </div>
   );
